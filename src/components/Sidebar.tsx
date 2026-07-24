@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useSidebar } from "@/context/SidebarContext";
 import {
   LayoutDashboard,
   Wallet,
@@ -117,7 +118,7 @@ const navigation = [
 
 export function Sidebar() {
   const pathname = usePathname();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const { isCollapsed } = useSidebar();
   const [openMenus, setOpenMenus] = useState<string[]>([]);
 
   if (pathname === "/login") return null;
@@ -150,14 +151,6 @@ export function Sidebar() {
             </span>
           )}
         </div>
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="text-slate-400 hover:text-white hover:bg-white/10 shrink-0 ml-2 rounded-full transition-all"
-        >
-          {isCollapsed ? <ChevronRight className="h-5 w-5" /> : <ChevronLeft className="h-5 w-5" />}
-        </Button>
       </div>
       
       <div className="flex flex-1 flex-col overflow-y-auto overflow-x-hidden pt-6 custom-scrollbar px-3 space-y-2">

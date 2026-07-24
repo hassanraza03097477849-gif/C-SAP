@@ -5,31 +5,46 @@ import { usePathname } from "next/navigation";
 import { Bell, Search, UserCircle, Settings, LogOut, Shield } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useSidebar } from "@/context/SidebarContext";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const pathname = usePathname();
+  const { isCollapsed, toggleSidebar } = useSidebar();
   const [showProfile, setShowProfile] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
 
   if (pathname === "/login") return null;
 
-  const breadcrumbs = pathname.split('/').filter(Boolean);
+  const pathParts = pathname.split('/').filter(Boolean);
+  const breadcrumbs = pathParts.length ? ['home', ...pathParts] : ['home'];
 
   return (
     <header className="h-16 shrink-0 border-b border-slate-200 bg-white/80 backdrop-blur-md flex items-center justify-between px-6 shadow-sm relative z-40">
       
       <div className="flex items-center space-x-2 text-sm text-slate-600">
-        {breadcrumbs.map((crumb, idx) => (
-          <span key={idx} className="flex items-center">
-            {idx > 0 && <span className="mx-1">/</span>}
-            <Link href={'/' + breadcrumbs.slice(0, idx + 1).join('/')}
-                  className="hover:underline capitalize">
-              {crumb}
-            </Link>
-          </span>
-        ))}
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          onClick={toggleSidebar}
+          className="text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-all rounded-full h-8 w-8 mr-2"
+        >
+          {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+        </Button>
+        {breadcrumbs.map((crumb, idx) => {
+          const isHome = crumb.toLowerCase() === 'home';
+          const href = isHome ? '/' : '/' + breadcrumbs.slice(0, idx + 1).filter(c => c !== 'home').join('/');
+          return (
+            <span key={idx} className="flex items-center">
+              {idx > 0 && <span className="mx-1">/</span>}
+              <Link href={href} className="hover:underline capitalize">
+                {crumb}
+              </Link>
+            </span>
+          );
+        })}
       </div>
 
       {/* Modern Interactive Actions */}
