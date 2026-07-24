@@ -71,7 +71,15 @@ const navigation = [
     icon: ShoppingCart,
     subLinks: [
       { name: "Overview", href: "/sales" },
-      { name: "Sales Orders", href: "/sales/orders" },
+      { name: "Customers", href: "/sales/customers" },
+      { name: "Pricing", href: "/sales/pricing" },
+      { name: "Orders", href: "/sales/orders" },
+      { name: "Delivery", href: "/sales/delivery" },
+      { name: "Dispatches", href: "/sales/dispatches" },
+      { name: "Invoices", href: "/sales/invoices" },
+      { name: "Credit", href: "/sales/credit" },
+      { name: "Returns", href: "/sales/returns" },
+      { name: "Dealer Statements", href: "/sales/dealer-statements" },
     ]
   },
   { 
