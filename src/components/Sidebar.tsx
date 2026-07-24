@@ -87,7 +87,13 @@ const navigation = [
     icon: Ship,
     subLinks: [
       { name: "Overview", href: "/imports" },
+      { name: "Import Orders", href: "/imports/orders" },
+      { name: "LC Tracking", href: "/imports/lc-tracking" },
+      { name: "Invoices", href: "/imports/invoices" },
       { name: "Shipments", href: "/imports/shipments" },
+      { name: "Clearing Agents", href: "/imports/clearing" },
+      { name: "Customs & Duties", href: "/imports/customs" },
+      { name: "Landed Cost", href: "/imports/landed-cost" },
     ]
   },
   { 
@@ -156,13 +162,14 @@ export function Sidebar() {
               : item.subLinks!.some(sub => pathname === sub.href);
 
             return (
-              <div key={item.name} className="space-y-1">
+              <div key={item.name} className="space-y-1 relative group">
                 {hasSubLinks ? (
                   <button
                     onClick={() => !isCollapsed && toggleMenu(item.name)}
                     className={cn(
                       isActive ? "bg-gradient-to-r from-emerald-500/20 to-transparent text-white border-l-2 border-emerald-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]" : "hover:bg-white/5 hover:text-white border-l-2 border-transparent",
-                      "group flex w-full items-center justify-between rounded-r-xl px-3 py-3 text-sm font-semibold transition-all duration-200"
+                      "flex w-full items-center justify-between rounded-r-xl px-3 py-3 text-sm font-semibold transition-all duration-200",
+                      isCollapsed ? "justify-center px-0" : ""
                     )}
                     title={isCollapsed ? item.name : undefined}
                   >
@@ -187,7 +194,8 @@ export function Sidebar() {
                     href={item.href || "#"}
                     className={cn(
                       isActive ? "bg-gradient-to-r from-emerald-500/20 to-transparent text-white border-l-2 border-emerald-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]" : "hover:bg-white/5 hover:text-white border-l-2 border-transparent",
-                      "group flex items-center rounded-r-xl px-3 py-3 text-sm font-semibold transition-all duration-200"
+                      "flex items-center rounded-r-xl px-3 py-3 text-sm font-semibold transition-all duration-200",
+                      isCollapsed ? "justify-center px-0" : ""
                     )}
                     title={isCollapsed ? item.name : undefined}
                   >
@@ -202,30 +210,59 @@ export function Sidebar() {
                   </Link>
                 )}
 
-                {/* Sub-links with smooth animation */}
-                <div className={cn(
-                  "overflow-hidden transition-all duration-300 ease-in-out",
-                  (!isCollapsed && hasSubLinks && isOpen) ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                )}>
-                  <div className="ml-9 mt-1 mb-2 space-y-1 border-l border-white/10 pl-2">
-                    {item.subLinks?.map((sub) => {
-                      const isSubActive = pathname === sub.href;
-                      return (
-                        <Link
-                          key={sub.name}
-                          href={sub.href}
-                          className={cn(
-                            isSubActive ? "text-emerald-400 font-semibold bg-white/5" : "text-slate-400 hover:text-white hover:bg-white/5",
-                            "block rounded-md px-3 py-2 text-[13px] transition-colors relative"
-                          )}
-                        >
-                          {isSubActive && <div className="absolute left-[-9px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-emerald-400 rounded-full drop-shadow-[0_0_4px_rgba(52,211,153,0.8)]" />}
-                          {sub.name}
-                        </Link>
-                      );
-                    })}
+                {/* Sub-links with smooth animation for expanded mode */}
+                {!isCollapsed && (
+                  <div className={cn(
+                    "overflow-hidden transition-all duration-300 ease-in-out",
+                    (hasSubLinks && isOpen) ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                  )}>
+                    <div className="ml-9 mt-1 mb-2 space-y-1 border-l border-white/10 pl-2">
+                      {item.subLinks?.map((sub) => {
+                        const isSubActive = pathname === sub.href;
+                        return (
+                          <Link
+                            key={sub.name}
+                            href={sub.href}
+                            className={cn(
+                              isSubActive ? "text-emerald-400 font-semibold bg-white/5" : "text-slate-400 hover:text-white hover:bg-white/5",
+                              "block rounded-md px-3 py-2 text-[13px] transition-colors relative"
+                            )}
+                          >
+                            {isSubActive && <div className="absolute left-[-9px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-emerald-400 rounded-full drop-shadow-[0_0_4px_rgba(52,211,153,0.8)]" />}
+                            {sub.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {/* Flyout menu for collapsed mode */}
+                {isCollapsed && hasSubLinks && (
+                  <div className="fixed left-20 ml-2 mt-[-40px] hidden group-hover:block z-[60] min-w-[200px] bg-slate-900 border border-white/10 rounded-lg shadow-2xl p-2 animate-in fade-in zoom-in-95 duration-200">
+                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 px-3 pt-2">
+                      {item.name}
+                    </div>
+                    <div className="space-y-1">
+                      {item.subLinks?.map((sub) => {
+                        const isSubActive = pathname === sub.href;
+                        return (
+                          <Link
+                            key={sub.name}
+                            href={sub.href}
+                            className={cn(
+                              isSubActive ? "text-emerald-400 font-semibold bg-white/10" : "text-slate-300 hover:text-white hover:bg-white/10",
+                              "block rounded-md px-3 py-2 text-sm transition-colors relative"
+                            )}
+                          >
+                            {isSubActive && <div className="absolute left-1 top-1/2 -translate-y-1/2 w-1 h-1 bg-emerald-400 rounded-full drop-shadow-[0_0_4px_rgba(52,211,153,0.8)]" />}
+                            {sub.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })}
