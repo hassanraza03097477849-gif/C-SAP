@@ -1,0 +1,105 @@
+import React from 'react';
+
+const assetsData = [
+  { id: '1000-001', desc: 'Heavy Duty Compressor', capDate: '2023-01-15', life: '10y', apc: '$1,200,000', accDep: '$360,000', nbv: '$840,000' },
+  { id: '1000-002', desc: 'Refinery Boiler', capDate: '2022-06-10', life: '15y', apc: '$2,500,000', accDep: '$666,667', nbv: '$1,833,333' },
+  { id: '1000-003', desc: 'Control System Server', capDate: '2025-02-20', life: '5y', apc: '$150,000', accDep: '$30,000', nbv: '$120,000' },
+  { id: '1000-004', desc: 'Storage Tank A', capDate: '2020-11-01', life: '20y', apc: '$850,000', accDep: '$212,500', nbv: '$637,500' },
+  { id: '1000-005', desc: 'Transport Fleet (5 trucks)', capDate: '2024-03-12', life: '7y', apc: '$750,000', accDep: '$214,285', nbv: '$535,715' },
+  { id: '1000-006', desc: 'Lab Equipment Set', capDate: '2021-09-05', life: '8y', apc: '$420,000', accDep: '$210,000', nbv: '$210,000' },
+  { id: '1000-007', desc: 'Pipeline Section X', capDate: '2019-04-18', life: '25y', apc: '$4,000,000', accDep: '$1,120,000', nbv: '$2,880,000' },
+  { id: '1000-008', desc: 'Cooling Tower', capDate: '2023-08-30', life: '15y', apc: '$1,800,000', accDep: '$240,000', nbv: '$1,560,000' },
+  { id: '1000-009', desc: 'Office Building A', capDate: '2015-01-01', life: '40y', apc: '$12,000,000', accDep: '$3,300,000', nbv: '$8,700,000' },
+  { id: '1000-010', desc: 'Security System', capDate: '2026-01-10', life: '5y', apc: '$250,000', accDep: '$25,000', nbv: '$225,000' },
+];
+
+export default function AssetAccounting() {
+  return (
+    <div className="min-h-screen bg-slate-50/50 p-6 flex flex-col gap-6 font-sans text-slate-800 h-screen overflow-hidden">
+      <div className="max-w-7xl mx-auto space-y-6">
+        
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/80 backdrop-blur-md p-4 rounded-xl border border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">SAP FI Asset Accounting</h1>
+            <p className="text-sm text-slate-500 mt-1">Asset Register & Depreciation Ledger</p>
+          </div>
+          <div className="flex gap-3">
+            <button className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded text-sm transition-colors shadow-lg shadow-indigo-900/50">
+              + Capitalize Asset
+            </button>
+            <button className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 rounded text-sm transition-colors">
+              Run Depreciation
+            </button>
+          </div>
+        </div>
+
+        {/* KPIs */}
+        <div className="grid grid-cols-4 gap-4">
+          <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4 flex flex-col">
+            <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Total Assets</div>
+            <div className="text-2xl font-semibold text-slate-800">142</div>
+            <div className="text-xs text-emerald-600 mt-2">+3 this period</div>
+          </div>
+          <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4 flex flex-col">
+            <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Total APC</div>
+            <div className="text-2xl font-semibold text-slate-800">$23.9M</div>
+            <div className="text-xs text-indigo-600 mt-2">Acquisition Value</div>
+          </div>
+          <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4 flex flex-col">
+            <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Acc. Depreciation</div>
+            <div className="text-2xl font-semibold text-slate-800">$6.38M</div>
+            <div className="text-xs text-rose-600 mt-2">-$125K ytd</div>
+          </div>
+          <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4 flex flex-col">
+            <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Total NBV</div>
+            <div className="text-2xl font-semibold text-slate-800">$17.52M</div>
+            <div className="text-xs text-slate-500 mt-2">Net Book Value</div>
+          </div>
+        </div>
+
+        {/* Asset Register Grid */}
+        <div className="flex-1 bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-xl flex flex-col overflow-hidden shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm text-left">
+              <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
+                <tr>
+                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Asset ID</th>
+                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Description</th>
+                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Cap. Date</th>
+                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Useful Life</th>
+                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">APC Value</th>
+                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Acc. Dep.</th>
+                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Net Book Value</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {assetsData.map((asset, idx) => (
+                  <tr key={asset.id} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
+                    <td className="px-6 py-3 font-mono text-indigo-600">{asset.id}</td>
+                    <td className="px-6 py-3 font-medium text-slate-800">{asset.desc}</td>
+                    <td className="px-6 py-3 text-slate-600">{asset.capDate}</td>
+                    <td className="px-6 py-3 text-slate-600">
+                      <span className="bg-slate-100 px-2 py-1 rounded text-xs text-slate-600">{asset.life}</span>
+                    </td>
+                    <td className="px-6 py-3 text-right tabular-nums text-slate-800">{asset.apc}</td>
+                    <td className="px-6 py-3 text-right tabular-nums text-rose-600">{asset.accDep}</td>
+                    <td className="px-6 py-3 text-right tabular-nums font-medium text-emerald-600">{asset.nbv}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="p-4 border-t border-slate-200 text-xs text-slate-500 flex justify-between items-center bg-slate-50/50">
+            <div>Showing 10 of 142 assets</div>
+            <div className="flex gap-2">
+              <button className="px-3 py-1 rounded border border-slate-200 hover:bg-slate-100 bg-white text-slate-800 transition-colors">Previous</button>
+              <button className="px-3 py-1 rounded border border-slate-200 hover:bg-slate-100 bg-white text-slate-800 transition-colors">Next</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
