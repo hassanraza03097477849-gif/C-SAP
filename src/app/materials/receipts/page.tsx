@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { FileText, Calendar, Box, Package, ArrowRightLeft, MapPin, Hash, CheckCircle2, AlertCircle, Clock } from 'lucide-react';
 import { SmartTable, Column, FormField } from '@/components/SmartTable';

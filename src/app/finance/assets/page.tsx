@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { SmartTable, Column, FormField } from '@/components/SmartTable';
 
