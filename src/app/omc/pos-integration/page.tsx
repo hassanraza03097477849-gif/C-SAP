@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
 import { 
   Fuel, 
   CreditCard, 
@@ -35,12 +36,29 @@ const mockTransactions = [
 ];
 
 export default function POSIntegrationPage() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [items, setItems] = useState(mockTransactions);
 
-  const filteredTransactions = mockTransactions.filter(txn => 
-    txn.id.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    txn.site.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const columns: Column[] = [
+    { key: 'id', title: 'Txn ID', type: 'text' },
+    { key: 'site', title: 'Site', type: 'text' },
+    { key: 'nozzle', title: 'Nozzle', type: 'text' },
+    { key: 'timestamp', title: 'Timestamp', type: 'text' },
+    { key: 'product', title: 'Product', type: 'badge' },
+    { key: 'qty', title: 'Qty (Ltrs)', type: 'number' },
+    { key: 'amount', title: 'Amount (PKR)', type: 'number' },
+    { key: 'payment', title: 'Payment Mode', type: 'badge' },
+  ];
+
+  const formFields: FormField[] = [
+    { name: 'id', label: 'Txn ID', type: 'text', required: true },
+    { name: 'site', label: 'Site', type: 'text', required: true },
+    { name: 'nozzle', label: 'Nozzle', type: 'text', required: true },
+    { name: 'timestamp', label: 'Timestamp', type: 'text', required: true },
+    { name: 'product', label: 'Product', type: 'select', options: ['Petrol', 'Diesel', 'Premium Petrol'], required: true },
+    { name: 'qty', label: 'Quantity (Ltrs)', type: 'number', required: true },
+    { name: 'amount', label: 'Amount (PKR)', type: 'number', required: true },
+    { name: 'payment', label: 'Payment Mode', type: 'select', options: ['Credit Card', 'Debit Card', 'UPI', 'Cash', 'Fleet Card'], required: true },
+  ];
 
   return (
     <div className="min-h-screen bg-slate-50/50 p-6 flex flex-col gap-6 font-sans text-slate-800 h-screen overflow-hidden">
@@ -58,8 +76,6 @@ export default function POSIntegrationPage() {
             <input 
               type="text" 
               placeholder="Search Txn ID or Site..." 
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-9 pr-4 py-2 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none w-64 text-slate-800 placeholder:text-slate-400"
             />
           </div>
@@ -145,64 +161,17 @@ export default function POSIntegrationPage() {
 
       {/* Main Ledger Grid */}
       <div className="flex-1 bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-xl flex flex-col overflow-hidden shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
-        <div className="flex-1 overflow-auto custom-scrollbar">
-          <table className="w-full text-left border-collapse">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Txn ID</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Site</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Nozzle</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Timestamp</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Product</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Qty (Ltrs)</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Amount (₹)</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Payment Mode</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {filteredTransactions.map((txn, index) => (
-                <tr key={index} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
-                  <td className="px-6 py-3 text-sm font-medium text-emerald-600">{txn.id}</td>
-                  <td className="px-6 py-3 text-sm text-slate-700 flex items-center gap-2">
-                    <MapPin className="h-3 w-3 text-slate-400" />
-                    {txn.site}
-                  </td>
-                  <td className="px-6 py-3 text-sm text-slate-700">
-                    <span className="px-2 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-medium border border-slate-200">
-                      {txn.nozzle}
-                    </span>
-                  </td>
-                  <td className="px-6 py-3 text-sm text-slate-600 flex items-center gap-2">
-                    <Clock className="h-3 w-3 text-slate-400" />
-                    {txn.timestamp}
-                  </td>
-                  <td className="px-6 py-3 text-sm text-slate-700">
-                    <div className="flex items-center gap-2">
-                      <Fuel className={`h-4 w-4 ${txn.product === 'Petrol' || txn.product === 'Premium Petrol' ? 'text-amber-500' : 'text-blue-500'}`} />
-                      {txn.product}
-                    </div>
-                  </td>
-                  <td className="px-6 py-3 text-sm text-slate-800 font-medium text-right">{txn.qty.toFixed(1)}</td>
-                  <td className="px-6 py-3 text-sm text-slate-800 font-semibold text-right">{txn.amount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
-                  <td className="px-6 py-3 text-sm">
-                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium
-                      ${txn.payment === 'Credit Card' || txn.payment === 'Debit Card' ? 'bg-blue-50 text-blue-700 border border-blue-100' : 
-                        txn.payment === 'UPI' ? 'bg-purple-50 text-purple-700 border border-purple-100' : 
-                        txn.payment === 'Cash' ? 'bg-emerald-50 text-emerald-700 border border-emerald-100' : 
-                        'bg-slate-100 text-slate-700 border border-slate-200'}`}>
-                      {txn.payment}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <SmartTable 
+          data={items} 
+          columns={columns} 
+          formFields={formFields} 
+          onAdd={(newItem) => setItems([newItem, ...items])} 
+        />
       </div>
       
       {/* Footer minimal info */}
       <div className="text-xs text-slate-500 flex justify-between items-center px-2">
-        <span>Showing {filteredTransactions.length} of {mockTransactions.length} transactions</span>
+        <span>Showing {items.length} transactions</span>
         <span className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>

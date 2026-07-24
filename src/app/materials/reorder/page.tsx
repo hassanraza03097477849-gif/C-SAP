@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Package, 
   AlertTriangle, 
@@ -12,6 +12,29 @@ import {
   MoreVertical,
   ArrowRight
 } from 'lucide-react';
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
+
+const columns: Column[] = [
+  { header: 'Status', accessor: 'status' },
+  { header: 'Material', accessor: 'material' },
+  { header: 'Plant', accessor: 'plant' },
+  { header: 'MRP Type', accessor: 'mrpType' },
+  { header: 'Current Stock', accessor: 'stock' },
+  { header: 'Safety Stock', accessor: 'safetyStock' },
+  { header: 'Reorder Point', accessor: 'reorderPoint' },
+  { header: 'Proposal Qty', accessor: 'proposalQty' }
+];
+
+const formFields: FormField[] = [
+  { name: 'status', label: 'Status', type: 'select', options: ['critical', 'warning', 'ok'] },
+  { name: 'material', label: 'Material', type: 'text', required: true },
+  { name: 'plant', label: 'Plant', type: 'select', options: ['1000 (Faisalabad)', '2000 (Karachi)', '3000 (Lahore)'] },
+  { name: 'mrpType', label: 'MRP Type', type: 'select', options: ['VB', 'PD'] },
+  { name: 'stock', label: 'Current Stock', type: 'number' },
+  { name: 'safetyStock', label: 'Safety Stock', type: 'number' },
+  { name: 'reorderPoint', label: 'Reorder Point', type: 'number' },
+  { name: 'proposalQty', label: 'Proposal Qty', type: 'number' }
+];
 
 // Mock Data simulating SAP MD04
 const mockData = [
@@ -33,6 +56,8 @@ const mockData = [
 ];
 
 export default function ReorderPlanning() {
+  const [items, setItems] = useState(mockData);
+
   return (
     <div className="min-h-screen bg-slate-50/50 p-6 flex flex-col gap-6 font-sans text-slate-800 h-screen overflow-hidden">
       {/* Header Container */}
@@ -152,75 +177,8 @@ export default function ReorderPlanning() {
           </div>
         </div>
 
-        <div className="flex-1 overflow-auto custom-scrollbar">
-          <table className="w-full text-left border-collapse">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Status</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Material</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Plant</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-center">MRP Type</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Current Stock</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Safety Stock</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Reorder Point</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Proposal Qty</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {mockData.map((row) => (
-                <tr key={row.id} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
-                  <td className="px-6 py-3 whitespace-nowrap">
-                    {row.status === 'critical' && <span className="flex w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]" title="Below Safety Stock"></span>}
-                    {row.status === 'warning' && <span className="flex w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" title="Below Reorder Point"></span>}
-                    {row.status === 'ok' && <span className="flex w-3 h-3 rounded-full bg-emerald-500" title="Adequate Stock"></span>}
-                  </td>
-                  <td className="px-6 py-3 whitespace-nowrap">
-                    <span className="font-semibold text-slate-800">{row.material.split(' (')[0]}</span>
-                    <span className="text-slate-500 text-xs ml-2">({row.material.split(' (')[1]}</span>
-                  </td>
-                  <td className="px-6 py-3 whitespace-nowrap text-sm text-slate-600 font-medium">{row.plant}</td>
-                  <td className="px-6 py-3 whitespace-nowrap text-center">
-                    <span className="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-semibold border border-slate-200 shadow-sm">
-                      {row.mrpType}
-                    </span>
-                  </td>
-                  <td className={`px-6 py-3 whitespace-nowrap text-sm text-right font-bold ${row.stock < row.safetyStock ? 'text-rose-600' : row.stock < row.reorderPoint ? 'text-amber-600' : 'text-slate-800'}`}>
-                    {row.stock.toLocaleString()}
-                  </td>
-                  <td className="px-6 py-3 whitespace-nowrap text-sm text-right text-slate-500 font-medium">{row.safetyStock.toLocaleString()}</td>
-                  <td className="px-6 py-3 whitespace-nowrap text-sm text-right text-slate-500 font-medium">{row.reorderPoint.toLocaleString()}</td>
-                  <td className="px-6 py-3 whitespace-nowrap text-sm text-right">
-                    {row.proposalQty > 0 ? (
-                      <span className="font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
-                        +{row.proposalQty.toLocaleString()}
-                      </span>
-                    ) : (
-                      <span className="text-slate-400">-</span>
-                    )}
-                  </td>
-                  <td className="px-6 py-3 whitespace-nowrap text-center">
-                    <button className="p-1.5 hover:bg-slate-200 rounded-md text-slate-400 hover:text-slate-700 transition-colors">
-                      <MoreVertical size={16} />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        
-        {/* Footer Pagination */}
-        <div className="p-3 border-t border-slate-200 bg-slate-50/80 backdrop-blur flex justify-between items-center text-xs text-slate-500">
-          <span className="font-medium">Showing 15 of 1,248 materials</span>
-          <div className="flex gap-1.5">
-            <button className="px-3 py-1.5 border border-slate-200 rounded-md hover:bg-slate-100 disabled:opacity-50 font-medium transition-colors" disabled>Prev</button>
-            <button className="px-3 py-1.5 border border-slate-200 rounded-md bg-emerald-50 text-emerald-700 border-emerald-200 font-bold">1</button>
-            <button className="px-3 py-1.5 border border-slate-200 rounded-md hover:bg-slate-100 font-medium transition-colors">2</button>
-            <button className="px-3 py-1.5 border border-slate-200 rounded-md hover:bg-slate-100 font-medium transition-colors">3</button>
-            <span className="px-2 py-1.5">...</span>
-            <button className="px-3 py-1.5 border border-slate-200 rounded-md hover:bg-slate-100 font-medium transition-colors">Next</button>
-          </div>
+        <div className="flex-1 overflow-auto custom-scrollbar flex flex-col">
+          <SmartTable data={items} columns={columns} formFields={formFields} onAdd={(newItem) => setItems([newItem, ...items])} />
         </div>
       </div>
     </div>

@@ -11,6 +11,29 @@ import {
   Download,
   Plus
 } from 'lucide-react';
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
+
+const columns: Column[] = [
+  { header: 'PR Number', accessor: 'id' },
+  { header: 'Item', accessor: 'item' },
+  { header: 'Material', accessor: 'material' },
+  { header: 'Quantity', accessor: 'qty' },
+  { header: 'Unit', accessor: 'unit' },
+  { header: 'Requisitioner', accessor: 'req' },
+  { header: 'Delivery Date', accessor: 'date' },
+  { header: 'Release Status', accessor: 'status' }
+];
+
+const formFields: FormField[] = [
+  { name: 'id', label: 'PR Number', type: 'text', required: true },
+  { name: 'item', label: 'Item', type: 'text', required: true },
+  { name: 'material', label: 'Material', type: 'text', required: true },
+  { name: 'qty', label: 'Quantity', type: 'number', required: true },
+  { name: 'unit', label: 'Unit', type: 'select', options: ['KG', 'L', 'EA', 'M', 'BOX'] },
+  { name: 'req', label: 'Requisitioner', type: 'text' },
+  { name: 'date', label: 'Delivery Date', type: 'date' },
+  { name: 'status', label: 'Release Status', type: 'select', options: ['Approved', 'Pending', 'In Review', 'Rejected'] }
+];
 
 const mockRequisitions = [
   { id: "10001928", item: "00010", material: "RAW-101 (Steel Sheets)", qty: 500, unit: "KG", req: "J. Smith", date: "2026-07-28", status: "Approved" },
@@ -33,8 +56,9 @@ const mockRequisitions = [
 
 export default function MaterialsRequisitionsPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [items, setItems] = useState(mockRequisitions);
 
-  const filteredRequisitions = mockRequisitions.filter(req => 
+  const filteredRequisitions = items.filter(req => 
     req.id.includes(searchTerm) || 
     req.material.toLowerCase().includes(searchTerm.toLowerCase()) ||
     req.req.toLowerCase().includes(searchTerm.toLowerCase())
@@ -141,57 +165,8 @@ export default function MaterialsRequisitionsPage() {
         </div>
 
         {/* Table Area */}
-        <div className="flex-1 overflow-auto">
-          <table className="w-full text-left border-collapse min-w-[1000px]">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">PR Number</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Item</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Material</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Quantity</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Unit</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Requisitioner</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Delivery Date</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Release Status</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {filteredRequisitions.map((req, idx) => (
-                <tr key={`${req.id}-${req.item}-${idx}`} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
-                  <td className="px-6 py-3 text-sm font-medium text-emerald-700">{req.id}</td>
-                  <td className="px-6 py-3 text-sm text-slate-600">{req.item}</td>
-                  <td className="px-6 py-3 text-sm text-slate-800 font-medium">{req.material}</td>
-                  <td className="px-6 py-3 text-sm text-slate-700 text-right font-medium">{req.qty.toLocaleString()}</td>
-                  <td className="px-6 py-3 text-sm text-slate-500">{req.unit}</td>
-                  <td className="px-6 py-3 text-sm text-slate-700 flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">
-                      {req.req.split(' ').map(n => n[0]).join('')}
-                    </div>
-                    {req.req}
-                  </td>
-                  <td className="px-6 py-3 text-sm text-slate-600">{req.date}</td>
-                  <td className="px-6 py-3">
-                    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${getStatusColor(req.status)}`}>
-                      {req.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-              {filteredRequisitions.length === 0 && (
-                <tr>
-                  <td colSpan={8} className="px-6 py-12 text-center text-slate-500 text-sm">
-                    No purchase requisitions found matching your search.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-        
-        {/* Footer */}
-        <div className="p-3 border-t border-slate-200 bg-slate-50 text-xs text-slate-500 flex justify-between items-center shrink-0">
-          <span>Showing {filteredRequisitions.length} of {mockRequisitions.length} items</span>
-          <span>SAP ME53N • Standard Layout</span>
+        <div className="flex-1 overflow-auto flex flex-col">
+          <SmartTable data={filteredRequisitions} columns={columns} formFields={formFields} onAdd={(newItem) => setItems([newItem, ...items])} />
         </div>
       </div>
 

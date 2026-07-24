@@ -124,43 +124,47 @@ export function SmartTable<T extends { id?: string | number }>({
 
       {/* Add Modal */}
       {isModalOpen && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 max-h-[90vh]">
             <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-              <h3 className="font-bold text-lg text-slate-800">Add New Entry</h3>
+              <h3 className="font-bold text-xl text-slate-800">Add New Entry</h3>
               <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
-                <X className="h-5 w-5" />
+                <X className="h-6 w-6" />
               </button>
             </div>
-            <form onSubmit={handleAddSubmit} className="p-6 flex flex-col gap-4 overflow-y-auto max-h-[60vh]">
-              {formFields?.map((field) => (
-                <div key={field.key} className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-slate-700">{field.label}</label>
-                  {field.type === 'select' && field.options ? (
-                    <select
-                      required
-                      className="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      value={formData[field.key] || ""}
-                      onChange={(e) => handleFormChange(field.key, e.target.value)}
-                    >
-                      <option value="" disabled>Select {field.label}</option>
-                      {field.options.map(opt => (
-                        <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </select>
-                  ) : (
-                    <Input
-                      type={field.type}
-                      required
-                      placeholder={`Enter ${field.label.toLowerCase()}`}
-                      value={formData[field.key] || ""}
-                      onChange={(e) => handleFormChange(field.key, e.target.value)}
-                      className="border-slate-200 focus-visible:ring-emerald-500"
-                    />
-                  )}
+            <form onSubmit={handleAddSubmit} className="flex flex-col overflow-hidden h-full">
+              <div className="p-6 overflow-y-auto flex-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {formFields?.map((field) => (
+                    <div key={field.key} className="flex flex-col gap-1.5">
+                      <label className="text-sm font-semibold text-slate-700">{field.label}</label>
+                      {field.type === 'select' && field.options ? (
+                        <select
+                          required
+                          className="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                          value={formData[field.key] || ""}
+                          onChange={(e) => handleFormChange(field.key, e.target.value)}
+                        >
+                          <option value="" disabled>Select {field.label}</option>
+                          {field.options.map(opt => (
+                            <option key={opt} value={opt}>{opt}</option>
+                          ))}
+                        </select>
+                      ) : (
+                        <Input
+                          type={field.type}
+                          required
+                          placeholder={`Enter ${field.label.toLowerCase()}`}
+                          value={formData[field.key] || ""}
+                          onChange={(e) => handleFormChange(field.key, e.target.value)}
+                          className="border-slate-200 focus-visible:ring-emerald-500"
+                        />
+                      )}
+                    </div>
+                  ))}
                 </div>
-              ))}
-              <div className="pt-4 flex gap-3 justify-end border-t border-slate-100 mt-2">
+              </div>
+              <div className="px-6 py-4 bg-slate-50 flex gap-3 justify-end border-t border-slate-100">
                 <Button type="button" variant="outline" onClick={() => setIsModalOpen(false)}>
                   Cancel
                 </Button>

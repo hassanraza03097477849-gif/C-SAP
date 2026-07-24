@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
 
 const auditLogs = [
   { id: "LOG-001", timestamp: "2026-07-23 11:45:02", userId: "K.KANSAL", tCode: "SE16N", action: "Table Display: BSEG", ip: "192.168.1.45", status: "Warning" },
@@ -25,8 +26,27 @@ const auditLogs = [
 
 export default function AuditLogPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [items, setItems] = useState(auditLogs);
 
-  const filteredLogs = auditLogs.filter(log => 
+  const columns: Column[] = [
+    { key: 'timestamp', title: 'Timestamp' },
+    { key: 'userId', title: 'User ID' },
+    { key: 'tCode', title: 'T-Code' },
+    { key: 'action', title: 'Action Performed' },
+    { key: 'ip', title: 'IP Address' },
+    { key: 'status', title: 'Status' }
+  ];
+
+  const formFields: FormField[] = [
+    { name: 'timestamp', label: 'Timestamp', type: 'datetime-local', required: true },
+    { name: 'userId', label: 'User ID', type: 'text', required: true },
+    { name: 'tCode', label: 'T-Code', type: 'text', required: true },
+    { name: 'action', label: 'Action Performed', type: 'text', required: true },
+    { name: 'ip', label: 'IP Address', type: 'text', required: true },
+    { name: 'status', label: 'Status', type: 'select', options: ['Success', 'Warning', 'Failed'], required: true }
+  ];
+
+  const filteredLogs = items.filter(log => 
     log.userId.toLowerCase().includes(searchTerm.toLowerCase()) || 
     log.tCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
     log.action.toLowerCase().includes(searchTerm.toLowerCase())
@@ -290,41 +310,7 @@ export default function AuditLogPage() {
           />
         </div>
         <div className="table-container">
-          <table className="audit-table">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Timestamp</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">User ID</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">T-Code</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Action Performed</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">IP Address</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredLogs.map(log => (
-                <tr key={log.id} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
-                  <td className="mono" style={{ color: 'var(--text-muted)' }}>{log.timestamp}</td>
-                  <td className="mono" style={{ color: 'var(--accent-blue)', fontWeight: 500 }}>{log.userId}</td>
-                  <td className="mono" style={{ fontWeight: 500 }}>{log.tCode}</td>
-                  <td>{log.action}</td>
-                  <td className="mono" style={{ color: 'var(--text-muted)' }}>{log.ip}</td>
-                  <td>
-                    <span className={`badge ${log.status.toLowerCase()}`}>
-                      {log.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-              {filteredLogs.length === 0 && (
-                <tr>
-                  <td colSpan={6} style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-muted)' }}>
-                    No security events found matching your search criteria.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+          <SmartTable data={filteredLogs} columns={columns} formFields={formFields} onAdd={(newItem) => setItems([newItem, ...items])} />
         </div>
       </div>
     </div>

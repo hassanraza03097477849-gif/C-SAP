@@ -15,6 +15,7 @@ import {
   Clock,
   XCircle
 } from "lucide-react";
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
 
 export default function ImportsInvoicesPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,23 +27,42 @@ export default function ImportsInvoicesPage() {
     { title: "Discrepancies", value: "18", icon: AlertCircle, change: "-2% vs last month" },
   ];
 
-  const invoices = [
+  const [items, setItems] = useState([
     { id: "INV-2026-001", date: "2026-07-24", poRef: "PO-9001", supplier: "Karachi Logistics Supplies", amount: "PKR 124,500.00", tax: "PKR 12,450.00", total: "PKR 136,950.00", status: "Paid" },
-    { id: "INV-2026-002", date: "2026-07-23", poRef: "PO-9005", supplier: "Apex Manufacturing", amount: "PKR 89,000.00", tax: "PKR 8,900.00", total: "PKR 97,900.00", status: "Pending" },
-    { id: "INV-2026-003", date: "2026-07-22", poRef: "PO-8992", supplier: "Sunrise Electronics", amount: "PKR 210,000.00", tax: "PKR 21,000.00", total: "PKR 231,000.00", status: "Processing" },
-    { id: "INV-2026-004", date: "2026-07-22", poRef: "PO-9010", supplier: "Quantum Components", amount: "PKR 45,600.00", tax: "PKR 4,560.00", total: "PKR 50,160.00", status: "Paid" },
-    { id: "INV-2026-005", date: "2026-07-21", poRef: "PO-8988", supplier: "Nexus Hardware", amount: "PKR 320,000.00", tax: "PKR 32,000.00", total: "PKR 352,000.00", status: "Disputed" },
-    { id: "INV-2026-006", date: "2026-07-20", poRef: "PO-8975", supplier: "Karachi Logistics Supplies", amount: "PKR 56,700.00", tax: "PKR 5,670.00", total: "PKR 62,370.00", status: "Paid" },
-    { id: "INV-2026-007", date: "2026-07-19", poRef: "PO-8999", supplier: "Stellar Systems", amount: "PKR 18,900.00", tax: "PKR 1,890.00", total: "PKR 20,790.00", status: "Pending" },
-    { id: "INV-2026-008", date: "2026-07-19", poRef: "PO-8960", supplier: "Orion Logistics", amount: "PKR 78,500.00", tax: "PKR 7,850.00", total: "PKR 86,350.00", status: "Paid" },
-    { id: "INV-2026-009", date: "2026-07-18", poRef: "PO-8955", supplier: "Apex Manufacturing", amount: "PKR 145,000.00", tax: "PKR 14,500.00", total: "PKR 159,500.00", status: "Processing" },
-    { id: "INV-2026-010", date: "2026-07-17", poRef: "PO-8940", supplier: "Zenith Corp", amount: "PKR 92,300.00", tax: "PKR 9,230.00", total: "PKR 101,530.00", status: "Paid" },
-    { id: "INV-2026-011", date: "2026-07-16", poRef: "PO-8935", supplier: "Quantum Components", amount: "PKR 22,400.00", tax: "PKR 2,240.00", total: "PKR 24,640.00", status: "Pending" },
-    { id: "INV-2026-012", date: "2026-07-15", poRef: "PO-8920", supplier: "Sunrise Electronics", amount: "PKR 310,000.00", tax: "PKR 31,000.00", total: "PKR 341,000.00", status: "Paid" },
-    { id: "INV-2026-013", date: "2026-07-14", poRef: "PO-8910", supplier: "Nexus Hardware", amount: "PKR 67,800.00", tax: "PKR 6,780.00", total: "PKR 74,580.00", status: "Disputed" },
-    { id: "INV-2026-014", date: "2026-07-13", poRef: "PO-8905", supplier: "Stellar Systems", amount: "PKR 41,200.00", tax: "PKR 4,120.00", total: "PKR 45,320.00", status: "Paid" },
-    { id: "INV-2026-015", date: "2026-07-12", poRef: "PO-8890", supplier: "Karachi Logistics Supplies", amount: "PKR 156,000.00", tax: "PKR 15,600.00", total: "PKR 171,600.00", status: "Processing" },
+    { id: "INV-2026-002", date: "2026-07-23", poRef: "PO-9005", supplier: "Lahore Manufacturing", amount: "PKR 89,000.00", tax: "PKR 8,900.00", total: "PKR 97,900.00", status: "Pending" },
+    { id: "INV-2026-003", date: "2026-07-22", poRef: "PO-8992", supplier: "Islamabad Electronics", amount: "PKR 210,000.00", tax: "PKR 21,000.00", total: "PKR 231,000.00", status: "Processing" },
+    { id: "INV-2026-004", date: "2026-07-22", poRef: "PO-9010", supplier: "Peshawar Components", amount: "PKR 45,600.00", tax: "PKR 4,560.00", total: "PKR 50,160.00", status: "Paid" },
+    { id: "INV-2026-005", date: "2026-07-21", poRef: "PO-8988", supplier: "Quetta Hardware", amount: "PKR 320,000.00", tax: "PKR 32,000.00", total: "PKR 352,000.00", status: "Disputed" }
+  ]);
+
+  const columns: Column[] = [
+    { key: "id", label: "Invoice Number" },
+    { key: "date", label: "Date" },
+    { key: "poRef", label: "PO Ref" },
+    { key: "supplier", label: "Supplier" },
+    { key: "amount", label: "Amount" },
+    { key: "tax", label: "Tax" },
+    { key: "total", label: "Total" },
+    { key: "status", label: "Status", format: (value) => (
+      <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${getStatusColor(value as string)}`}>
+        {getStatusIcon(value as string)}
+        {value}
+      </span>
+    )}
   ];
+
+  const formFields: FormField[] = [
+    { key: "id", label: "Invoice Number", type: "text", required: true },
+    { key: "date", label: "Date", type: "date", required: true },
+    { key: "poRef", label: "PO Ref", type: "text" },
+    { key: "supplier", label: "Supplier", type: "text", required: true },
+    { key: "amount", label: "Amount", type: "text" },
+    { key: "tax", label: "Tax", type: "text" },
+    { key: "total", label: "Total", type: "text", required: true },
+    { key: "status", label: "Status", type: "select", options: ["Paid", "Pending", "Processing", "Disputed"], required: true }
+  ];
+
+  const filteredInvoices = items.filter(item => item.id.toLowerCase().includes(searchTerm.toLowerCase()) || item.supplier.toLowerCase().includes(searchTerm.toLowerCase()));
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -139,64 +159,7 @@ export default function ImportsInvoicesPage() {
           </button>
         </div>
         
-        <div className="flex-1 overflow-auto">
-          <table className="w-full text-left border-collapse min-w-[1000px]">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Invoice Number</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Date</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">PO Ref</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Supplier</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Amount</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Tax</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Total</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Status</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {invoices.map((invoice) => (
-                <tr key={invoice.id} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer group">
-                  <td className="px-6 py-3">
-                    <span className="font-medium text-slate-800">{invoice.id}</span>
-                  </td>
-                  <td className="px-6 py-3 text-sm text-slate-600">{invoice.date}</td>
-                  <td className="px-6 py-3">
-                    <span className="text-sm text-emerald-600 hover:underline">{invoice.poRef}</span>
-                  </td>
-                  <td className="px-6 py-3 text-sm text-slate-700">{invoice.supplier}</td>
-                  <td className="px-6 py-3 text-sm text-slate-700 text-right">{invoice.amount}</td>
-                  <td className="px-6 py-3 text-sm text-slate-500 text-right">{invoice.tax}</td>
-                  <td className="px-6 py-3 text-sm font-semibold text-slate-800 text-right">{invoice.total}</td>
-                  <td className="px-6 py-3">
-                    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${getStatusColor(invoice.status)}`}>
-                      {getStatusIcon(invoice.status)}
-                      {invoice.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-3 text-center">
-                    <button className="p-1.5 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
-                      <MoreVertical className="w-4 h-4" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        
-        {/* Pagination footer */}
-        <div className="flex items-center justify-between p-4 border-t border-slate-100 bg-slate-50/50">
-          <p className="text-sm text-slate-500">Showing <span className="font-medium text-slate-800">1</span> to <span className="font-medium text-slate-800">15</span> of <span className="font-medium text-slate-800">3,482</span> invoices</p>
-          <div className="flex items-center gap-1">
-            <button className="px-3 py-1 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed">Previous</button>
-            <button className="px-3 py-1 text-sm font-medium text-white bg-emerald-600 rounded-lg">1</button>
-            <button className="px-3 py-1 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50">2</button>
-            <button className="px-3 py-1 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50">3</button>
-            <span className="px-2 text-slate-400">...</span>
-            <button className="px-3 py-1 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50">Next</button>
-          </div>
-        </div>
+        <SmartTable data={filteredInvoices} columns={columns} formFields={formFields} onAdd={(newItem) => setItems([newItem, ...items])} />
       </div>
     </div>
   );

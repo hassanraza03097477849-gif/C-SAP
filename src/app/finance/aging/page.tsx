@@ -1,24 +1,68 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 const MOCK_AGING_AR = [
-  { customer: "Pure Petroleum", current: "₹12,00,000", d30: "₹5,50,000", d60: "₹2,10,000", d90: "₹0", d90plus: "₹1,20,000", total: "₹20,80,000" },
-  { customer: "TATA Steel", current: "₹8,00,000", d30: "₹0", d60: "₹0", d90: "₹0", d90plus: "₹0", total: "₹8,00,000" },
-  { customer: "L&T Infra", current: "₹0", d30: "₹4,50,000", d60: "₹3,00,000", d90: "₹1,00,000", d90plus: "₹5,00,000", total: "₹13,50,000" },
+  { customer: "PSO", current: "PKR 12,00,000", d30: "PKR 5,50,000", d60: "PKR 2,10,000", d90: "PKR 0", d90plus: "PKR 1,20,000", total: "PKR 20,80,000" },
+  { customer: "Packages Mall", current: "PKR 8,00,000", d30: "PKR 0", d60: "PKR 0", d90: "PKR 0", d90plus: "PKR 0", total: "PKR 8,00,000" },
+  { customer: "Nishat Mills", current: "PKR 0", d30: "PKR 4,50,000", d60: "PKR 3,00,000", d90: "PKR 1,00,000", d90plus: "PKR 5,00,000", total: "PKR 13,50,000" },
 ];
 
 const MOCK_AGING_AP = [
-  { vendor: "Pure Petroleum", current: "₹8,00,000", d30: "₹4,00,000", d60: "₹0", d90: "₹50,000", d90plus: "₹0", total: "₹12,50,000" },
-  { vendor: "Adani Power", current: "₹15,00,000", d30: "₹1,00,000", d60: "₹0", d90: "₹0", d90plus: "₹0", total: "₹16,00,000" },
-  { vendor: "Infosys Ltd", current: "₹2,00,000", d30: "₹50,000", d60: "₹20,000", d90: "₹10,000", d90plus: "₹1,00,000", total: "₹3,80,000" },
+  { vendor: "PSO", current: "PKR 8,00,000", d30: "PKR 4,00,000", d60: "PKR 0", d90: "PKR 50,000", d90plus: "PKR 0", total: "PKR 12,50,000" },
+  { vendor: "LESCO", current: "PKR 15,00,000", d30: "PKR 1,00,000", d60: "PKR 0", d90: "PKR 0", d90plus: "PKR 0", total: "PKR 16,00,000" },
+  { vendor: "Systems Ltd", current: "PKR 2,00,000", d30: "PKR 50,000", d60: "PKR 20,000", d90: "PKR 10,000", d90plus: "PKR 1,00,000", total: "PKR 3,80,000" },
 ];
 
 export default function AgingPage() {
+  const [items, setItems] = useState(MOCK_AGING_AR);
+  const [apItems, setApItems] = useState(MOCK_AGING_AP);
+
+  const columnsAR: Column[] = [
+    { key: 'customer', title: 'Customer' },
+    { key: 'current', title: 'Current' },
+    { key: 'd30', title: '0-30 Days' },
+    { key: 'd60', title: '31-60 Days' },
+    { key: 'd90', title: '61-90 Days' },
+    { key: 'd90plus', title: '90+ Days' },
+    { key: 'total', title: 'Total Balance' }
+  ];
+
+  const columnsAP: Column[] = [
+    { key: 'vendor', title: 'Vendor' },
+    { key: 'current', title: 'Current' },
+    { key: 'd30', title: '0-30 Days' },
+    { key: 'd60', title: '31-60 Days' },
+    { key: 'd90', title: '61-90 Days' },
+    { key: 'd90plus', title: '90+ Days' },
+    { key: 'total', title: 'Total Balance' }
+  ];
+
+  const formFieldsAR: FormField[] = [
+    { name: 'customer', label: 'Customer', type: 'text', required: true },
+    { name: 'current', label: 'Current', type: 'text', required: true },
+    { name: 'd30', label: '0-30 Days', type: 'text', required: true },
+    { name: 'd60', label: '31-60 Days', type: 'text', required: true },
+    { name: 'd90', label: '61-90 Days', type: 'text', required: true },
+    { name: 'd90plus', label: '90+ Days', type: 'text', required: true },
+    { name: 'total', label: 'Total Balance', type: 'text', required: true }
+  ];
+
+  const formFieldsAP: FormField[] = [
+    { name: 'vendor', label: 'Vendor', type: 'text', required: true },
+    { name: 'current', label: 'Current', type: 'text', required: true },
+    { name: 'd30', label: '0-30 Days', type: 'text', required: true },
+    { name: 'd60', label: '31-60 Days', type: 'text', required: true },
+    { name: 'd90', label: '61-90 Days', type: 'text', required: true },
+    { name: 'd90plus', label: '90+ Days', type: 'text', required: true },
+    { name: 'total', label: 'Total Balance', type: 'text', required: true }
+  ];
+
   return (
     <div className="flex flex-col h-screen bg-slate-50 overflow-hidden text-[10px] font-sans">
       {/* Top Header */}
@@ -65,35 +109,10 @@ export default function AgingPage() {
         <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[1px] hover:shadow-md transition-all duration-300 rounded-xl flex-1 flex flex-col min-h-[200px] overflow-hidden">
           <div className="bg-slate-50 p-2 font-bold border-b border-slate-200 text-slate-800 flex justify-between rounded-t-xl">
             <span>Accounts Receivable (Customer) Aging Analysis</span>
-            <span className="text-emerald-700 bg-emerald-100 px-2 rounded-full border border-emerald-200 shadow-sm">Total AR: ₹42,30,000</span>
+            <span className="text-emerald-700 bg-emerald-100 px-2 rounded-full border border-emerald-200 shadow-sm">Total AR: PKR 42,30,000</span>
           </div>
           <div className="flex-1 overflow-auto p-1">
-            <Table className="[&_td]:p-1.5 [&_th]:p-1.5">
-              <TableHeader className="bg-slate-100 sticky top-0 shadow-[0_1px_0_0_#e2e8f0]">
-                <TableRow className="even:bg-slate-50/50 hover:bg-slate-50 hover:-translate-y-[1px] transition-all cursor-pointer">
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700">Customer</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">Current</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">0-30 Days</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">31-60 Days</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">61-90 Days</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">90+ Days</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">Total Balance</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {MOCK_AGING_AR.map((row, idx) => (
-                  <TableRow key={idx} className="even:bg-slate-50/50 hover:bg-slate-50 hover:-translate-y-[1px] transition-all cursor-pointer">
-                    <TableCell className="border-r border-slate-200 font-medium text-slate-700">{row.customer}</TableCell>
-                    <TableCell className="border-r border-slate-200 text-right font-mono text-slate-600">{row.current}</TableCell>
-                    <TableCell className={`border-r border-slate-200 text-right font-mono ${row.d30 !== '₹0' ? 'text-emerald-700 bg-emerald-50' : 'text-slate-400'}`}>{row.d30}</TableCell>
-                    <TableCell className={`border-r border-slate-200 text-right font-mono ${row.d60 !== '₹0' ? 'text-amber-600 bg-amber-50' : 'text-slate-400'}`}>{row.d60}</TableCell>
-                    <TableCell className={`border-r border-slate-200 text-right font-mono ${row.d90 !== '₹0' ? 'text-orange-600 bg-orange-50' : 'text-slate-400'}`}>{row.d90}</TableCell>
-                    <TableCell className={`border-r border-slate-200 text-right font-mono font-bold ${row.d90plus !== '₹0' ? 'text-rose-700 bg-rose-100 shadow-[inset_0_0_8px_rgba(225,29,72,0.2)]' : 'text-slate-400'}`}>{row.d90plus}</TableCell>
-                    <TableCell className="text-right font-mono font-bold text-slate-800">{row.total}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <SmartTable data={items} columns={columnsAR} formFields={formFieldsAR} onAdd={(newItem) => setItems([newItem, ...items])} />
           </div>
         </div>
 
@@ -101,35 +120,10 @@ export default function AgingPage() {
         <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[1px] hover:shadow-md transition-all duration-300 rounded-xl flex-1 flex flex-col min-h-[200px] overflow-hidden">
           <div className="bg-slate-50 p-2 font-bold border-b border-slate-200 text-slate-800 flex justify-between rounded-t-xl">
             <span>Accounts Payable (Vendor) Aging Analysis</span>
-            <span className="text-rose-700 bg-rose-100 px-2 rounded-full border border-rose-200 shadow-sm">Total AP: ₹32,30,000</span>
+            <span className="text-rose-700 bg-rose-100 px-2 rounded-full border border-rose-200 shadow-sm">Total AP: PKR 32,30,000</span>
           </div>
           <div className="flex-1 overflow-auto p-1">
-            <Table className="[&_td]:p-1.5 [&_th]:p-1.5">
-              <TableHeader className="bg-slate-100 sticky top-0 shadow-[0_1px_0_0_#e2e8f0]">
-                <TableRow className="even:bg-slate-50/50 hover:bg-slate-50 hover:-translate-y-[1px] transition-all cursor-pointer">
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700">Vendor</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">Current</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">0-30 Days</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">31-60 Days</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">61-90 Days</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">90+ Days</TableHead>
-                  <TableHead className="bg-slate-100/50 font-semibold text-slate-700 text-right">Total Balance</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {MOCK_AGING_AP.map((row, idx) => (
-                  <TableRow key={idx} className="even:bg-slate-50/50 hover:bg-slate-50 hover:-translate-y-[1px] transition-all cursor-pointer">
-                    <TableCell className="border-r border-slate-200 font-medium text-slate-700">{row.vendor}</TableCell>
-                    <TableCell className="border-r border-slate-200 text-right font-mono text-slate-600">{row.current}</TableCell>
-                    <TableCell className={`border-r border-slate-200 text-right font-mono ${row.d30 !== '₹0' ? 'text-emerald-700 bg-emerald-50' : 'text-slate-400'}`}>{row.d30}</TableCell>
-                    <TableCell className={`border-r border-slate-200 text-right font-mono ${row.d60 !== '₹0' ? 'text-amber-600 bg-amber-50' : 'text-slate-400'}`}>{row.d60}</TableCell>
-                    <TableCell className={`border-r border-slate-200 text-right font-mono ${row.d90 !== '₹0' ? 'text-orange-600 bg-orange-50' : 'text-slate-400'}`}>{row.d90}</TableCell>
-                    <TableCell className={`border-r border-slate-200 text-right font-mono font-bold ${row.d90plus !== '₹0' ? 'text-rose-700 bg-rose-100 shadow-[inset_0_0_8px_rgba(225,29,72,0.2)]' : 'text-slate-400'}`}>{row.d90plus}</TableCell>
-                    <TableCell className="text-right font-mono font-bold text-slate-800">{row.total}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <SmartTable data={apItems} columns={columnsAP} formFields={formFieldsAP} onAdd={(newItem) => setApItems([newItem, ...apItems])} />
           </div>
         </div>
       </div>

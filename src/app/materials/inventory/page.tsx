@@ -11,12 +11,13 @@ import {
   CheckCircle2,
   Box
 } from 'lucide-react';
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
 
 // Mock Data Generation
 const mockInventoryData = Array.from({ length: 20 }).map((_, i) => ({
   id: `INV-${1000 + i}`,
-  plant: ['1000 - Faisalabad', '1100 - Berlin', '1200 - Munich', '2000 - Karachi'][Math.floor(Math.random() * 4)],
-  storageLocation: ['0001 - Raw Materials', '0002 - Finished Goods', '0003 - Packaging', '0004 - Returns'][Math.floor(Math.random() * 4)],
+  plant: ['1000 - Faisalabad', '2000 - Karachi', '3000 - Lahore'][Math.floor(Math.random() * 3)],
+  storageLocation: ['0001 - Raw Materials', '0002 - Finished Goods', '0003 - Packaging'][Math.floor(Math.random() * 3)],
   material: `MAT-${10000 + i} - ${['Steel Sheet', 'Aluminium Coil', 'Copper Wire', 'Plastic Granules', 'Rubber Mat', 'Glass Panel'][Math.floor(Math.random() * 6)]}`,
   unrestricted: Math.floor(Math.random() * 10000),
   quality: Math.floor(Math.random() * 1000),
@@ -24,10 +25,31 @@ const mockInventoryData = Array.from({ length: 20 }).map((_, i) => ({
   transit: Math.floor(Math.random() * 2000),
 }));
 
+const columns: Column<any>[] = [
+  { key: 'plant', title: 'Plant' },
+  { key: 'storageLocation', title: 'Storage Location' },
+  { key: 'material', title: 'Material' },
+  { key: 'unrestricted', title: 'Unrestricted Use' },
+  { key: 'quality', title: 'Quality Inspection' },
+  { key: 'blocked', title: 'Blocked Stock' },
+  { key: 'transit', title: 'In Transit' }
+];
+
+const formFields: FormField[] = [
+  { key: 'plant', label: 'Plant', type: 'select', options: ['1000 - Faisalabad', '2000 - Karachi', '3000 - Lahore'] },
+  { key: 'storageLocation', label: 'Storage Location', type: 'select', options: ['0001 - Raw Materials', '0002 - Finished Goods', '0003 - Packaging'] },
+  { key: 'material', label: 'Material', type: 'text' },
+  { key: 'unrestricted', label: 'Unrestricted Use (PKR)', type: 'number' },
+  { key: 'quality', label: 'Quality Inspection', type: 'number' },
+  { key: 'blocked', label: 'Blocked Stock', type: 'number' },
+  { key: 'transit', label: 'In Transit', type: 'number' }
+];
+
 export default function InventoryManagement() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [items, setItems] = useState(mockInventoryData);
 
-  const filteredData = mockInventoryData.filter(item => 
+  const filteredData = items.filter(item => 
     item.material.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.plant.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -95,36 +117,7 @@ export default function InventoryManagement() {
 
       {/* Main Grid Container */}
       <div className="flex-1 bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-xl flex flex-col overflow-hidden shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
-        <div className="overflow-auto flex-1 p-0">
-          <table className="w-full text-left border-collapse min-w-[1000px]">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-              <tr>
-                {['Plant', 'Storage Location', 'Material', 'Unrestricted Use', 'Quality Inspection', 'Blocked Stock', 'In Transit'].map((header, i) => (
-                  <th key={i} className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap">
-                    {header}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {filteredData.map((row) => (
-                <tr key={row.id} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
-                  <td className="px-6 py-4 text-sm font-medium text-slate-800 whitespace-nowrap">{row.plant}</td>
-                  <td className="px-6 py-4 text-sm text-slate-600 whitespace-nowrap">{row.storageLocation}</td>
-                  <td className="px-6 py-4 text-sm font-medium text-emerald-700 whitespace-nowrap">{row.material}</td>
-                  <td className="px-6 py-4 text-sm text-slate-800 text-right tabular-nums">{row.unrestricted.toLocaleString()}</td>
-                  <td className="px-6 py-4 text-sm text-amber-700 text-right tabular-nums bg-amber-50/30">{row.quality.toLocaleString()}</td>
-                  <td className="px-6 py-4 text-sm text-rose-700 text-right tabular-nums bg-rose-50/30">{row.blocked.toLocaleString()}</td>
-                  <td className="px-6 py-4 text-sm text-blue-700 text-right tabular-nums bg-blue-50/30">{row.transit.toLocaleString()}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="border-t border-slate-200/60 bg-slate-50/50 p-4 text-xs text-slate-500 flex justify-between items-center">
-          <span>Showing {filteredData.length} of {mockInventoryData.length} records</span>
-          <span>Last updated: Just now</span>
-        </div>
+        <SmartTable data={filteredData} columns={columns} formFields={formFields} onAdd={(newItem) => setItems([newItem, ...items])} />
       </div>
     </div>
   );

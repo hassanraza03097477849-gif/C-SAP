@@ -1,5 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FileText, Calendar, Box, Package, ArrowRightLeft, MapPin, Hash, CheckCircle2, AlertCircle, Clock } from 'lucide-react';
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
+
+const columns: Column[] = [
+  { header: 'Material Doc', accessor: 'matDoc' },
+  { header: 'Posting Date', accessor: 'date' },
+  { header: 'PO Number', accessor: 'poNumber' },
+  { header: 'Mvt Type', accessor: 'mvtType' },
+  { header: 'Material', accessor: 'material' },
+  { header: 'Received Qty', accessor: 'qty' },
+  { header: 'SLoc', accessor: 'sloc' }
+];
+
+const formFields: FormField[] = [
+  { name: 'matDoc', label: 'Material Doc', type: 'text', required: true },
+  { name: 'date', label: 'Posting Date', type: 'date', required: true },
+  { name: 'poNumber', label: 'PO Number', type: 'text' },
+  { name: 'mvtType', label: 'Movement Type', type: 'select', options: ['101', '102', '122'] },
+  { name: 'material', label: 'Material', type: 'text', required: true },
+  { name: 'qty', label: 'Received Qty', type: 'text' },
+  { name: 'sloc', label: 'Storage Location', type: 'select', options: ['0001', '0002', '0003'] }
+];
 
 export default function GoodsReceiptsPage() {
   const kpis = [
@@ -9,7 +30,7 @@ export default function GoodsReceiptsPage() {
     { title: 'Discrepancies', value: '4', icon: AlertCircle, trend: '0%', color: 'text-rose-500' }
   ];
 
-  const receipts = [
+  const [items, setItems] = useState([
     { matDoc: '5000001234', date: '2026-07-24', poNumber: '4500009871', mvtType: '101', material: 'RM-1001 (Polymer Resin)', qty: '10,000 KG', sloc: '0001' },
     { matDoc: '5000001235', date: '2026-07-24', poNumber: '4500009872', mvtType: '101', material: 'PK-500 (Pallets)', qty: '500 PC', sloc: '0002' },
     { matDoc: '5000001236', date: '2026-07-23', poNumber: '4500009865', mvtType: '101', material: 'CH-200 (Catalyst)', qty: '50 L', sloc: '0001' },
@@ -25,7 +46,7 @@ export default function GoodsReceiptsPage() {
     { matDoc: '5000001246', date: '2026-07-18', poNumber: '4500009820', mvtType: '101', material: 'RM-3005 (Solvent)', qty: '6,000 L', sloc: '0001' },
     { matDoc: '5000001247', date: '2026-07-18', poNumber: '4500009822', mvtType: '102', material: 'RM-3005 (Solvent)', qty: '500 L', sloc: '0001' },
     { matDoc: '5000001248', date: '2026-07-17', poNumber: '4500009815', mvtType: '101', material: 'SP-25 (Valves)', qty: '50 PC', sloc: '0003' },
-  ];
+  ]);
 
   return (
     <div className="min-h-screen bg-slate-50/50 p-6 flex flex-col gap-6 font-sans text-slate-800 h-screen overflow-hidden">
@@ -87,51 +108,8 @@ export default function GoodsReceiptsPage() {
           </div>
         </div>
         
-        <div className="flex-1 overflow-auto">
-          <table className="w-full text-left border-collapse min-w-[1000px]">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
-                  <div className="flex items-center gap-2 whitespace-nowrap"><Hash className="w-4 h-4" /> Material Doc</div>
-                </th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
-                  <div className="flex items-center gap-2 whitespace-nowrap"><Calendar className="w-4 h-4" /> Posting Date</div>
-                </th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
-                  <div className="flex items-center gap-2 whitespace-nowrap"><FileText className="w-4 h-4" /> PO Number</div>
-                </th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
-                  <div className="flex items-center gap-2 whitespace-nowrap"><ArrowRightLeft className="w-4 h-4" /> Mvt Type</div>
-                </th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
-                  <div className="flex items-center gap-2 whitespace-nowrap"><Box className="w-4 h-4" /> Material</div>
-                </th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
-                  <div className="flex items-center justify-end gap-2 whitespace-nowrap"><CheckCircle2 className="w-4 h-4" /> Received Qty</div>
-                </th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
-                  <div className="flex items-center gap-2 whitespace-nowrap"><MapPin className="w-4 h-4" /> SLoc</div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {receipts.map((row, i) => (
-                <tr key={i} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
-                  <td className="px-6 py-3.5 text-sm font-medium text-emerald-700 whitespace-nowrap">{row.matDoc}</td>
-                  <td className="px-6 py-3.5 text-sm text-slate-600 whitespace-nowrap">{row.date}</td>
-                  <td className="px-6 py-3.5 text-sm text-blue-600 font-medium hover:underline whitespace-nowrap">{row.poNumber}</td>
-                  <td className="px-6 py-3.5 text-sm text-slate-600 whitespace-nowrap">
-                    <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${row.mvtType === '101' ? 'bg-emerald-100 text-emerald-700' : row.mvtType === '102' ? 'bg-rose-100 text-rose-700' : 'bg-amber-100 text-amber-700'}`}>
-                      {row.mvtType}
-                    </span>
-                  </td>
-                  <td className="px-6 py-3.5 text-sm text-slate-800 whitespace-nowrap">{row.material}</td>
-                  <td className="px-6 py-3.5 text-sm font-medium text-slate-800 text-right whitespace-nowrap">{row.qty}</td>
-                  <td className="px-6 py-3.5 text-sm text-slate-600 whitespace-nowrap">{row.sloc}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="flex-1 overflow-auto flex flex-col">
+          <SmartTable data={items} columns={columns} formFields={formFields} onAdd={(newItem) => setItems([newItem, ...items])} />
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
 import { 
   Fuel, 
   TrendingUp, 
@@ -48,10 +49,31 @@ const getStatusBadge = (status: string) => {
 };
 
 export default function OMCCommissionsPage() {
-  const totalVolume = mockCommissions.reduce((acc, curr) => acc + curr.vol, 0);
-  const totalCommission = mockCommissions.reduce((acc, curr) => acc + (curr.vol * curr.rate), 0);
-  const paidCommission = mockCommissions.filter(c => c.status === 'Paid').reduce((acc, curr) => acc + (curr.vol * curr.rate), 0);
-  const activeDealers = new Set(mockCommissions.map(c => c.id)).size;
+  const [items, setItems] = useState(mockCommissions.map(c => ({ ...c, total: c.vol * c.rate })));
+
+  const columns: Column[] = [
+    { key: 'id', title: 'Dealer ID', type: 'text' },
+    { key: 'name', title: 'Dealer Name', type: 'text' },
+    { key: 'product', title: 'Product', type: 'badge' },
+    { key: 'vol', title: 'Sales Vol (Ltrs)', type: 'number' },
+    { key: 'rate', title: 'Commission Rate (PKR)', type: 'number' },
+    { key: 'total', title: 'Total Commission (PKR)', type: 'number' },
+    { key: 'status', title: 'Payment Status', type: 'badge' },
+  ];
+
+  const formFields: FormField[] = [
+    { name: 'id', label: 'Dealer ID', type: 'text', required: true },
+    { name: 'name', label: 'Dealer Name', type: 'text', required: true },
+    { name: 'product', label: 'Product', type: 'select', options: ['HOBC', 'HSD', 'PM'], required: true },
+    { name: 'vol', label: 'Sales Volume', type: 'number', required: true },
+    { name: 'rate', label: 'Commission Rate', type: 'number', required: true },
+    { name: 'status', label: 'Payment Status', type: 'select', options: ['Paid', 'Pending', 'Processing', 'Failed'], required: true }
+  ];
+
+  const totalVolume = items.reduce((acc, curr) => acc + curr.vol, 0);
+  const totalCommission = items.reduce((acc, curr) => acc + (curr.vol * curr.rate), 0);
+  const paidCommission = items.filter(c => c.status === 'Paid').reduce((acc, curr) => acc + (curr.vol * curr.rate), 0);
+  const activeDealers = new Set(items.map(c => c.id)).size;
 
   return (
     <div className="min-h-screen bg-slate-50/50 p-6 flex flex-col gap-6 font-sans text-slate-800 h-screen overflow-hidden">
@@ -106,7 +128,7 @@ export default function OMCCommissionsPage() {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-sm font-medium text-slate-500">Total Commissions</p>
-              <h3 className="text-2xl font-bold text-slate-800 mt-1">${totalCommission.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mt-1">PKR {totalCommission.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</h3>
             </div>
             <div className="p-2 bg-emerald-50 rounded-lg">
               <DollarSign className="w-5 h-5 text-emerald-600" />
@@ -122,7 +144,7 @@ export default function OMCCommissionsPage() {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-sm font-medium text-slate-500">Settled Commissions</p>
-              <h3 className="text-2xl font-bold text-slate-800 mt-1">${paidCommission.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mt-1">PKR {paidCommission.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</h3>
             </div>
             <div className="p-2 bg-indigo-50 rounded-lg">
               <CheckCircle2 className="w-5 h-5 text-indigo-600" />
@@ -151,56 +173,12 @@ export default function OMCCommissionsPage() {
 
       {/* Main Grid */}
       <div className="flex-1 bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-xl flex flex-col overflow-hidden shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
-        <div className="overflow-auto flex-1">
-          <table className="w-full text-left border-collapse min-w-[1000px]">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Dealer ID</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Dealer Name</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Product</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Sales Vol (Ltrs)</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Commission Rate</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right">Total Commission</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-center">Payment Status</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {mockCommissions.map((row, idx) => (
-                <tr key={idx} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer group">
-                  <td className="px-6 py-4 text-sm font-medium text-slate-800">{row.id}</td>
-                  <td className="px-6 py-4 text-sm text-slate-600 font-medium">{row.name}</td>
-                  <td className="px-6 py-4 text-sm">
-                    <span className="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-xs font-semibold">
-                      {row.product}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 text-sm text-slate-700 text-right tabular-nums">{row.vol.toLocaleString()}</td>
-                  <td className="px-6 py-4 text-sm text-slate-700 text-right tabular-nums">${row.rate.toFixed(3)}</td>
-                  <td className="px-6 py-4 text-sm font-bold text-slate-800 text-right tabular-nums">
-                    ${(row.vol * row.rate).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
-                  </td>
-                  <td className="px-6 py-4 text-center">
-                    {getStatusBadge(row.status)}
-                  </td>
-                  <td className="px-6 py-4 text-center">
-                    <button className="p-1.5 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
-                      <MoreVertical className="w-4 h-4" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="p-4 border-t border-slate-200/60 bg-slate-50/50 flex items-center justify-between text-sm text-slate-500">
-          <div>Showing 1 to {mockCommissions.length} of {mockCommissions.length} entries</div>
-          <div className="flex gap-1">
-            <button className="px-3 py-1 border border-slate-200 rounded-md hover:bg-slate-100 transition-colors disabled:opacity-50" disabled>Previous</button>
-            <button className="px-3 py-1 border border-emerald-500 bg-emerald-50 text-emerald-700 font-medium rounded-md">1</button>
-            <button className="px-3 py-1 border border-slate-200 rounded-md hover:bg-slate-100 transition-colors">Next</button>
-          </div>
-        </div>
+        <SmartTable 
+          data={items} 
+          columns={columns} 
+          formFields={formFields} 
+          onAdd={(newItem) => setItems([{...newItem, total: (newItem.vol || 0) * (newItem.rate || 0)}, ...items])} 
+        />
       </div>
 
     </div>

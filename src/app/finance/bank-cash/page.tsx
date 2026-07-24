@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
 import { 
   Landmark, 
   Banknote, 
@@ -12,39 +13,58 @@ import {
 } from 'lucide-react';
 
 const kpis = [
-  { id: 1, name: 'Total Bank Balance', value: '₹ 45,23,50,000', icon: Landmark, change: '+2.4%', changeType: 'positive' },
-  { id: 2, name: 'Total Cash Balance', value: '₹ 1,12,40,000', icon: Banknote, change: '-0.8%', changeType: 'negative' },
-  { id: 3, name: 'Inflow (MTD)', value: '₹ 12,50,00,000', icon: TrendingUp, change: '+15.2%', changeType: 'positive' },
-  { id: 4, name: 'Outflow (MTD)', value: '₹ 8,30,00,000', icon: TrendingDown, change: '+5.1%', changeType: 'negative' },
+  { id: 1, name: 'Total Bank Balance', value: 'PKR 45,23,50,000', icon: Landmark, change: '+2.4%', changeType: 'positive' },
+  { id: 2, name: 'Total Cash Balance', value: 'PKR 1,12,40,000', icon: Banknote, change: '-0.8%', changeType: 'negative' },
+  { id: 3, name: 'Inflow (MTD)', value: 'PKR 12,50,00,000', icon: TrendingUp, change: '+15.2%', changeType: 'positive' },
+  { id: 4, name: 'Outflow (MTD)', value: 'PKR 8,30,00,000', icon: TrendingDown, change: '+5.1%', changeType: 'negative' },
 ];
 
 const ledgerData = [
-  { id: '1', date: '2026-07-23', docNum: 'PAY-10492', particulars: 'Vendor Payment - Tata Steel', debit: 0, credit: 5000000, balance: 452350000 },
-  { id: '2', date: '2026-07-22', docNum: 'REC-20941', particulars: 'Customer Receipt - L&T', debit: 12000000, credit: 0, balance: 457350000 },
-  { id: '3', date: '2026-07-22', docNum: 'PAY-10491', particulars: 'Utility Bill - Adani Power', debit: 0, credit: 150000, balance: 445350000 },
-  { id: '4', date: '2026-07-21', docNum: 'TRF-30012', particulars: 'Inter-bank Transfer to HDFC', debit: 0, credit: 20000000, balance: 445500000 },
-  { id: '5', date: '2026-07-21', docNum: 'REC-20940', particulars: 'Interest Received - SBI', debit: 350000, credit: 0, balance: 465500000 },
+  { id: '1', date: '2026-07-23', docNum: 'PAY-10492', particulars: 'Vendor Payment - Packages Mall', debit: 0, credit: 5000000, balance: 452350000 },
+  { id: '2', date: '2026-07-22', docNum: 'REC-20941', particulars: 'Customer Receipt - Nishat', debit: 12000000, credit: 0, balance: 457350000 },
+  { id: '3', date: '2026-07-22', docNum: 'PAY-10491', particulars: 'Utility Bill - LESCO', debit: 0, credit: 150000, balance: 445350000 },
+  { id: '4', date: '2026-07-21', docNum: 'TRF-30012', particulars: 'Inter-bank Transfer to HBL', debit: 0, credit: 20000000, balance: 445500000 },
+  { id: '5', date: '2026-07-21', docNum: 'REC-20940', particulars: 'Interest Received - Meezan', debit: 350000, credit: 0, balance: 465500000 },
   { id: '6', date: '2026-07-20', docNum: 'PAY-10490', particulars: 'Salary Disbursement', debit: 0, credit: 18500000, balance: 465150000 },
-  { id: '7', date: '2026-07-19', docNum: 'REC-20939', particulars: 'Customer Receipt - Pure Petroleum Retail', debit: 25000000, credit: 0, balance: 483650000 },
-  { id: '8', date: '2026-07-18', docNum: 'PAY-10489', particulars: 'Tax Payment - GST', debit: 0, credit: 8000000, balance: 458650000 },
+  { id: '7', date: '2026-07-19', docNum: 'REC-20939', particulars: 'Customer Receipt - PSO Retail', debit: 25000000, credit: 0, balance: 483650000 },
+  { id: '8', date: '2026-07-18', docNum: 'PAY-10489', particulars: 'Tax Payment - FBR', debit: 0, credit: 8000000, balance: 458650000 },
   { id: '9', date: '2026-07-18', docNum: 'TRF-30011', particulars: 'Cash Withdrawal for Petty Cash', debit: 0, credit: 500000, balance: 466650000 },
-  { id: '10', date: '2026-07-17', docNum: 'REC-20938', particulars: 'Customer Receipt - JSW', debit: 9000000, credit: 0, balance: 467150000 },
-  { id: '11', date: '2026-07-16', docNum: 'PAY-10488', particulars: 'Vendor Payment - Infosys', debit: 0, credit: 4500000, balance: 458150000 },
+  { id: '10', date: '2026-07-17', docNum: 'REC-20938', particulars: 'Customer Receipt - Engro', debit: 9000000, credit: 0, balance: 467150000 },
+  { id: '11', date: '2026-07-16', docNum: 'PAY-10488', particulars: 'Vendor Payment - Systems Ltd', debit: 0, credit: 4500000, balance: 458150000 },
   { id: '12', date: '2026-07-15', docNum: 'REC-20937', particulars: 'Dividend Income', debit: 1200000, credit: 0, balance: 462650000 },
 ];
 
 function formatCurrency(amount: number) {
-  return new Intl.NumberFormat('en-IN', {
+  return new Intl.NumberFormat('en-PK', {
     style: 'currency',
-    currency: 'INR',
+    currency: 'PKR',
     maximumFractionDigits: 0
   }).format(amount);
 }
 
 export default function BankCashBook() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [items, setItems] = useState(ledgerData);
 
-  const filteredData = ledgerData.filter(item => 
+  const columns: Column[] = [
+    { key: 'date', title: 'Date' },
+    { key: 'docNum', title: 'Document #' },
+    { key: 'particulars', title: 'Particulars' },
+    { key: 'debit', title: 'Debit (In)' },
+    { key: 'credit', title: 'Credit (Out)' },
+    { key: 'balance', title: 'Running Balance' }
+  ];
+
+  const formFields: FormField[] = [
+    { name: 'date', label: 'Date', type: 'date', required: true },
+    { name: 'docNum', label: 'Document #', type: 'text', required: true },
+    { name: 'particulars', label: 'Particulars', type: 'text', required: true },
+    { name: 'debit', label: 'Debit (In)', type: 'number', required: true },
+    { name: 'credit', label: 'Credit (Out)', type: 'number', required: true },
+    { name: 'balance', label: 'Running Balance', type: 'number', required: true }
+  ];
+
+  const filteredData = items.filter(item => 
     item.particulars.toLowerCase().includes(searchTerm.toLowerCase()) || 
     item.docNum.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -107,46 +127,7 @@ export default function BankCashBook() {
 
         {/* Table Container */}
         <div className="flex-1 overflow-auto">
-          <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Date</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Document #</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Particulars</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Debit (In)</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Credit (Out)</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Running Balance</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {filteredData.map((row) => (
-                <tr key={row.id} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
-                  <td className="px-6 py-4 text-slate-600">{row.date}</td>
-                  <td className="px-6 py-4">
-                    <span className="font-mono text-xs bg-slate-50 text-slate-600 px-2 py-1 rounded border border-slate-200 group-hover:border-slate-300">
-                      {row.docNum}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 font-medium text-slate-800">{row.particulars}</td>
-                  <td className="px-6 py-4 text-right text-emerald-600 font-medium">
-                    {row.debit > 0 ? formatCurrency(row.debit) : '-'}
-                  </td>
-                  <td className="px-6 py-4 text-right text-rose-600 font-medium">
-                    {row.credit > 0 ? formatCurrency(row.credit) : '-'}
-                  </td>
-                  <td className="px-6 py-4 text-right font-semibold text-slate-800">
-                    {formatCurrency(row.balance)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {filteredData.length === 0 && (
-            <div className="flex flex-col items-center justify-center py-12 text-slate-500">
-              <FileSearch className="w-12 h-12 mb-3 opacity-20" />
-              <p>No transactions found for "{searchTerm}"</p>
-            </div>
-          )}
+          <SmartTable data={filteredData} columns={columns} formFields={formFields} onAdd={(newItem) => setItems([newItem, ...items])} />
         </div>
       </div>
     </div>

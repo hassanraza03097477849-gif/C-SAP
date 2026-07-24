@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
 import { 
   ArrowRightLeft, 
   CheckCircle2, 
@@ -47,6 +48,30 @@ const getStatusBadge = (status: string) => {
 };
 
 export default function FuelMovementPage() {
+  const [items, setItems] = useState(mockData);
+
+  const columns: Column[] = [
+    { key: 'id', title: 'Transfer ID', type: 'text' },
+    { key: 'date', title: 'Date', type: 'text' },
+    { key: 'source', title: 'Source Depot', type: 'text' },
+    { key: 'dest', title: 'Dest Depot', type: 'text' },
+    { key: 'product', title: 'Product', type: 'badge' },
+    { key: 'qtyMt', title: 'Qty (MT)', type: 'number' },
+    { key: 'qtyLiters', title: 'Qty (Liters)', type: 'number' },
+    { key: 'status', title: 'Status', type: 'badge' },
+  ];
+
+  const formFields: FormField[] = [
+    { name: 'id', label: 'Transfer ID', type: 'text', required: true },
+    { name: 'date', label: 'Date', type: 'text', required: true },
+    { name: 'source', label: 'Source Depot', type: 'text', required: true },
+    { name: 'dest', label: 'Dest Depot', type: 'text', required: true },
+    { name: 'product', label: 'Product', type: 'select', options: ['MS', 'HSD', 'ATF', 'SKO'], required: true },
+    { name: 'qtyMt', label: 'Qty (MT)', type: 'number', required: true },
+    { name: 'qtyLiters', label: 'Qty (Liters)', type: 'number', required: true },
+    { name: 'status', label: 'Status', type: 'select', options: ['In Transit', 'Received', 'Delayed', 'Pending'], required: true },
+  ];
+
   return (
     <div className="min-h-screen bg-slate-50/50 p-6 flex flex-col gap-6 font-sans text-slate-800 h-screen overflow-hidden">
       {/* Header container */}
@@ -146,59 +171,12 @@ export default function FuelMovementPage() {
 
       {/* Main Grid Container */}
       <div className="flex-1 bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-xl flex flex-col overflow-hidden shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
-        {/* Search Bar / Grid controls */}
-        <div className="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
-          <div className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-            <input 
-              type="text" 
-              placeholder="Search Transfer ID, Depot, Product..." 
-              className="pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 w-80 text-slate-700 placeholder-slate-400"
-            />
-          </div>
-          <div className="text-sm font-medium text-slate-500">
-            Showing 15 of 1,248 records
-          </div>
-        </div>
-
-        <div className="flex-1 overflow-auto">
-          <table className="w-full text-left border-collapse">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200 shadow-sm">
-              <tr>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap">Transfer ID</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap">Date</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap">Source Depot</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap">Dest Depot</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap">Product</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap text-right">Qty (MT)</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap text-right">Qty (Liters)</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap text-center">Status</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {mockData.map((row) => (
-                <tr key={row.id} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer group">
-                  <td className="px-6 py-3 font-medium text-slate-800 text-sm whitespace-nowrap">{row.id}</td>
-                  <td className="px-6 py-3 text-slate-600 text-sm whitespace-nowrap">{row.date}</td>
-                  <td className="px-6 py-3 text-slate-700 text-sm font-medium whitespace-nowrap">{row.source}</td>
-                  <td className="px-6 py-3 text-slate-700 text-sm font-medium whitespace-nowrap">{row.dest}</td>
-                  <td className="px-6 py-3 text-slate-600 text-sm whitespace-nowrap">
-                    <span className="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-semibold">{row.product}</span>
-                  </td>
-                  <td className="px-6 py-3 text-slate-700 text-sm whitespace-nowrap font-mono text-right">
-                    {row.qtyMt.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
-                  </td>
-                  <td className="px-6 py-3 text-slate-700 text-sm whitespace-nowrap font-mono text-right">
-                    {row.qtyLiters.toLocaleString()}
-                  </td>
-                  <td className="px-6 py-3 text-center whitespace-nowrap">
-                    {getStatusBadge(row.status)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <SmartTable 
+          data={items} 
+          columns={columns} 
+          formFields={formFields} 
+          onAdd={(newItem) => setItems([newItem, ...items])} 
+        />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 
 import React, { useState } from "react";
 import { Search, Filter, Download, ArrowUpRight, ArrowDownRight, FileText, CheckCircle, AlertTriangle, Clock } from "lucide-react";
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
 
 export default function CustomsDutiesPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,23 +15,38 @@ export default function CustomsDutiesPage() {
     { title: "Total Additional Taxes", value: "₹8.4M", change: "+4.1%", isPositive: false },
   ];
 
-  const ledgerData = [
-    { id: "GD-2026-001", date: "2026-07-01", material: "Crude Oil - Basrah Light", assessedValue: "₹1,200,000", basicDuty: "₹60,000", additionalTax: "₹12,000", totalPayable: "₹72,000", status: "Cleared" },
-    { id: "GD-2026-002", date: "2026-07-02", material: "Naphtha", assessedValue: "₹850,000", basicDuty: "₹42,500", additionalTax: "₹8,500", totalPayable: "₹51,000", status: "In Assessment" },
-    { id: "GD-2026-003", date: "2026-07-03", material: "Ethylene", assessedValue: "₹420,000", basicDuty: "₹21,000", additionalTax: "₹4,200", totalPayable: "₹25,200", status: "Cleared" },
-    { id: "GD-2026-004", date: "2026-07-04", material: "Polypropylene", assessedValue: "₹950,000", basicDuty: "₹47,500", additionalTax: "₹9,500", totalPayable: "₹57,000", status: "Pending Duty" },
-    { id: "GD-2026-005", date: "2026-07-05", material: "Industrial Machinery Parts", assessedValue: "₹3,400,000", basicDuty: "₹255,000", additionalTax: "₹34,000", totalPayable: "₹289,000", status: "Cleared" },
-    { id: "GD-2026-006", date: "2026-07-06", material: "Catalysts", assessedValue: "₹150,000", basicDuty: "₹7,500", additionalTax: "₹1,500", totalPayable: "₹9,000", status: "Held" },
-    { id: "GD-2026-007", date: "2026-07-08", material: "Methanol", assessedValue: "₹600,000", basicDuty: "₹30,000", additionalTax: "₹6,000", totalPayable: "₹36,000", status: "Cleared" },
-    { id: "GD-2026-008", date: "2026-07-10", material: "Specialty Chemicals", assessedValue: "₹1,800,000", basicDuty: "₹135,000", additionalTax: "₹18,000", totalPayable: "₹153,000", status: "In Assessment" },
-    { id: "GD-2026-009", date: "2026-07-11", material: "Pipes & Fittings", assessedValue: "₹500,000", basicDuty: "₹25,000", additionalTax: "₹5,000", totalPayable: "₹30,000", status: "Cleared" },
-    { id: "GD-2026-010", date: "2026-07-12", material: "Safety Equipment", assessedValue: "₹200,000", basicDuty: "₹10,000", additionalTax: "₹2,000", totalPayable: "₹12,000", status: "Cleared" },
-    { id: "GD-2026-011", date: "2026-07-14", material: "Pump Assemblies", assessedValue: "₹2,200,000", basicDuty: "₹165,000", additionalTax: "₹22,000", totalPayable: "₹187,000", status: "Pending Duty" },
-    { id: "GD-2026-012", date: "2026-07-15", material: "Control Valves", assessedValue: "₹750,000", basicDuty: "₹37,500", additionalTax: "₹7,500", totalPayable: "₹45,000", status: "Cleared" },
-    { id: "GD-2026-013", date: "2026-07-18", material: "Lubricants", assessedValue: "₹320,000", basicDuty: "₹16,000", additionalTax: "₹3,200", totalPayable: "₹19,200", status: "Cleared" },
-    { id: "GD-2026-014", date: "2026-07-20", material: "Compressors", assessedValue: "₹4,100,000", basicDuty: "₹307,500", additionalTax: "₹41,000", totalPayable: "₹348,500", status: "In Assessment" },
-    { id: "GD-2026-015", date: "2026-07-22", material: "Laboratory Reagents", assessedValue: "₹90,000", basicDuty: "₹4,500", additionalTax: "₹900", totalPayable: "₹5,400", status: "Cleared" }
+  const [items, setItems] = useState([
+    { id: "GD-2026-001", date: "2026-07-01", material: "Crude Oil - Basrah Light", assessedValue: "PKR 1,200,000", basicDuty: "PKR 60,000", additionalTax: "PKR 12,000", totalPayable: "PKR 72,000", status: "Cleared" },
+    { id: "GD-2026-002", date: "2026-07-02", material: "Naphtha", assessedValue: "PKR 850,000", basicDuty: "PKR 42,500", additionalTax: "PKR 8,500", totalPayable: "PKR 51,000", status: "In Assessment" },
+    { id: "GD-2026-003", date: "2026-07-03", material: "Ethylene", assessedValue: "PKR 420,000", basicDuty: "PKR 21,000", additionalTax: "PKR 4,200", totalPayable: "PKR 25,200", status: "Cleared" },
+    { id: "GD-2026-004", date: "2026-07-04", material: "Polypropylene", assessedValue: "PKR 950,000", basicDuty: "PKR 47,500", additionalTax: "PKR 9,500", totalPayable: "PKR 57,000", status: "Pending Duty" },
+    { id: "GD-2026-005", date: "2026-07-05", material: "Industrial Machinery Parts", assessedValue: "PKR 3,400,000", basicDuty: "PKR 255,000", additionalTax: "PKR 34,000", totalPayable: "PKR 289,000", status: "Cleared" },
+    { id: "GD-2026-006", date: "2026-07-06", material: "Catalysts", assessedValue: "PKR 150,000", basicDuty: "PKR 7,500", additionalTax: "PKR 1,500", totalPayable: "PKR 9,000", status: "Held" }
+  ]);
+
+  const columns: Column[] = [
+    { key: "id", label: "GD Number", format: (val) => <span className="flex items-center gap-2"><FileText className="w-4 h-4 text-emerald-500" />{val}</span> },
+    { key: "date", label: "Date" },
+    { key: "material", label: "Material" },
+    { key: "assessedValue", label: "Assessed Value" },
+    { key: "basicDuty", label: "Basic Duty" },
+    { key: "additionalTax", label: "Additional Tax" },
+    { key: "totalPayable", label: "Total Payable" },
+    { key: "status", label: "Status", format: (val) => getStatusBadge(val as string) }
   ];
+
+  const formFields: FormField[] = [
+    { key: "id", label: "GD Number", type: "text", required: true },
+    { key: "date", label: "Date", type: "date", required: true },
+    { key: "material", label: "Material", type: "text", required: true },
+    { key: "assessedValue", label: "Assessed Value", type: "text" },
+    { key: "basicDuty", label: "Basic Duty", type: "text" },
+    { key: "additionalTax", label: "Additional Tax", type: "text" },
+    { key: "totalPayable", label: "Total Payable", type: "text" },
+    { key: "status", label: "Status", type: "select", options: ["Cleared", "In Assessment", "Pending Duty", "Held"], required: true }
+  ];
+
+  const filteredData = items.filter(row => row.id.toLowerCase().includes(searchTerm.toLowerCase()) || row.material.toLowerCase().includes(searchTerm.toLowerCase()));
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -95,51 +111,7 @@ export default function CustomsDutiesPage() {
 
       {/* Main Ledger Grid */}
       <div className="flex-1 bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-xl flex flex-col overflow-hidden shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
-        <div className="flex-1 overflow-auto">
-          <table className="w-full text-left border-collapse">
-            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap">GD Number</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap">Date</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Material</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right whitespace-nowrap">Assessed Value</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right whitespace-nowrap">Basic Duty</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right whitespace-nowrap">Additional Tax</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-right whitespace-nowrap">Total Payable</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Status</th>
-                <th className="px-6 py-4 font-semibold text-slate-600 text-sm text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {ledgerData.filter(row => row.id.toLowerCase().includes(searchTerm.toLowerCase()) || row.material.toLowerCase().includes(searchTerm.toLowerCase())).map((row, index) => (
-                <tr key={index} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer group">
-                  <td className="px-6 py-3 text-sm font-medium text-emerald-600 flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-slate-400 group-hover:text-emerald-500 transition-colors" />
-                    {row.id}
-                  </td>
-                  <td className="px-6 py-3 text-sm text-slate-500">{row.date}</td>
-                  <td className="px-6 py-3 text-sm text-slate-800 font-medium">{row.material}</td>
-                  <td className="px-6 py-3 text-sm text-slate-600 text-right tabular-nums">{row.assessedValue}</td>
-                  <td className="px-6 py-3 text-sm text-slate-600 text-right tabular-nums">{row.basicDuty}</td>
-                  <td className="px-6 py-3 text-sm text-slate-600 text-right tabular-nums">{row.additionalTax}</td>
-                  <td className="px-6 py-3 text-sm font-semibold text-slate-800 text-right tabular-nums">{row.totalPayable}</td>
-                  <td className="px-6 py-3 text-sm">{getStatusBadge(row.status)}</td>
-                  <td className="px-6 py-3 text-sm text-center">
-                    <button className="text-slate-400 hover:text-emerald-600 font-medium transition-colors text-xs uppercase tracking-wider">
-                      View
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {ledgerData.length === 0 && (
-            <div className="flex flex-col items-center justify-center p-12 text-slate-500">
-              <FileText className="w-12 h-12 mb-3 text-slate-300" />
-              <p>No records found.</p>
-            </div>
-          )}
-        </div>
+        <SmartTable data={filteredData} columns={columns} formFields={formFields} onAdd={(newItem) => setItems([newItem, ...items])} />
       </div>
     </div>
   );

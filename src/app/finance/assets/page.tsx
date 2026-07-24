@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { SmartTable, Column, FormField } from '@/components/SmartTable';
 
 const assetsData = [
   { id: '1000-001', desc: 'Heavy Duty Compressor', capDate: '2023-01-15', life: '10y', apc: 'PKR 1,200,000', accDep: 'PKR 360,000', nbv: 'PKR 840,000' },
@@ -14,6 +15,28 @@ const assetsData = [
 ];
 
 export default function AssetAccounting() {
+  const [items, setItems] = useState(assetsData);
+
+  const columns: Column[] = [
+    { key: 'id', title: 'Asset ID' },
+    { key: 'desc', title: 'Description' },
+    { key: 'capDate', title: 'Cap. Date' },
+    { key: 'life', title: 'Useful Life' },
+    { key: 'apc', title: 'APC Value' },
+    { key: 'accDep', title: 'Acc. Dep.' },
+    { key: 'nbv', title: 'Net Book Value' }
+  ];
+
+  const formFields: FormField[] = [
+    { name: 'id', label: 'Asset ID', type: 'text', required: true },
+    { name: 'desc', label: 'Description', type: 'text', required: true },
+    { name: 'capDate', label: 'Cap. Date', type: 'date', required: true },
+    { name: 'life', label: 'Useful Life', type: 'text', required: true },
+    { name: 'apc', label: 'APC Value', type: 'text', required: true },
+    { name: 'accDep', label: 'Acc. Dep.', type: 'text', required: true },
+    { name: 'nbv', label: 'Net Book Value', type: 'text', required: true }
+  ];
+
   return (
     <div className="min-h-screen bg-slate-50/50 p-6 flex flex-col gap-6 font-sans text-slate-800 h-screen overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-6">
@@ -60,43 +83,7 @@ export default function AssetAccounting() {
 
         {/* Asset Register Grid */}
         <div className="flex-1 bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-xl flex flex-col overflow-hidden shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm text-left">
-              <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
-                <tr>
-                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Asset ID</th>
-                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Description</th>
-                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Cap. Date</th>
-                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Useful Life</th>
-                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">APC Value</th>
-                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Acc. Dep.</th>
-                  <th className="px-6 py-4 font-semibold text-slate-600 text-sm">Net Book Value</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {assetsData.map((asset, idx) => (
-                  <tr key={asset.id} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
-                    <td className="px-6 py-3 font-mono text-indigo-600">{asset.id}</td>
-                    <td className="px-6 py-3 font-medium text-slate-800">{asset.desc}</td>
-                    <td className="px-6 py-3 text-slate-600">{asset.capDate}</td>
-                    <td className="px-6 py-3 text-slate-600">
-                      <span className="bg-slate-100 px-2 py-1 rounded text-xs text-slate-600">{asset.life}</span>
-                    </td>
-                    <td className="px-6 py-3 text-right tabular-nums text-slate-800">{asset.apc}</td>
-                    <td className="px-6 py-3 text-right tabular-nums text-rose-600">{asset.accDep}</td>
-                    <td className="px-6 py-3 text-right tabular-nums font-medium text-emerald-600">{asset.nbv}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="p-4 border-t border-slate-200 text-xs text-slate-500 flex justify-between items-center bg-slate-50/50">
-            <div>Showing 10 of 142 assets</div>
-            <div className="flex gap-2">
-              <button className="px-3 py-1 rounded border border-slate-200 hover:bg-slate-100 bg-white text-slate-800 transition-colors">Previous</button>
-              <button className="px-3 py-1 rounded border border-slate-200 hover:bg-slate-100 bg-white text-slate-800 transition-colors">Next</button>
-            </div>
-          </div>
+          <SmartTable data={items} columns={columns} formFields={formFields} onAdd={(newItem) => setItems([newItem, ...items])} />
         </div>
 
       </div>
