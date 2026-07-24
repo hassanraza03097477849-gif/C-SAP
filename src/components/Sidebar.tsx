@@ -43,7 +43,12 @@ const navigation = [
     icon: PieChart,
     subLinks: [
       { name: "Overview", href: "/controlling" },
+      { name: "Cost Centers", href: "/controlling/cost-centers" },
+      { name: "Budgets", href: "/controlling/budgets" },
+      { name: "Expense Allocation", href: "/controlling/expense-allocation" },
       { name: "Profitability", href: "/controlling/profitability" },
+      { name: "Segments", href: "/controlling/segments" },
+      { name: "Variance", href: "/controlling/variance" },
     ]
   },
   { 
@@ -51,8 +56,14 @@ const navigation = [
     icon: Package,
     subLinks: [
       { name: "Overview", href: "/materials" },
-      { name: "Tank Inventory", href: "/materials/inventory" },
+      { name: "Inventory", href: "/materials/inventory" },
+      { name: "Suppliers", href: "/materials/suppliers" },
       { name: "Requisitions", href: "/materials/requisitions" },
+      { name: "Goods Receipts", href: "/materials/receipts" },
+      { name: "Stock Transfers", href: "/materials/transfers" },
+      { name: "Reorder Planning", href: "/materials/reorder" },
+      { name: "Valuation", href: "/materials/valuation" },
+      { name: "Invoice Verification", href: "/materials/verification" },
     ]
   },
   { 

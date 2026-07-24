@@ -1,67 +1,139 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
-import { Plus, Package } from 'lucide-react';
+import React from 'react';
+import { FileText, Calendar, Box, Package, ArrowRightLeft, MapPin, Hash, CheckCircle2, AlertCircle, Clock } from 'lucide-react';
 
-const DUMMY_RECEIPTS = [
-  { id: 'GR-8001', poNumber: 'PO-45001', supplier: 'Global Metals Inc.', date: '2026-07-20', status: 'Completed', location: 'Warehouse A' },
-  { id: 'GR-8002', poNumber: 'PO-45002', supplier: 'TechEquip Corp', date: '2026-07-21', status: 'In Inspection', location: 'Dock 1' },
-  { id: 'GR-8003', poNumber: 'PO-45005', supplier: 'ChemSupply Ltd.', date: '2026-07-22', status: 'Pending', location: 'Dock 2' },
-];
+export default function GoodsReceiptsPage() {
+  const kpis = [
+    { title: 'Total Receipts (MTD)', value: '1,245', icon: Package, trend: '+12%', color: 'text-emerald-600' },
+    { title: 'Pending Putaway', value: '342', icon: Box, trend: '-5%', color: 'text-amber-500' },
+    { title: 'Processing Time', value: '1.2h', icon: Clock, trend: '-18%', color: 'text-teal-500' },
+    { title: 'Discrepancies', value: '4', icon: AlertCircle, trend: '0%', color: 'text-rose-500' }
+  ];
 
-export default function ReceiptsPage() {
+  const receipts = [
+    { matDoc: '5000001234', date: '2026-07-24', poNumber: '4500009871', mvtType: '101', material: 'RM-1001 (Polymer Resin)', qty: '10,000 KG', sloc: '0001' },
+    { matDoc: '5000001235', date: '2026-07-24', poNumber: '4500009872', mvtType: '101', material: 'PK-500 (Pallets)', qty: '500 PC', sloc: '0002' },
+    { matDoc: '5000001236', date: '2026-07-23', poNumber: '4500009865', mvtType: '101', material: 'CH-200 (Catalyst)', qty: '50 L', sloc: '0001' },
+    { matDoc: '5000001237', date: '2026-07-23', poNumber: '4500009868', mvtType: '122', material: 'RM-1001 (Polymer Resin)', qty: '1,000 KG', sloc: '0001' },
+    { matDoc: '5000001238', date: '2026-07-22', poNumber: '4500009855', mvtType: '101', material: 'SP-10 (Spare Parts)', qty: '12 PC', sloc: '0003' },
+    { matDoc: '5000001239', date: '2026-07-22', poNumber: '4500009856', mvtType: '101', material: 'RM-3005 (Solvent)', qty: '5,000 L', sloc: '0001' },
+    { matDoc: '5000001240', date: '2026-07-21', poNumber: '4500009850', mvtType: '101', material: 'PK-100 (Drums)', qty: '200 PC', sloc: '0002' },
+    { matDoc: '5000001241', date: '2026-07-21', poNumber: '4500009851', mvtType: '101', material: 'RM-4001 (Additive A)', qty: '2,500 KG', sloc: '0001' },
+    { matDoc: '5000001242', date: '2026-07-20', poNumber: '4500009842', mvtType: '101', material: 'LB-001 (Lubricant)', qty: '100 L', sloc: '0003' },
+    { matDoc: '5000001243', date: '2026-07-20', poNumber: '4500009843', mvtType: '101', material: 'RM-1001 (Polymer Resin)', qty: '12,000 KG', sloc: '0001' },
+    { matDoc: '5000001244', date: '2026-07-19', poNumber: '4500009835', mvtType: '101', material: 'CH-250 (Inhibitor)', qty: '20 L', sloc: '0001' },
+    { matDoc: '5000001245', date: '2026-07-19', poNumber: '4500009836', mvtType: '101', material: 'PK-500 (Pallets)', qty: '300 PC', sloc: '0002' },
+    { matDoc: '5000001246', date: '2026-07-18', poNumber: '4500009820', mvtType: '101', material: 'RM-3005 (Solvent)', qty: '6,000 L', sloc: '0001' },
+    { matDoc: '5000001247', date: '2026-07-18', poNumber: '4500009822', mvtType: '102', material: 'RM-3005 (Solvent)', qty: '500 L', sloc: '0001' },
+    { matDoc: '5000001248', date: '2026-07-17', poNumber: '4500009815', mvtType: '101', material: 'SP-25 (Valves)', qty: '50 PC', sloc: '0003' },
+  ];
+
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex justify-between items-center">
+    <div className="min-h-screen bg-slate-50/50 p-6 flex flex-col gap-6 font-sans text-slate-800 h-screen overflow-hidden">
+      {/* Header Container */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/80 backdrop-blur-md p-4 rounded-xl border border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Goods Receipts</h1>
-          <p className="text-muted-foreground mt-1">Manage inbound deliveries and receipts (SAP MM-IM).</p>
+          <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
+            Goods Receipts (MIGO)
+          </h1>
+          <p className="text-slate-500 text-sm mt-1">Material document ledger and processing metrics</p>
         </div>
-        <Link href="/materials/receipts/new">
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            New Receipt
-          </Button>
-        </Link>
+        <div className="flex gap-3">
+          <button className="px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-50 transition-colors font-medium text-sm flex items-center gap-2">
+            <MapPin className="w-4 h-4" />
+            Storage Map
+          </button>
+          <button className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors shadow-sm shadow-emerald-200 font-medium text-sm flex items-center gap-2">
+            <Package className="w-4 h-4" />
+            Post Receipt
+          </button>
+        </div>
       </div>
 
-      <Card className="hover:-translate-y-[1px] hover:shadow-sm transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
-        <CardHeader className="bg-white/80 backdrop-blur-md">
-          <CardTitle>Recent Goods Receipts</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader className="bg-white/80 backdrop-blur-md">
-              <TableRow className="hover:-translate-y-[1px] hover:shadow-sm transition-all duration-300 even:bg-slate-50/50">
-                <TableHead>Receipt ID</TableHead>
-                <TableHead>PO Number</TableHead>
-                <TableHead>Supplier</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead>Location</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {DUMMY_RECEIPTS.map((rec) => (
-                <TableRow key={rec.id} className="hover:-translate-y-[1px] hover:shadow-sm transition-all duration-300 even:bg-slate-50/50">
-                  <TableCell className="font-medium">{rec.id}</TableCell>
-                  <TableCell>{rec.poNumber}</TableCell>
-                  <TableCell>{rec.supplier}</TableCell>
-                  <TableCell>{rec.date}</TableCell>
-                  <TableCell>{rec.location}</TableCell>
-                  <TableCell>
-                    <Badge variant={rec.status === 'Completed' ? 'default' : rec.status === 'In Inspection' ? 'secondary' : 'outline'}>
-                      {rec.status}
-                    </Badge>
-                  </TableCell>
-                </TableRow>
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {kpis.map((kpi, index) => (
+          <div key={index} className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4">
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-slate-500">{kpi.title}</span>
+                <div className={`p-2 rounded-lg bg-slate-50 ${kpi.color}`}>
+                  <kpi.icon className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-bold text-slate-800">{kpi.value}</span>
+                <span className={`text-xs font-medium ${kpi.trend.startsWith('+') ? 'text-emerald-600' : kpi.trend === '0%' ? 'text-slate-400' : 'text-rose-500'}`}>
+                  {kpi.trend}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Main Grid Container */}
+      <div className="flex-1 bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-xl flex flex-col overflow-hidden shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
+        <div className="p-4 border-b border-slate-200/60 flex items-center justify-between bg-slate-50/50">
+          <h2 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
+            <FileText className="w-5 h-5 text-emerald-600" />
+            Recent Material Documents
+          </h2>
+          <div className="flex items-center gap-2">
+            <input 
+              type="text" 
+              placeholder="Search documents, POs..." 
+              className="px-3 py-1.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 w-64 bg-white"
+            />
+          </div>
+        </div>
+        
+        <div className="flex-1 overflow-auto">
+          <table className="w-full text-left border-collapse min-w-[1000px]">
+            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
+              <tr>
+                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
+                  <div className="flex items-center gap-2 whitespace-nowrap"><Hash className="w-4 h-4" /> Material Doc</div>
+                </th>
+                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
+                  <div className="flex items-center gap-2 whitespace-nowrap"><Calendar className="w-4 h-4" /> Posting Date</div>
+                </th>
+                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
+                  <div className="flex items-center gap-2 whitespace-nowrap"><FileText className="w-4 h-4" /> PO Number</div>
+                </th>
+                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
+                  <div className="flex items-center gap-2 whitespace-nowrap"><ArrowRightLeft className="w-4 h-4" /> Mvt Type</div>
+                </th>
+                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
+                  <div className="flex items-center gap-2 whitespace-nowrap"><Box className="w-4 h-4" /> Material</div>
+                </th>
+                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
+                  <div className="flex items-center justify-end gap-2 whitespace-nowrap"><CheckCircle2 className="w-4 h-4" /> Received Qty</div>
+                </th>
+                <th className="px-6 py-4 font-semibold text-slate-600 text-sm">
+                  <div className="flex items-center gap-2 whitespace-nowrap"><MapPin className="w-4 h-4" /> SLoc</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {receipts.map((row, i) => (
+                <tr key={i} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
+                  <td className="px-6 py-3.5 text-sm font-medium text-emerald-700 whitespace-nowrap">{row.matDoc}</td>
+                  <td className="px-6 py-3.5 text-sm text-slate-600 whitespace-nowrap">{row.date}</td>
+                  <td className="px-6 py-3.5 text-sm text-blue-600 font-medium hover:underline whitespace-nowrap">{row.poNumber}</td>
+                  <td className="px-6 py-3.5 text-sm text-slate-600 whitespace-nowrap">
+                    <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${row.mvtType === '101' ? 'bg-emerald-100 text-emerald-700' : row.mvtType === '102' ? 'bg-rose-100 text-rose-700' : 'bg-amber-100 text-amber-700'}`}>
+                      {row.mvtType}
+                    </span>
+                  </td>
+                  <td className="px-6 py-3.5 text-sm text-slate-800 whitespace-nowrap">{row.material}</td>
+                  <td className="px-6 py-3.5 text-sm font-medium text-slate-800 text-right whitespace-nowrap">{row.qty}</td>
+                  <td className="px-6 py-3.5 text-sm text-slate-600 whitespace-nowrap">{row.sloc}</td>
+                </tr>
               ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,82 +1,130 @@
 "use client";
 
-import { tankInventory } from "@/lib/mockData";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Droplet, AlertTriangle } from "lucide-react";
+import React, { useState } from 'react';
+import { 
+  Package, 
+  Search, 
+  Filter, 
+  Download,
+  AlertTriangle,
+  ArrowRightLeft,
+  CheckCircle2,
+  Box
+} from 'lucide-react';
 
-export default function InventoryPage() {
+// Mock Data Generation
+const mockInventoryData = Array.from({ length: 20 }).map((_, i) => ({
+  id: `INV-${1000 + i}`,
+  plant: ['1000 - Hamburg', '1100 - Berlin', '1200 - Munich', '2000 - New York'][Math.floor(Math.random() * 4)],
+  storageLocation: ['0001 - Raw Materials', '0002 - Finished Goods', '0003 - Packaging', '0004 - Returns'][Math.floor(Math.random() * 4)],
+  material: `MAT-${10000 + i} - ${['Steel Sheet', 'Aluminium Coil', 'Copper Wire', 'Plastic Granules', 'Rubber Mat', 'Glass Panel'][Math.floor(Math.random() * 6)]}`,
+  unrestricted: Math.floor(Math.random() * 10000),
+  quality: Math.floor(Math.random() * 1000),
+  blocked: Math.floor(Math.random() * 500),
+  transit: Math.floor(Math.random() * 2000),
+}));
+
+export default function InventoryManagement() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredData = mockInventoryData.filter(item => 
+    item.material.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.plant.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">Depot Tank Inventory</h1>
-        <p className="text-slate-500 mt-1">Real-time visual monitoring of wet-stock levels.</p>
+    <div className="min-h-screen bg-slate-50/50 p-6 flex flex-col gap-6 font-sans text-slate-800 h-screen overflow-hidden">
+      
+      {/* Header Container */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/80 backdrop-blur-md p-4 rounded-xl border border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
+            Inventory Management (MMBE)
+          </h1>
+          <p className="text-sm text-slate-500 mt-1">Real-time Stock Overview & Ledger</p>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input 
+              type="text" 
+              placeholder="Search material or plant..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 w-64 transition-all text-slate-800"
+            />
+          </div>
+          <button className="p-2 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 transition-colors">
+            <Filter className="w-4 h-4" />
+          </button>
+          <button className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-emerald-600/20">
+            <Download className="w-4 h-4" />
+            Export
+          </button>
+        </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {tankInventory.map((tank) => {
-          const fillPercentage = (tank.currentLevel / tank.capacity) * 100;
-          let statusColor = "bg-emerald-500";
-          let badgeVariant: "default" | "destructive" | "secondary" = "default";
-          
-          if (fillPercentage < 25) {
-            statusColor = "bg-red-500";
-            badgeVariant = "destructive";
-          } else if (fillPercentage > 90) {
-            statusColor = "bg-amber-500";
-            badgeVariant = "secondary";
-          }
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { title: 'Total Unrestricted Stock', value: '452,890', icon: CheckCircle2, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+          { title: 'In Quality Inspection', value: '12,450', icon: AlertTriangle, color: 'text-amber-600', bg: 'bg-amber-100' },
+          { title: 'Blocked Stock', value: '3,820', icon: Box, color: 'text-rose-600', bg: 'bg-rose-100' },
+          { title: 'Stock In Transit', value: '45,120', icon: ArrowRightLeft, color: 'text-blue-600', bg: 'bg-blue-100' },
+        ].map((kpi, idx) => (
+          <div key={idx} className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm font-medium text-slate-500 mb-1">{kpi.title}</p>
+                <h3 className="text-2xl font-bold text-slate-800">{kpi.value}</h3>
+              </div>
+              <div className={`p-2 rounded-lg ${kpi.bg}`}>
+                <kpi.icon className={`w-5 h-5 ${kpi.color}`} />
+              </div>
+            </div>
+            <div className="mt-4 flex items-center text-xs">
+              <span className="text-emerald-600 font-medium flex items-center gap-1">
+                +2.4%
+              </span>
+              <span className="text-slate-400 ml-2">vs last week</span>
+            </div>
+          </div>
+        ))}
+      </div>
 
-          return (
-            <Card key={tank.id} className="overflow-hidden border-slate-200 shadow-sm hover:-translate-y-[1px] hover:shadow-sm transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
-              <CardHeader className="bg-slate-50 border-b border-slate-100 pb-4 bg-white/80 backdrop-blur-md">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <CardTitle className="text-lg">{tank.id}</CardTitle>
-                    <CardDescription>{tank.depot}</CardDescription>
-                  </div>
-                  <Badge variant={badgeVariant} className="capitalize">
-                    {tank.status}
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="flex justify-between items-center mb-6">
-                  <div className="flex items-center gap-2 text-slate-700 font-medium">
-                    <Droplet className="h-5 w-5 text-slate-400" />
-                    {tank.product}
-                  </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold">{tank.currentLevel.toLocaleString()}</div>
-                    <div className="text-xs text-slate-500">/ {tank.capacity.toLocaleString()} {tank.unit}</div>
-                  </div>
-                </div>
-
-                {/* Visual Tank Cylinder */}
-                <div className="relative h-48 w-full bg-slate-100 rounded-lg border-2 border-slate-200 overflow-hidden flex items-end">
-                  <div 
-                    className={`w-full transition-all duration-1000 ease-in-out opacity-80 ${statusColor}`} 
-                    style={{ height: `${fillPercentage}%` }}
-                  />
-                  {/* Glass reflection effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-black/5 pointer-events-none" />
-                  
-                  {fillPercentage < 25 && (
-                    <div className="absolute top-4 left-0 right-0 flex justify-center text-red-500 animate-pulse">
-                      <AlertTriangle className="h-6 w-6" />
-                    </div>
-                  )}
-                  
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span className="text-xl font-bold text-slate-900 drop-shadow-md bg-white/70 px-2 py-1 rounded">
-                      {Math.round(fillPercentage)}%
-                    </span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
+      {/* Main Grid Container */}
+      <div className="flex-1 bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-xl flex flex-col overflow-hidden shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)]">
+        <div className="overflow-auto flex-1 p-0">
+          <table className="w-full text-left border-collapse min-w-[1000px]">
+            <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 border-b border-slate-200">
+              <tr>
+                {['Plant', 'Storage Location', 'Material', 'Unrestricted Use', 'Quality Inspection', 'Blocked Stock', 'In Transit'].map((header, i) => (
+                  <th key={i} className="px-6 py-4 font-semibold text-slate-600 text-sm whitespace-nowrap">
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {filteredData.map((row) => (
+                <tr key={row.id} className="hover:bg-slate-50 border-b border-slate-100 transition-colors cursor-pointer">
+                  <td className="px-6 py-4 text-sm font-medium text-slate-800 whitespace-nowrap">{row.plant}</td>
+                  <td className="px-6 py-4 text-sm text-slate-600 whitespace-nowrap">{row.storageLocation}</td>
+                  <td className="px-6 py-4 text-sm font-medium text-emerald-700 whitespace-nowrap">{row.material}</td>
+                  <td className="px-6 py-4 text-sm text-slate-800 text-right tabular-nums">{row.unrestricted.toLocaleString()}</td>
+                  <td className="px-6 py-4 text-sm text-amber-700 text-right tabular-nums bg-amber-50/30">{row.quality.toLocaleString()}</td>
+                  <td className="px-6 py-4 text-sm text-rose-700 text-right tabular-nums bg-rose-50/30">{row.blocked.toLocaleString()}</td>
+                  <td className="px-6 py-4 text-sm text-blue-700 text-right tabular-nums bg-blue-50/30">{row.transit.toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="border-t border-slate-200/60 bg-slate-50/50 p-4 text-xs text-slate-500 flex justify-between items-center">
+          <span>Showing {filteredData.length} of {mockInventoryData.length} records</span>
+          <span>Last updated: Just now</span>
+        </div>
       </div>
     </div>
   );
