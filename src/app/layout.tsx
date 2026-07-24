@@ -5,7 +5,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { Header } from "@/components/Header";
 import { Toaster } from "@/components/ui/sonner";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Reliance Petrochem ERP",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full bg-slate-50" suppressHydrationWarning>
-      <body className={`${inter.className} h-full flex overflow-hidden`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${inter.className} font-sans h-full flex overflow-hidden`} suppressHydrationWarning>
         <Sidebar />
         <div className="flex flex-1 flex-col overflow-hidden">
           <Header />
