@@ -2,22 +2,22 @@ import React from 'react';
 
 // Mock data (15+ rows)
 const conditionData = [
-  { id: 1, type: 'PR00', material: 'MAT-1001', customer: 'CUST-001', amount: 1500.00, currency: 'USD', validFrom: '2026-01-01', validTo: '2026-12-31' },
-  { id: 2, type: 'K004', material: 'MAT-1001', customer: 'CUST-001', amount: 50.00, currency: 'USD', validFrom: '2026-01-01', validTo: '2026-12-31' },
-  { id: 3, type: 'KF00', material: 'MAT-1002', customer: 'CUST-002', amount: 200.00, currency: 'EUR', validFrom: '2026-02-01', validTo: '2026-11-30' },
-  { id: 4, type: 'PR00', material: 'MAT-2005', customer: 'CUST-003', amount: 850.50, currency: 'USD', validFrom: '2026-01-15', validTo: '2026-12-31' },
+  { id: 1, type: 'PR00', material: 'MAT-1001', customer: 'CUST-001', amount: 1500.00, currency: 'PKR', validFrom: '2026-01-01', validTo: '2026-12-31' },
+  { id: 2, type: 'K004', material: 'MAT-1001', customer: 'CUST-001', amount: 50.00, currency: 'PKR', validFrom: '2026-01-01', validTo: '2026-12-31' },
+  { id: 3, type: 'KF00', material: 'MAT-1002', customer: 'CUST-002', amount: 200.00, currency: 'PKR', validFrom: '2026-02-01', validTo: '2026-11-30' },
+  { id: 4, type: 'PR00', material: 'MAT-2005', customer: 'CUST-003', amount: 850.50, currency: 'PKR', validFrom: '2026-01-15', validTo: '2026-12-31' },
   { id: 5, type: 'MWST', material: 'MAT-2005', customer: 'CUST-003', amount: 10.00, currency: '%', validFrom: '2026-01-01', validTo: '9999-12-31' },
-  { id: 6, type: 'PR00', material: 'MAT-3001', customer: 'CUST-004', amount: 1200.00, currency: 'USD', validFrom: '2026-03-01', validTo: '2026-12-31' },
-  { id: 7, type: 'K005', material: 'MAT-3001', customer: 'CUST-004', amount: 100.00, currency: 'USD', validFrom: '2026-03-01', validTo: '2026-06-30' },
-  { id: 8, type: 'PR00', material: 'MAT-4022', customer: 'CUST-005', amount: 45.00, currency: 'GBP', validFrom: '2026-01-01', validTo: '2026-12-31' },
-  { id: 9, type: 'KF00', material: 'MAT-4022', customer: 'CUST-005', amount: 5.00, currency: 'GBP', validFrom: '2026-01-01', validTo: '2026-12-31' },
-  { id: 10, type: 'PR00', material: 'MAT-5000', customer: 'CUST-006', amount: 3000.00, currency: 'USD', validFrom: '2026-04-01', validTo: '2026-12-31' },
+  { id: 6, type: 'PR00', material: 'MAT-3001', customer: 'CUST-004', amount: 1200.00, currency: 'PKR', validFrom: '2026-03-01', validTo: '2026-12-31' },
+  { id: 7, type: 'K005', material: 'MAT-3001', customer: 'CUST-004', amount: 100.00, currency: 'PKR', validFrom: '2026-03-01', validTo: '2026-06-30' },
+  { id: 8, type: 'PR00', material: 'MAT-4022', customer: 'CUST-005', amount: 45.00, currency: 'PKR', validFrom: '2026-01-01', validTo: '2026-12-31' },
+  { id: 9, type: 'KF00', material: 'MAT-4022', customer: 'CUST-005', amount: 5.00, currency: 'PKR', validFrom: '2026-01-01', validTo: '2026-12-31' },
+  { id: 10, type: 'PR00', material: 'MAT-5000', customer: 'CUST-006', amount: 3000.00, currency: 'PKR', validFrom: '2026-04-01', validTo: '2026-12-31' },
   { id: 11, type: 'K007', material: 'MAT-5000', customer: 'CUST-006', amount: 15.00, currency: '%', validFrom: '2026-04-01', validTo: '2026-12-31' },
-  { id: 12, type: 'PR00', material: 'MAT-6010', customer: 'CUST-007', amount: 250.00, currency: 'USD', validFrom: '2026-01-01', validTo: '2026-12-31' },
+  { id: 12, type: 'PR00', material: 'MAT-6010', customer: 'CUST-007', amount: 250.00, currency: 'PKR', validFrom: '2026-01-01', validTo: '2026-12-31' },
   { id: 13, type: 'MWST', material: 'MAT-6010', customer: 'CUST-007', amount: 20.00, currency: '%', validFrom: '2026-01-01', validTo: '9999-12-31' },
-  { id: 14, type: 'PR00', material: 'MAT-7020', customer: 'CUST-008', amount: 550.00, currency: 'EUR', validFrom: '2026-05-01', validTo: '2026-12-31' },
-  { id: 15, type: 'KF00', material: 'MAT-7020', customer: 'CUST-008', amount: 25.00, currency: 'EUR', validFrom: '2026-05-01', validTo: '2026-12-31' },
-  { id: 16, type: 'PR00', material: 'MAT-8001', customer: 'CUST-009', amount: 920.00, currency: 'USD', validFrom: '2026-01-01', validTo: '2026-12-31' }
+  { id: 14, type: 'PR00', material: 'MAT-7020', customer: 'CUST-008', amount: 550.00, currency: 'PKR', validFrom: '2026-05-01', validTo: '2026-12-31' },
+  { id: 15, type: 'KF00', material: 'MAT-7020', customer: 'CUST-008', amount: 25.00, currency: 'PKR', validFrom: '2026-05-01', validTo: '2026-12-31' },
+  { id: 16, type: 'PR00', material: 'MAT-8001', customer: 'CUST-009', amount: 920.00, currency: 'PKR', validFrom: '2026-01-01', validTo: '2026-12-31' }
 ];
 
 export default function PricingPage() {

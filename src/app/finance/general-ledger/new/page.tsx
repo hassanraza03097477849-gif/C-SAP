@@ -174,7 +174,7 @@ const JournalVoucher = () => {
           <span className="flex items-center"><div className="w-2 h-2 rounded-full bg-green-500 mr-1"></div> SYSTEM OK</span>
           <span>RP_PRD</span>
         </div>
-        <span>Reliance Petrochem (800) | INS</span>
+        <span>Reliance (800) | INS</span>
       </div>
     </div>
   );

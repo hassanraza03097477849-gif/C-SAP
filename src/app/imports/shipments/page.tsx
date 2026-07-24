@@ -14,10 +14,10 @@ import {
 } from 'lucide-react';
 
 const mockShipments = [
-  { id: 'SHP-902100', bl: 'HLCU-8921A', vessel: 'MSC Gulsun', origin: 'Shanghai (CNSHA)', dest: 'Los Angeles (USLAX)', etd: '2026-07-20', eta: '2026-08-05', status: 'In Transit' },
+  { id: 'SHP-902100', bl: 'HLCU-8921A', vessel: 'MSC Gulsun', origin: 'Islamabad (CNSHA)', dest: 'Multan (USLAX)', etd: '2026-07-20', eta: '2026-08-05', status: 'In Transit' },
   { id: 'SHP-902101', bl: 'MAEU-1123B', vessel: 'Madrid Maersk', origin: 'Ningbo (CNNGB)', dest: 'Rotterdam (NLRTM)', etd: '2026-07-18', eta: '2026-08-12', status: 'In Transit' },
-  { id: 'SHP-902102', bl: 'CMAU-5542C', vessel: 'CMA CGM Jacques Saade', origin: 'Shenzhen (CNSZX)', dest: 'Hamburg (DEHAM)', etd: '2026-07-15', eta: '2026-08-10', status: 'Delayed' },
-  { id: 'SHP-902103', bl: 'EGLV-9982D', vessel: 'Ever Alot', origin: 'Singapore (SGSIN)', dest: 'New York (USNYC)', etd: '2026-07-22', eta: '2026-08-25', status: 'At Port' },
+  { id: 'SHP-902102', bl: 'CMAU-5542C', vessel: 'CMA CGM Jacques Saade', origin: 'Shenzhen (CNSZX)', dest: 'Faisalabad (DEHAM)', etd: '2026-07-15', eta: '2026-08-10', status: 'Delayed' },
+  { id: 'SHP-902103', bl: 'EGLV-9982D', vessel: 'Ever Alot', origin: 'Singapore (SGSIN)', dest: 'Karachi (USNYC)', etd: '2026-07-22', eta: '2026-08-25', status: 'At Port' },
   { id: 'SHP-902104', bl: 'HLCU-8822E', vessel: 'HMM Algeciras', origin: 'Busan (KRPUS)', dest: 'Antwerp (BEANR)', etd: '2026-07-10', eta: '2026-08-15', status: 'In Transit' },
   { id: 'SHP-902105', bl: 'ONEY-3341F', vessel: 'OOCL Hong Kong', origin: 'Hong Kong (HKHKG)', dest: 'Long Beach (USLGB)', etd: '2026-07-25', eta: '2026-08-12', status: 'Planned' },
   { id: 'SHP-902106', bl: 'MSC-7762G', vessel: 'MSC Mina', origin: 'Qingdao (CNTAO)', dest: 'Jebel Ali (AEJEA)', etd: '2026-07-05', eta: '2026-07-25', status: 'Arrived' },

@@ -34,7 +34,7 @@ export default function ProfitabilityPage() {
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: "PKR",
       maximumFractionDigits: 0,
     }).format(amount);
   };

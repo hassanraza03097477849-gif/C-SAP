@@ -8,8 +8,8 @@ import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Reliance Petrochem ERP",
-  description: "Enterprise Resource Planning for Reliance Petrochem & Pure Petroleum",
+  title: "Reliance ERP",
+  description: "Enterprise Resource Planning for Reliance & Pure Petroleum",
 };
 
 export default function RootLayout({

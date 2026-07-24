@@ -15,21 +15,21 @@ import {
 
 // Mock Data simulating SAP MD04
 const mockData = [
-  { id: 1, material: 'RM-10045 (Steel Sheets)', plant: '1000 (Hamburg)', mrpType: 'VB', stock: 150, safetyStock: 200, reorderPoint: 300, proposalQty: 500, status: 'critical' },
-  { id: 2, material: 'RM-10046 (Aluminum)', plant: '1000 (Hamburg)', mrpType: 'VB', stock: 420, safetyStock: 100, reorderPoint: 250, proposalQty: 0, status: 'ok' },
+  { id: 1, material: 'RM-10045 (Steel Sheets)', plant: '1000 (Faisalabad)', mrpType: 'VB', stock: 150, safetyStock: 200, reorderPoint: 300, proposalQty: 500, status: 'critical' },
+  { id: 2, material: 'RM-10046 (Aluminum)', plant: '1000 (Faisalabad)', mrpType: 'VB', stock: 420, safetyStock: 100, reorderPoint: 250, proposalQty: 0, status: 'ok' },
   { id: 3, material: 'PKG-2001 (Boxes)', plant: '2000 (Berlin)', mrpType: 'PD', stock: 50, safetyStock: 100, reorderPoint: 150, proposalQty: 1000, status: 'critical' },
-  { id: 4, material: 'CHEM-001 (Solvent)', plant: '1000 (Hamburg)', mrpType: 'VB', stock: 300, safetyStock: 300, reorderPoint: 400, proposalQty: 200, status: 'warning' },
+  { id: 4, material: 'CHEM-001 (Solvent)', plant: '1000 (Faisalabad)', mrpType: 'VB', stock: 300, safetyStock: 300, reorderPoint: 400, proposalQty: 200, status: 'warning' },
   { id: 5, material: 'RM-10047 (Copper Wire)', plant: '3000 (Munich)', mrpType: 'PD', stock: 1200, safetyStock: 500, reorderPoint: 800, proposalQty: 0, status: 'ok' },
-  { id: 6, material: 'PART-A (Valves)', plant: '1000 (Hamburg)', mrpType: 'VB', stock: 85, safetyStock: 150, reorderPoint: 200, proposalQty: 300, status: 'critical' },
+  { id: 6, material: 'PART-A (Valves)', plant: '1000 (Faisalabad)', mrpType: 'VB', stock: 85, safetyStock: 150, reorderPoint: 200, proposalQty: 300, status: 'critical' },
   { id: 7, material: 'PART-B (Pumps)', plant: '2000 (Berlin)', mrpType: 'PD', stock: 450, safetyStock: 200, reorderPoint: 350, proposalQty: 0, status: 'ok' },
   { id: 8, material: 'PKG-2002 (Pallets)', plant: '3000 (Munich)', mrpType: 'VB', stock: 15, safetyStock: 50, reorderPoint: 100, proposalQty: 200, status: 'critical' },
-  { id: 9, material: 'RM-10048 (Plastic Resin)', plant: '1000 (Hamburg)', mrpType: 'PD', stock: 2800, safetyStock: 1000, reorderPoint: 1500, proposalQty: 0, status: 'ok' },
+  { id: 9, material: 'RM-10048 (Plastic Resin)', plant: '1000 (Faisalabad)', mrpType: 'PD', stock: 2800, safetyStock: 1000, reorderPoint: 1500, proposalQty: 0, status: 'ok' },
   { id: 10, material: 'CHEM-002 (Catalyst)', plant: '2000 (Berlin)', mrpType: 'VB', stock: 110, safetyStock: 100, reorderPoint: 150, proposalQty: 50, status: 'warning' },
   { id: 11, material: 'PART-C (Sensors)', plant: '3000 (Munich)', mrpType: 'PD', stock: 95, safetyStock: 100, reorderPoint: 120, proposalQty: 100, status: 'critical' },
-  { id: 12, material: 'RM-10049 (Glass)', plant: '1000 (Hamburg)', mrpType: 'VB', stock: 600, safetyStock: 300, reorderPoint: 450, proposalQty: 0, status: 'ok' },
+  { id: 12, material: 'RM-10049 (Glass)', plant: '1000 (Faisalabad)', mrpType: 'VB', stock: 600, safetyStock: 300, reorderPoint: 450, proposalQty: 0, status: 'ok' },
   { id: 13, material: 'PKG-2003 (Tape)', plant: '2000 (Berlin)', mrpType: 'PD', stock: 4000, safetyStock: 2000, reorderPoint: 3000, proposalQty: 0, status: 'ok' },
   { id: 14, material: 'CHEM-003 (Reagent)', plant: '3000 (Munich)', mrpType: 'VB', stock: 20, safetyStock: 50, reorderPoint: 100, proposalQty: 150, status: 'critical' },
-  { id: 15, material: 'PART-D (Motors)', plant: '1000 (Hamburg)', mrpType: 'PD', stock: 180, safetyStock: 150, reorderPoint: 250, proposalQty: 100, status: 'warning' },
+  { id: 15, material: 'PART-D (Motors)', plant: '1000 (Faisalabad)', mrpType: 'PD', stock: 180, safetyStock: 150, reorderPoint: 250, proposalQty: 100, status: 'warning' },
 ];
 
 export default function ReorderPlanning() {

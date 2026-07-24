@@ -7,13 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 const MOCK_AGING_AR = [
-  { customer: "Reliance Petrochem", current: "₹12,00,000", d30: "₹5,50,000", d60: "₹2,10,000", d90: "₹0", d90plus: "₹1,20,000", total: "₹20,80,000" },
+  { customer: "Reliance", current: "₹12,00,000", d30: "₹5,50,000", d60: "₹2,10,000", d90: "₹0", d90plus: "₹1,20,000", total: "₹20,80,000" },
   { customer: "TATA Steel", current: "₹8,00,000", d30: "₹0", d60: "₹0", d90: "₹0", d90plus: "₹0", total: "₹8,00,000" },
   { customer: "L&T Infra", current: "₹0", d30: "₹4,50,000", d60: "₹3,00,000", d90: "₹1,00,000", d90plus: "₹5,00,000", total: "₹13,50,000" },
 ];
 
 const MOCK_AGING_AP = [
-  { vendor: "Reliance Petrochem", current: "₹8,00,000", d30: "₹4,00,000", d60: "₹0", d90: "₹50,000", d90plus: "₹0", total: "₹12,50,000" },
+  { vendor: "Reliance", current: "₹8,00,000", d30: "₹4,00,000", d60: "₹0", d90: "₹50,000", d90plus: "₹0", total: "₹12,50,000" },
   { vendor: "Adani Power", current: "₹15,00,000", d30: "₹1,00,000", d60: "₹0", d90: "₹0", d90plus: "₹0", total: "₹16,00,000" },
   { vendor: "Infosys Ltd", current: "₹2,00,000", d30: "₹50,000", d60: "₹20,000", d90: "₹10,000", d90plus: "₹1,00,000", total: "₹3,80,000" },
 ];
@@ -25,7 +25,7 @@ export default function AgingPage() {
       <div className="flex justify-between items-center shrink-0 z-10 p-2">
         <div className="bg-white/80 backdrop-blur-md p-4 rounded-xl border border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] mb-6">
           <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">SAP FI - Aging Analysis (S_ALR_87012085)</h1>
-          <span className="text-slate-400 font-medium text-xs">| Reliance Petrochem</span>
+          <span className="text-slate-400 font-medium text-xs">| Reliance</span>
         </div>
         <div className="flex gap-2 pr-2">
           <Button className="bg-emerald-600 hover:bg-emerald-700 text-white shadow-md hover:shadow-lg transition-all">Execute (F8)</Button>
@@ -41,7 +41,7 @@ export default function AgingPage() {
            
            <div className="flex flex-col gap-0.5 col-span-1">
              <Label className="text-[9px] font-bold text-[#4b5563]">Customer/Vendor</Label>
-             <Input defaultValue="Reliance Petrochem" className="h-5 text-[9px] px-1 bg-white border-[#9ca3af] rounded-sm" />
+             <Input defaultValue="Reliance" className="h-5 text-[9px] px-1 bg-white border-[#9ca3af] rounded-sm" />
            </div>
            <div className="flex flex-col gap-0.5 col-span-1">
              <Label className="text-[9px] font-bold text-[#4b5563]">Company Code</Label>

@@ -25,7 +25,7 @@ export default function Page() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="origin">Port of Origin</Label>
-              <Input id="origin" placeholder="e.g. Shanghai" />
+              <Input id="origin" placeholder="e.g. Islamabad" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="destination">Port of Destination</Label>

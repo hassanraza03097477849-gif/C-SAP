@@ -34,7 +34,7 @@ export default function Page() {
         </div>
         <div className="grid gap-2">
           <Label htmlFor="currency">Account Currency</Label>
-          <Input id="currency" defaultValue="USD" />
+          <Input id="currency" defaultValue="PKR" />
         </div>
         <div className="flex justify-end gap-4">
           <Link href="/finance/chart-of-accounts">

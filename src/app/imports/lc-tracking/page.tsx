@@ -7,21 +7,21 @@ export default function LcTrackingPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const mockData = [
-    { id: "LC-2026-001", bank: "Standard Chartered", applicant: "Reliance Petrochem", beneficiary: "Saudi Aramco", value: "2,500,000", currency: "USD", expiry: "2026-08-15", status: "Active" },
-    { id: "LC-2026-002", bank: "CitiBank NA", applicant: "Reliance Petrochem", beneficiary: "ExxonMobil", value: "4,100,000", currency: "USD", expiry: "2026-09-01", status: "Pending Amendment" },
-    { id: "LC-2026-003", bank: "HSBC", applicant: "Reliance Petrochem", beneficiary: "BP PLC", value: "1,850,000", currency: "EUR", expiry: "2026-07-30", status: "Active" },
-    { id: "LC-2026-004", bank: "JPMorgan Chase", applicant: "Reliance Petrochem", beneficiary: "Chevron", value: "3,200,000", currency: "USD", expiry: "2026-10-12", status: "Draft" },
-    { id: "LC-2026-005", bank: "Deutsche Bank", applicant: "Reliance Petrochem", beneficiary: "TotalEnergies", value: "5,600,000", currency: "EUR", expiry: "2026-11-20", status: "Active" },
-    { id: "LC-2026-006", bank: "BNP Paribas", applicant: "Reliance Petrochem", beneficiary: "Shell", value: "2,900,000", currency: "USD", expiry: "2026-08-05", status: "Expired" },
-    { id: "LC-2026-007", bank: "Barclays", applicant: "Reliance Petrochem", beneficiary: "Sinopec", value: "6,400,000", currency: "USD", expiry: "2026-12-15", status: "Active" },
-    { id: "LC-2026-008", bank: "Bank of America", applicant: "Reliance Petrochem", beneficiary: "PetroChina", value: "1,200,000", currency: "USD", expiry: "2026-07-28", status: "Active" },
-    { id: "LC-2026-009", bank: "Standard Chartered", applicant: "Reliance Petrochem", beneficiary: "Gazprom", value: "4,500,000", currency: "EUR", expiry: "2026-09-10", status: "Pending Bank" },
-    { id: "LC-2026-010", bank: "CitiBank NA", applicant: "Reliance Petrochem", beneficiary: "Equinor", value: "2,150,000", currency: "USD", expiry: "2026-10-01", status: "Active" },
-    { id: "LC-2026-011", bank: "HSBC", applicant: "Reliance Petrochem", beneficiary: "Eni", value: "3,800,000", currency: "EUR", expiry: "2026-08-25", status: "Draft" },
-    { id: "LC-2026-012", bank: "JPMorgan Chase", applicant: "Reliance Petrochem", beneficiary: "Valero", value: "1,550,000", currency: "USD", expiry: "2026-11-05", status: "Active" },
-    { id: "LC-2026-013", bank: "Deutsche Bank", applicant: "Reliance Petrochem", beneficiary: "Marathon", value: "2,750,000", currency: "USD", expiry: "2026-12-30", status: "Active" },
-    { id: "LC-2026-014", bank: "BNP Paribas", applicant: "Reliance Petrochem", beneficiary: "Phillips 66", value: "4,200,000", currency: "USD", expiry: "2026-09-18", status: "Pending Amendment" },
-    { id: "LC-2026-015", bank: "Barclays", applicant: "Reliance Petrochem", beneficiary: "Pemex", value: "1,900,000", currency: "USD", expiry: "2026-07-25", status: "Active" }
+    { id: "LC-2026-001", bank: "Standard Chartered", applicant: "Reliance", beneficiary: "Saudi Aramco", value: "2,500,000", currency: "PKR", expiry: "2026-08-15", status: "Active" },
+    { id: "LC-2026-002", bank: "CitiBank NA", applicant: "Reliance", beneficiary: "ExxonMobil", value: "4,100,000", currency: "PKR", expiry: "2026-09-01", status: "Pending Amendment" },
+    { id: "LC-2026-003", bank: "HSBC", applicant: "Reliance", beneficiary: "BP PLC", value: "1,850,000", currency: "PKR", expiry: "2026-07-30", status: "Active" },
+    { id: "LC-2026-004", bank: "JPMorgan Chase", applicant: "Reliance", beneficiary: "Chevron", value: "3,200,000", currency: "PKR", expiry: "2026-10-12", status: "Draft" },
+    { id: "LC-2026-005", bank: "Deutsche Bank", applicant: "Reliance", beneficiary: "TotalEnergies", value: "5,600,000", currency: "PKR", expiry: "2026-11-20", status: "Active" },
+    { id: "LC-2026-006", bank: "BNP Paribas", applicant: "Reliance", beneficiary: "Shell", value: "2,900,000", currency: "PKR", expiry: "2026-08-05", status: "Expired" },
+    { id: "LC-2026-007", bank: "Barclays", applicant: "Reliance", beneficiary: "Sinopec", value: "6,400,000", currency: "PKR", expiry: "2026-12-15", status: "Active" },
+    { id: "LC-2026-008", bank: "Bank of America", applicant: "Reliance", beneficiary: "PetroChina", value: "1,200,000", currency: "PKR", expiry: "2026-07-28", status: "Active" },
+    { id: "LC-2026-009", bank: "Standard Chartered", applicant: "Reliance", beneficiary: "Gazprom", value: "4,500,000", currency: "PKR", expiry: "2026-09-10", status: "Pending Bank" },
+    { id: "LC-2026-010", bank: "CitiBank NA", applicant: "Reliance", beneficiary: "Equinor", value: "2,150,000", currency: "PKR", expiry: "2026-10-01", status: "Active" },
+    { id: "LC-2026-011", bank: "HSBC", applicant: "Reliance", beneficiary: "Eni", value: "3,800,000", currency: "PKR", expiry: "2026-08-25", status: "Draft" },
+    { id: "LC-2026-012", bank: "JPMorgan Chase", applicant: "Reliance", beneficiary: "Valero", value: "1,550,000", currency: "PKR", expiry: "2026-11-05", status: "Active" },
+    { id: "LC-2026-013", bank: "Deutsche Bank", applicant: "Reliance", beneficiary: "Marathon", value: "2,750,000", currency: "PKR", expiry: "2026-12-30", status: "Active" },
+    { id: "LC-2026-014", bank: "BNP Paribas", applicant: "Reliance", beneficiary: "Phillips 66", value: "4,200,000", currency: "PKR", expiry: "2026-09-18", status: "Pending Amendment" },
+    { id: "LC-2026-015", bank: "Barclays", applicant: "Reliance", beneficiary: "Pemex", value: "1,900,000", currency: "PKR", expiry: "2026-07-25", status: "Active" }
   ];
 
   const getStatusColor = (status: string) => {
@@ -87,7 +87,7 @@ export default function LcTrackingPage() {
         
         <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4 flex flex-col gap-2">
           <div className="flex items-center justify-between text-slate-500 mb-1">
-            <span className="text-sm font-semibold tracking-wide uppercase">Total Exposure (USD)</span>
+            <span className="text-sm font-semibold tracking-wide uppercase">Total Exposure (PKR)</span>
             <FileText className="w-5 h-5 text-blue-500" />
           </div>
           <div className="text-3xl font-bold text-slate-800">$128.5M</div>

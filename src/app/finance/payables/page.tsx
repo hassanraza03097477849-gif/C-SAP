@@ -44,7 +44,7 @@ export default function AccountsPayableF110() {
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: "PKR",
     }).format(amount);
   };
 

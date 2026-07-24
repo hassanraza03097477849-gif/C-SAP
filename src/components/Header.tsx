@@ -20,18 +20,7 @@ export function Header() {
   return (
     <header className="h-16 shrink-0 border-b border-slate-200 bg-white/80 backdrop-blur-md flex items-center justify-between px-6 shadow-sm relative z-40">
       
-      {/* Breadcrumbs with modern styling */}
-      <div className="flex items-center text-sm font-medium text-slate-500">
-        <span className="text-slate-400">Reliance Petrochem</span>
-        {breadcrumbs.map((crumb, index) => (
-          <div key={crumb} className="flex items-center">
-            <span className="mx-2 text-slate-300">/</span>
-            <span className={cn("capitalize transition-colors hover:text-emerald-600 cursor-pointer", index === breadcrumbs.length - 1 ? "text-slate-900 font-bold" : "text-slate-500")}>
-              {crumb.replace(/-/g, ' ')}
-            </span>
-          </div>
-        ))}
-      </div>
+      {/* Breadcrumb will be rendered in layout */}
 
       {/* Modern Interactive Actions */}
       <div className="flex items-center gap-4">

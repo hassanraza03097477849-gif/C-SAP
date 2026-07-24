@@ -35,7 +35,7 @@ export default function Page() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="currency">Currency / Unit</Label>
-              <Input id="currency" placeholder="USD or %" />
+              <Input id="currency" placeholder="PKR or %" />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">

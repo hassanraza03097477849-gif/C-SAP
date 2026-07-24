@@ -27,21 +27,21 @@ export default function DealerStatementsPage() {
   ];
 
   const statements = [
-    { customer: "DLR-1001", docNo: "180000101", type: "RV", date: "2026-07-20", amount: "12,500.00", currency: "USD", clearingDate: "-", status: "Open" },
-    { customer: "DLR-1002", docNo: "180000102", type: "DZ", date: "2026-07-19", amount: "-5,000.00", currency: "USD", clearingDate: "2026-07-20", status: "Cleared" },
-    { customer: "DLR-1003", docNo: "180000103", type: "RV", date: "2026-07-18", amount: "45,000.00", currency: "USD", clearingDate: "-", status: "Open" },
-    { customer: "DLR-1004", docNo: "180000104", type: "RV", date: "2026-07-17", amount: "8,750.00", currency: "USD", clearingDate: "-", status: "Open" },
-    { customer: "DLR-1001", docNo: "180000105", type: "DZ", date: "2026-07-16", amount: "-12,500.00", currency: "USD", clearingDate: "2026-07-17", status: "Cleared" },
-    { customer: "DLR-1005", docNo: "180000106", type: "RV", date: "2026-07-15", amount: "105,000.00", currency: "USD", clearingDate: "-", status: "Open" },
-    { customer: "DLR-1002", docNo: "180000107", type: "RV", date: "2026-07-14", amount: "3,200.00", currency: "USD", clearingDate: "-", status: "Open" },
-    { customer: "DLR-1006", docNo: "180000108", type: "RV", date: "2026-07-13", amount: "18,400.00", currency: "USD", clearingDate: "2026-07-15", status: "Cleared" },
-    { customer: "DLR-1003", docNo: "180000109", type: "DZ", date: "2026-07-12", amount: "-20,000.00", currency: "USD", clearingDate: "2026-07-13", status: "Cleared" },
-    { customer: "DLR-1007", docNo: "180000110", type: "RV", date: "2026-07-11", amount: "55,000.00", currency: "USD", clearingDate: "-", status: "Open" },
-    { customer: "DLR-1001", docNo: "180000111", type: "RV", date: "2026-07-10", amount: "6,800.00", currency: "USD", clearingDate: "-", status: "Open" },
-    { customer: "DLR-1008", docNo: "180000112", type: "RV", date: "2026-07-09", amount: "22,100.00", currency: "USD", clearingDate: "2026-07-10", status: "Cleared" },
-    { customer: "DLR-1004", docNo: "180000113", type: "DZ", date: "2026-07-08", amount: "-8,750.00", currency: "USD", clearingDate: "2026-07-09", status: "Cleared" },
-    { customer: "DLR-1009", docNo: "180000114", type: "RV", date: "2026-07-07", amount: "94,000.00", currency: "USD", clearingDate: "-", status: "Open" },
-    { customer: "DLR-1010", docNo: "180000115", type: "RV", date: "2026-07-06", amount: "11,500.00", currency: "USD", clearingDate: "-", status: "Open" },
+    { customer: "DLR-1001", docNo: "180000101", type: "RV", date: "2026-07-20", amount: "12,500.00", currency: "PKR", clearingDate: "-", status: "Open" },
+    { customer: "DLR-1002", docNo: "180000102", type: "DZ", date: "2026-07-19", amount: "-5,000.00", currency: "PKR", clearingDate: "2026-07-20", status: "Cleared" },
+    { customer: "DLR-1003", docNo: "180000103", type: "RV", date: "2026-07-18", amount: "45,000.00", currency: "PKR", clearingDate: "-", status: "Open" },
+    { customer: "DLR-1004", docNo: "180000104", type: "RV", date: "2026-07-17", amount: "8,750.00", currency: "PKR", clearingDate: "-", status: "Open" },
+    { customer: "DLR-1001", docNo: "180000105", type: "DZ", date: "2026-07-16", amount: "-12,500.00", currency: "PKR", clearingDate: "2026-07-17", status: "Cleared" },
+    { customer: "DLR-1005", docNo: "180000106", type: "RV", date: "2026-07-15", amount: "105,000.00", currency: "PKR", clearingDate: "-", status: "Open" },
+    { customer: "DLR-1002", docNo: "180000107", type: "RV", date: "2026-07-14", amount: "3,200.00", currency: "PKR", clearingDate: "-", status: "Open" },
+    { customer: "DLR-1006", docNo: "180000108", type: "RV", date: "2026-07-13", amount: "18,400.00", currency: "PKR", clearingDate: "2026-07-15", status: "Cleared" },
+    { customer: "DLR-1003", docNo: "180000109", type: "DZ", date: "2026-07-12", amount: "-20,000.00", currency: "PKR", clearingDate: "2026-07-13", status: "Cleared" },
+    { customer: "DLR-1007", docNo: "180000110", type: "RV", date: "2026-07-11", amount: "55,000.00", currency: "PKR", clearingDate: "-", status: "Open" },
+    { customer: "DLR-1001", docNo: "180000111", type: "RV", date: "2026-07-10", amount: "6,800.00", currency: "PKR", clearingDate: "-", status: "Open" },
+    { customer: "DLR-1008", docNo: "180000112", type: "RV", date: "2026-07-09", amount: "22,100.00", currency: "PKR", clearingDate: "2026-07-10", status: "Cleared" },
+    { customer: "DLR-1004", docNo: "180000113", type: "DZ", date: "2026-07-08", amount: "-8,750.00", currency: "PKR", clearingDate: "2026-07-09", status: "Cleared" },
+    { customer: "DLR-1009", docNo: "180000114", type: "RV", date: "2026-07-07", amount: "94,000.00", currency: "PKR", clearingDate: "-", status: "Open" },
+    { customer: "DLR-1010", docNo: "180000115", type: "RV", date: "2026-07-06", amount: "11,500.00", currency: "PKR", clearingDate: "-", status: "Open" },
   ];
 
   return (

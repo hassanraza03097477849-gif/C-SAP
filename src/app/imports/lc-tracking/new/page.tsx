@@ -24,7 +24,7 @@ export default function Page() {
               <Input id="bank" placeholder="Enter bank name" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="amount">Amount (USD)</Label>
+              <Label htmlFor="amount">Amount (PKR)</Label>
               <Input id="amount" type="number" placeholder="0.00" />
             </div>
             <div className="space-y-2">

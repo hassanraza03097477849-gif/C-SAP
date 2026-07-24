@@ -172,7 +172,7 @@ const formatCurrency = (val: number) => {
   const absVal = Math.abs(val);
   const formatted = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'PKR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
   }).format(absVal);
@@ -381,7 +381,7 @@ export default function FinancialStatementsPage() {
           </button>
         </div>
         <div className="text-xs text-slate-500">
-          Amounts in USD. Negative denotes credit balance (COGS/Expenses).
+          Amounts in PKR. Negative denotes credit balance (COGS/Expenses).
         </div>
       </div>
 

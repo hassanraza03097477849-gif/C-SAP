@@ -27,7 +27,7 @@ export default function COVariancePage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'PKR' }).format(value);
   };
 
   const filteredData = varianceData.filter(row => 

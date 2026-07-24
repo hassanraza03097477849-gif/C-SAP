@@ -54,8 +54,8 @@ export default function NewSupplierPage() {
                   <SelectValue placeholder="Select currency" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="usd">USD</SelectItem>
-                  <SelectItem value="eur">EUR</SelectItem>
+                  <SelectItem value="usd">PKR</SelectItem>
+                  <SelectItem value="eur">PKR</SelectItem>
                   <SelectItem value="inr">INR</SelectItem>
                 </SelectContent>
               </Select>

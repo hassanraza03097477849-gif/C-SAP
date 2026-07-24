@@ -32,7 +32,7 @@ export default function LoginPage() {
           <div className="bg-slate-950 p-4 rounded-full shadow-lg border border-slate-800 mb-4">
             <Fuel className="h-10 w-10 text-emerald-500" />
           </div>
-          <h2 className="text-3xl font-extrabold text-white tracking-tight">Reliance Petrochem</h2>
+          <h2 className="text-3xl font-extrabold text-white tracking-tight">Reliance</h2>
           <p className="text-slate-400 mt-2">Enterprise Resource Planning Portal</p>
         </div>
 

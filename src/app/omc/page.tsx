@@ -194,7 +194,7 @@ export default function OMCDashboard() {
 
           {/* Commission Payouts Bar Chart */}
           <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] hover:-translate-y-[2px] transition-all duration-300">
-            <h3 className="text-lg font-semibold text-slate-800 mb-6">Commission Payouts (Thousands USD)</h3>
+            <h3 className="text-lg font-semibold text-slate-800 mb-6">Commission Payouts (Thousands PKR)</h3>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={commissionPayoutsData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>

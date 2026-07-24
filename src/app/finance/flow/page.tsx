@@ -12,7 +12,7 @@ export default function FinanceProcessFlow() {
         <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">Finance Process Flow</h1>
         <p className="text-slate-500 mt-2 max-w-3xl">
           If you are new to the Financial Accounting (SAP FI) modules, follow this visual guide. 
-          It maps out the end-to-end accounting lifecycle for Reliance Petrochem, from initial configuration to final reporting. Click any node to jump directly to that module.
+          It maps out the end-to-end accounting lifecycle for Reliance, from initial configuration to final reporting. Click any node to jump directly to that module.
         </p>
       </div>
 

@@ -15,7 +15,7 @@ import {
 // Mock Data Generation
 const mockInventoryData = Array.from({ length: 20 }).map((_, i) => ({
   id: `INV-${1000 + i}`,
-  plant: ['1000 - Hamburg', '1100 - Berlin', '1200 - Munich', '2000 - New York'][Math.floor(Math.random() * 4)],
+  plant: ['1000 - Faisalabad', '1100 - Berlin', '1200 - Munich', '2000 - Karachi'][Math.floor(Math.random() * 4)],
   storageLocation: ['0001 - Raw Materials', '0002 - Finished Goods', '0003 - Packaging', '0004 - Returns'][Math.floor(Math.random() * 4)],
   material: `MAT-${10000 + i} - ${['Steel Sheet', 'Aluminium Coil', 'Copper Wire', 'Plastic Granules', 'Rubber Mat', 'Glass Panel'][Math.floor(Math.random() * 6)]}`,
   unrestricted: Math.floor(Math.random() * 10000),
