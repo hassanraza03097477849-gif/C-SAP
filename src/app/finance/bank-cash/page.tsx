@@ -25,7 +25,7 @@ const ledgerData = [
   { id: '4', date: '2026-07-21', docNum: 'TRF-30012', particulars: 'Inter-bank Transfer to HDFC', debit: 0, credit: 20000000, balance: 445500000 },
   { id: '5', date: '2026-07-21', docNum: 'REC-20940', particulars: 'Interest Received - SBI', debit: 350000, credit: 0, balance: 465500000 },
   { id: '6', date: '2026-07-20', docNum: 'PAY-10490', particulars: 'Salary Disbursement', debit: 0, credit: 18500000, balance: 465150000 },
-  { id: '7', date: '2026-07-19', docNum: 'REC-20939', particulars: 'Customer Receipt - Reliance Retail', debit: 25000000, credit: 0, balance: 483650000 },
+  { id: '7', date: '2026-07-19', docNum: 'REC-20939', particulars: 'Customer Receipt - Pure Petroleum Retail', debit: 25000000, credit: 0, balance: 483650000 },
   { id: '8', date: '2026-07-18', docNum: 'PAY-10489', particulars: 'Tax Payment - GST', debit: 0, credit: 8000000, balance: 458650000 },
   { id: '9', date: '2026-07-18', docNum: 'TRF-30011', particulars: 'Cash Withdrawal for Petty Cash', debit: 0, credit: 500000, balance: 466650000 },
   { id: '10', date: '2026-07-17', docNum: 'REC-20938', particulars: 'Customer Receipt - JSW', debit: 9000000, credit: 0, balance: 467150000 },

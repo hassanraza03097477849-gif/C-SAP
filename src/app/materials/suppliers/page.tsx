@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 const mockSuppliers = [
-  { id: '1000001', name: 'Reliance Industries', purOrg: '1000', city: 'Mumbai', country: 'IN', payTerms: 'NT30', status: 'Active' },
+  { id: '1000001', name: 'Pure Petroleum Industries', purOrg: '1000', city: 'Mumbai', country: 'IN', payTerms: 'NT30', status: 'Active' },
   { id: '1000002', name: 'Tata Steel', purOrg: '1000', city: 'Jamshedpur', country: 'IN', payTerms: 'NT60', status: 'Active' },
   { id: '1000003', name: 'BASF SE', purOrg: '2000', city: 'Ludwigshafen', country: 'DE', payTerms: 'NT30', status: 'Active' },
   { id: '1000004', name: 'Dow Chemical', purOrg: '3000', city: 'Midland', country: 'US', payTerms: 'NT90', status: 'Active' },

@@ -72,7 +72,7 @@ export default function LandedCostPage() {
               <DollarSign className="w-4 h-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-slate-800 mb-1">$4,852,400</div>
+          <div className="text-2xl font-bold text-slate-800 mb-1">PKR 4,852,400</div>
           <div className="flex items-center text-xs text-emerald-600 font-medium">
             <TrendingUp className="w-3 h-3 mr-1" />
             <span>+12.5% vs last year</span>

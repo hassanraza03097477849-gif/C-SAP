@@ -18,7 +18,7 @@ import {
 // Mock Data
 const kpis = [
   { title: "Total Trips Today", value: "142", trend: "+12%", icon: Truck, color: "text-blue-500" },
-  { title: "Avg Freight Rate/Ltr", value: "$0.042", trend: "-2.1%", icon: DollarSign, color: "text-emerald-500" },
+  { title: "Avg Freight Rate/Ltr", value: "PKR 0.042", trend: "-2.1%", icon: DollarSign, color: "text-emerald-500" },
   { title: "Active Destinations", value: "38", trend: "+4", icon: MapPin, color: "text-purple-500" },
   { title: "Delayed Trips", value: "3", trend: "-1", icon: Clock, color: "text-rose-500" },
 ];

@@ -68,7 +68,7 @@ const warehouseData = [
 const COLORS = ["#059669", "#10b981", "#34d399", "#6ee7b7"];
 
 const kpis = [
-  { title: "Total Inventory Value", value: "$4.2M", trend: "+5.2%", icon: DollarSign },
+  { title: "Total Inventory Value", value: "PKR 4.2M", trend: "+5.2%", icon: DollarSign },
   { title: "Open Requisitions", value: "142", trend: "-12", icon: FileText },
   { title: "Pending Receipts", value: "38", trend: "+4", icon: ClipboardList },
   { title: "Active Suppliers", value: "85", trend: "+2", icon: Truck },

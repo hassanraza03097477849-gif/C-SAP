@@ -13,19 +13,19 @@ import {
 } from 'lucide-react';
 
 const mockInvoices = [
-  { id: 'INV-59001', date: '2026-07-24', poNumber: 'PO-40012', vendor: 'Acme Corp', grossAmount: 15400.00, taxAmount: 1540.00, status: 'Cleared' },
+  { id: 'INV-59001', date: '2026-07-24', poNumber: 'PO-40012', vendor: 'Zarar Enterprises', grossAmount: 15400.00, taxAmount: 1540.00, status: 'Cleared' },
   { id: 'INV-59002', date: '2026-07-24', poNumber: 'PO-40015', vendor: 'Global Logistics', grossAmount: 8900.50, taxAmount: 890.05, status: 'Pending' },
   { id: 'INV-59003', date: '2026-07-23', poNumber: 'PO-40008', vendor: 'Techtronics Inc', grossAmount: 45200.00, taxAmount: 4520.00, status: 'Blocked' },
   { id: 'INV-59004', date: '2026-07-23', poNumber: 'PO-40021', vendor: 'Alpha Materials', grossAmount: 1250.00, taxAmount: 125.00, status: 'Paid' },
   { id: 'INV-59005', date: '2026-07-22', poNumber: 'PO-40011', vendor: 'Omega Supplies', grossAmount: 34000.00, taxAmount: 3400.00, status: 'Cleared' },
-  { id: 'INV-59006', date: '2026-07-22', poNumber: 'PO-40019', vendor: 'Acme Corp', grossAmount: 6700.00, taxAmount: 670.00, status: 'Paid' },
+  { id: 'INV-59006', date: '2026-07-22', poNumber: 'PO-40019', vendor: 'Zarar Enterprises', grossAmount: 6700.00, taxAmount: 670.00, status: 'Paid' },
   { id: 'INV-59007', date: '2026-07-21', poNumber: 'PO-39980', vendor: 'Global Logistics', grossAmount: 11200.75, taxAmount: 1120.07, status: 'Pending' },
   { id: 'INV-59008', date: '2026-07-21', poNumber: 'PO-39995', vendor: 'Techtronics Inc', grossAmount: 5600.00, taxAmount: 560.00, status: 'Blocked' },
   { id: 'INV-59009', date: '2026-07-20', poNumber: 'PO-39950', vendor: 'Beta Services', grossAmount: 2300.00, taxAmount: 230.00, status: 'Cleared' },
   { id: 'INV-59010', date: '2026-07-20', poNumber: 'PO-39965', vendor: 'Delta Systems', grossAmount: 78500.00, taxAmount: 7850.00, status: 'Paid' },
   { id: 'INV-59011', date: '2026-07-19', poNumber: 'PO-39942', vendor: 'Gamma Inc', grossAmount: 450.00, taxAmount: 45.00, status: 'Pending' },
   { id: 'INV-59012', date: '2026-07-19', poNumber: 'PO-39910', vendor: 'Omega Supplies', grossAmount: 89000.00, taxAmount: 8900.00, status: 'Blocked' },
-  { id: 'INV-59013', date: '2026-07-18', poNumber: 'PO-39880', vendor: 'Acme Corp', grossAmount: 12400.00, taxAmount: 1240.00, status: 'Paid' },
+  { id: 'INV-59013', date: '2026-07-18', poNumber: 'PO-39880', vendor: 'Zarar Enterprises', grossAmount: 12400.00, taxAmount: 1240.00, status: 'Paid' },
   { id: 'INV-59014', date: '2026-07-18', poNumber: 'PO-39875', vendor: 'Global Logistics', grossAmount: 3450.00, taxAmount: 345.00, status: 'Cleared' },
   { id: 'INV-59015', date: '2026-07-17', poNumber: 'PO-39850', vendor: 'Alpha Materials', grossAmount: 67800.00, taxAmount: 6780.00, status: 'Pending' },
 ];
@@ -135,7 +135,7 @@ export default function InvoiceVerificationPage() {
             </div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-slate-800">$2.4M</div>
+            <div className="text-2xl font-bold text-slate-800">PKR 2.4M</div>
             <div className="text-xs text-slate-500 mt-1">84 invoices processed</div>
           </div>
         </div>

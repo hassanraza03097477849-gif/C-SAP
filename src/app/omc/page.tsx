@@ -38,8 +38,8 @@ import {
 const kpiData = [
   { title: "Active Tankers", value: "342", trend: "+12", trendUp: true, icon: Truck },
   { title: "Daily Fuel Movement (L)", value: "2.4M", trend: "+5.2%", trendUp: true, icon: Droplets },
-  { title: "Pending Settlements", value: "$1.2M", trend: "-2.1%", trendUp: false, icon: Banknote },
-  { title: "Revenue (MTD)", value: "$45.8M", trend: "+15.3%", trendUp: true, icon: TrendingUp },
+  { title: "Pending Settlements", value: "PKR 1.2M", trend: "-2.1%", trendUp: false, icon: Banknote },
+  { title: "Revenue (MTD)", value: "PKR 45.8M", trend: "+15.3%", trendUp: true, icon: TrendingUp },
   { title: "Quality Alerts", value: "3", trend: "-2", trendUp: false, icon: AlertTriangle },
   { title: "Completed Deliveries", value: "1,204", trend: "+45", trendUp: true, icon: CheckCircle },
 ];

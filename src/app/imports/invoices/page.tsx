@@ -21,27 +21,27 @@ export default function ImportsInvoicesPage() {
 
   const kpis = [
     { title: "Total Invoices", value: "3,482", icon: FileText, change: "+12% vs last month" },
-    { title: "Total Amount", value: "$45.2M", icon: DollarSign, change: "+5% vs last month" },
+    { title: "Total Amount", value: "PKR 45.2M", icon: DollarSign, change: "+5% vs last month" },
     { title: "Pending Clearance", value: "142", icon: Clock, change: "-8% vs last month" },
     { title: "Discrepancies", value: "18", icon: AlertCircle, change: "-2% vs last month" },
   ];
 
   const invoices = [
-    { id: "INV-2026-001", date: "2026-07-24", poRef: "PO-9001", supplier: "Global Tech Supplies", amount: "$124,500.00", tax: "$12,450.00", total: "$136,950.00", status: "Paid" },
-    { id: "INV-2026-002", date: "2026-07-23", poRef: "PO-9005", supplier: "Apex Manufacturing", amount: "$89,000.00", tax: "$8,900.00", total: "$97,900.00", status: "Pending" },
-    { id: "INV-2026-003", date: "2026-07-22", poRef: "PO-8992", supplier: "Sunrise Electronics", amount: "$210,000.00", tax: "$21,000.00", total: "$231,000.00", status: "Processing" },
-    { id: "INV-2026-004", date: "2026-07-22", poRef: "PO-9010", supplier: "Quantum Components", amount: "$45,600.00", tax: "$4,560.00", total: "$50,160.00", status: "Paid" },
-    { id: "INV-2026-005", date: "2026-07-21", poRef: "PO-8988", supplier: "Nexus Hardware", amount: "$320,000.00", tax: "$32,000.00", total: "$352,000.00", status: "Disputed" },
-    { id: "INV-2026-006", date: "2026-07-20", poRef: "PO-8975", supplier: "Global Tech Supplies", amount: "$56,700.00", tax: "$5,670.00", total: "$62,370.00", status: "Paid" },
-    { id: "INV-2026-007", date: "2026-07-19", poRef: "PO-8999", supplier: "Stellar Systems", amount: "$18,900.00", tax: "$1,890.00", total: "$20,790.00", status: "Pending" },
-    { id: "INV-2026-008", date: "2026-07-19", poRef: "PO-8960", supplier: "Orion Logistics", amount: "$78,500.00", tax: "$7,850.00", total: "$86,350.00", status: "Paid" },
-    { id: "INV-2026-009", date: "2026-07-18", poRef: "PO-8955", supplier: "Apex Manufacturing", amount: "$145,000.00", tax: "$14,500.00", total: "$159,500.00", status: "Processing" },
-    { id: "INV-2026-010", date: "2026-07-17", poRef: "PO-8940", supplier: "Zenith Corp", amount: "$92,300.00", tax: "$9,230.00", total: "$101,530.00", status: "Paid" },
-    { id: "INV-2026-011", date: "2026-07-16", poRef: "PO-8935", supplier: "Quantum Components", amount: "$22,400.00", tax: "$2,240.00", total: "$24,640.00", status: "Pending" },
-    { id: "INV-2026-012", date: "2026-07-15", poRef: "PO-8920", supplier: "Sunrise Electronics", amount: "$310,000.00", tax: "$31,000.00", total: "$341,000.00", status: "Paid" },
-    { id: "INV-2026-013", date: "2026-07-14", poRef: "PO-8910", supplier: "Nexus Hardware", amount: "$67,800.00", tax: "$6,780.00", total: "$74,580.00", status: "Disputed" },
-    { id: "INV-2026-014", date: "2026-07-13", poRef: "PO-8905", supplier: "Stellar Systems", amount: "$41,200.00", tax: "$4,120.00", total: "$45,320.00", status: "Paid" },
-    { id: "INV-2026-015", date: "2026-07-12", poRef: "PO-8890", supplier: "Global Tech Supplies", amount: "$156,000.00", tax: "$15,600.00", total: "$171,600.00", status: "Processing" },
+    { id: "INV-2026-001", date: "2026-07-24", poRef: "PO-9001", supplier: "Karachi Logistics Supplies", amount: "PKR 124,500.00", tax: "PKR 12,450.00", total: "PKR 136,950.00", status: "Paid" },
+    { id: "INV-2026-002", date: "2026-07-23", poRef: "PO-9005", supplier: "Apex Manufacturing", amount: "PKR 89,000.00", tax: "PKR 8,900.00", total: "PKR 97,900.00", status: "Pending" },
+    { id: "INV-2026-003", date: "2026-07-22", poRef: "PO-8992", supplier: "Sunrise Electronics", amount: "PKR 210,000.00", tax: "PKR 21,000.00", total: "PKR 231,000.00", status: "Processing" },
+    { id: "INV-2026-004", date: "2026-07-22", poRef: "PO-9010", supplier: "Quantum Components", amount: "PKR 45,600.00", tax: "PKR 4,560.00", total: "PKR 50,160.00", status: "Paid" },
+    { id: "INV-2026-005", date: "2026-07-21", poRef: "PO-8988", supplier: "Nexus Hardware", amount: "PKR 320,000.00", tax: "PKR 32,000.00", total: "PKR 352,000.00", status: "Disputed" },
+    { id: "INV-2026-006", date: "2026-07-20", poRef: "PO-8975", supplier: "Karachi Logistics Supplies", amount: "PKR 56,700.00", tax: "PKR 5,670.00", total: "PKR 62,370.00", status: "Paid" },
+    { id: "INV-2026-007", date: "2026-07-19", poRef: "PO-8999", supplier: "Stellar Systems", amount: "PKR 18,900.00", tax: "PKR 1,890.00", total: "PKR 20,790.00", status: "Pending" },
+    { id: "INV-2026-008", date: "2026-07-19", poRef: "PO-8960", supplier: "Orion Logistics", amount: "PKR 78,500.00", tax: "PKR 7,850.00", total: "PKR 86,350.00", status: "Paid" },
+    { id: "INV-2026-009", date: "2026-07-18", poRef: "PO-8955", supplier: "Apex Manufacturing", amount: "PKR 145,000.00", tax: "PKR 14,500.00", total: "PKR 159,500.00", status: "Processing" },
+    { id: "INV-2026-010", date: "2026-07-17", poRef: "PO-8940", supplier: "Zenith Corp", amount: "PKR 92,300.00", tax: "PKR 9,230.00", total: "PKR 101,530.00", status: "Paid" },
+    { id: "INV-2026-011", date: "2026-07-16", poRef: "PO-8935", supplier: "Quantum Components", amount: "PKR 22,400.00", tax: "PKR 2,240.00", total: "PKR 24,640.00", status: "Pending" },
+    { id: "INV-2026-012", date: "2026-07-15", poRef: "PO-8920", supplier: "Sunrise Electronics", amount: "PKR 310,000.00", tax: "PKR 31,000.00", total: "PKR 341,000.00", status: "Paid" },
+    { id: "INV-2026-013", date: "2026-07-14", poRef: "PO-8910", supplier: "Nexus Hardware", amount: "PKR 67,800.00", tax: "PKR 6,780.00", total: "PKR 74,580.00", status: "Disputed" },
+    { id: "INV-2026-014", date: "2026-07-13", poRef: "PO-8905", supplier: "Stellar Systems", amount: "PKR 41,200.00", tax: "PKR 4,120.00", total: "PKR 45,320.00", status: "Paid" },
+    { id: "INV-2026-015", date: "2026-07-12", poRef: "PO-8890", supplier: "Karachi Logistics Supplies", amount: "PKR 156,000.00", tax: "PKR 15,600.00", total: "PKR 171,600.00", status: "Processing" },
   ];
 
   const getStatusColor = (status: string) => {

@@ -38,12 +38,12 @@ import {
 
 // Mock Data
 const kpiData = [
-  { title: "Total Budget", value: "$12.4M", trend: "+4.5%", icon: Target, isPositive: true },
-  { title: "Actual Expenses", value: "$9.8M", trend: "-1.2%", icon: TrendingDown, isPositive: true },
-  { title: "Variance", value: "$2.6M", trend: "+12.1%", icon: Activity, isPositive: true },
+  { title: "Total Budget", value: "PKR 12.4M", trend: "+4.5%", icon: Target, isPositive: true },
+  { title: "Actual Expenses", value: "PKR 9.8M", trend: "-1.2%", icon: TrendingDown, isPositive: true },
+  { title: "Variance", value: "PKR 2.6M", trend: "+12.1%", icon: Activity, isPositive: true },
   { title: "Active Cost Centers", value: "142", trend: "0%", icon: Briefcase, isPositive: true },
   { title: "Profit Margin", value: "24.5%", trend: "+2.3%", icon: TrendingUp, isPositive: true },
-  { title: "Unallocated Costs", value: "$450K", trend: "-5.4%", icon: AlertCircle, isPositive: false },
+  { title: "Unallocated Costs", value: "PKR 450K", trend: "-5.4%", icon: AlertCircle, isPositive: false },
 ];
 
 const costCenterAllocation = [

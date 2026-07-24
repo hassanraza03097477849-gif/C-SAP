@@ -8,10 +8,10 @@ export default function AccountsPayableF110() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const kpis = [
-    { title: "Total Outstanding", value: "$4,285,900", sub: "+12% vs last month", icon: <FileText className="w-5 h-5 text-blue-400" /> },
-    { title: "Due This Week", value: "$1,150,400", sub: "34 invoices pending", icon: <AlertCircle className="w-5 h-5 text-amber-400" /> },
-    { title: "Ready for Payment (F110)", value: "$850,200", sub: "22 selected items", icon: <CheckCircle2 className="w-5 h-5 text-emerald-400" /> },
-    { title: "Blocked Invoices", value: "$125,500", sub: "5 items require review", icon: <XCircle className="w-5 h-5 text-rose-400" /> },
+    { title: "Total Outstanding", value: "PKR 4,285,900", sub: "+12% vs last month", icon: <FileText className="w-5 h-5 text-blue-400" /> },
+    { title: "Due This Week", value: "PKR 1,150,400", sub: "34 invoices pending", icon: <AlertCircle className="w-5 h-5 text-amber-400" /> },
+    { title: "Ready for Payment (F110)", value: "PKR 850,200", sub: "22 selected items", icon: <CheckCircle2 className="w-5 h-5 text-emerald-400" /> },
+    { title: "Blocked Invoices", value: "PKR 125,500", sub: "5 items require review", icon: <XCircle className="w-5 h-5 text-rose-400" /> },
   ];
 
   const invoices = [

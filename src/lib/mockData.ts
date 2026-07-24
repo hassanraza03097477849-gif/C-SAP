@@ -1,7 +1,7 @@
 export const companyData = {
-  name: "Reliance Petrochem",
+  name: "Pure Petroleum",
   acquired: "Pure Petroleum",
-  depots: ["Sahiwal Depot", "Hattar Depot", "Karachi Depot"],
+  depots: ["Karachi Depot", "Lahore Depot", "Islamabad Depot", "Multan Depot", "Sahiwal Depot"],
   segments: ["Oil", "Lubricants"]
 };
 
@@ -57,8 +57,8 @@ export const importsData = [
 // Wet-stock reconciliation (loss highlighting)
 export const wetStockReconciliation = [
   { id: "WS-01", depot: "Karachi Depot", product: "Petrol", bookStock: 75200, physicalStock: 75000, variance: -200, status: "Loss" },
-  { id: "WS-02", depot: "Karachi Depot", product: "Diesel", bookStock: 140000, physicalStock: 140050, variance: 50, status: "Gain" },
-  { id: "WS-03", depot: "Hattar Depot", product: "Lubricant X", bookStock: 10000, physicalStock: 10000, variance: 0, status: "Exact" },
+  { id: "WS-02", depot: "Lahore Depot", product: "Diesel", bookStock: 140000, physicalStock: 140050, variance: 50, status: "Gain" },
+  { id: "WS-03", depot: "Islamabad Depot", product: "Lubricant X", bookStock: 10000, physicalStock: 10000, variance: 0, status: "Exact" },
   { id: "WS-04", depot: "Sahiwal Depot", product: "Petrol", bookStock: 40500, physicalStock: 39500, variance: -1000, status: "Loss" },
 ];
 
@@ -92,10 +92,10 @@ export const depotEfficiencyData = [
 ];
 
 export const tankCapacityData = [
-  { name: 'KHI Depot', used: 4000, free: 2400 },
-  { name: 'HTR Depot', used: 3000, free: 1398 },
-  { name: 'SWL Depot', used: 2000, free: 3800 },
-  { name: 'LHR Depot', used: 2780, free: 3908 },
+  { name: 'Karachi Depot', used: 4000, free: 2400 },
+  { name: 'Lahore Depot', used: 3000, free: 1398 },
+  { name: 'Islamabad Depot', used: 2000, free: 3800 },
+  { name: 'Multan Depot', used: 2780, free: 3908 },
 ];
 
 export const salesPipelineData = [

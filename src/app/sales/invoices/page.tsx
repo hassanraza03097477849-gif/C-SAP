@@ -15,7 +15,7 @@ import {
 
 // Mock Data
 const invoices = [
-  { id: '90038100', date: '2026-07-20', payer: 'Reliance Industries', netValue: 1250000.00, tax: 225000.00, currency: 'INR', status: 'Cleared' },
+  { id: '90038100', date: '2026-07-20', payer: 'Pure Petroleum Industries', netValue: 1250000.00, tax: 225000.00, currency: 'INR', status: 'Cleared' },
   { id: '90038101', date: '2026-07-21', payer: 'Tata Motors Ltd', netValue: 850000.00, tax: 153000.00, currency: 'INR', status: 'Pending' },
   { id: '90038102', date: '2026-07-21', payer: 'Larsen & Toubro', netValue: 420000.50, tax: 75600.09, currency: 'INR', status: 'Cleared' },
   { id: '90038103', date: '2026-07-22', payer: 'Mahindra & Mahindra', netValue: 2100000.00, tax: 378000.00, currency: 'INR', status: 'Overdue' },

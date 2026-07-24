@@ -32,7 +32,7 @@ export default function AssetRegister() {
             </div>
             <div className="col-span-2 grid grid-cols-3 items-center gap-1">
               <Label className="text-[10px] text-right pr-2">Company Code</Label>
-              <Input className="col-span-2 h-6 text-[10px] rounded-none border-zinc-400 bg-zinc-200" readOnly value="1000 (Reliance)" />
+              <Input className="col-span-2 h-6 text-[10px] rounded-none border-zinc-400 bg-zinc-200" readOnly value="1000 (Pure Petroleum)" />
             </div>
             <div className="col-span-2 grid grid-cols-3 items-center gap-1">
               <Label className="text-[10px] text-right pr-2">Number of similar assets</Label>

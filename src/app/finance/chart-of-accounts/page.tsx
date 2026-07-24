@@ -5,8 +5,8 @@ import { Search, Filter, Download, Plus, ChevronDown, ChevronRight, FileText, Do
 
 // Mock Data
 const kpis = [
-  { title: "Total Assets", value: "$4.2B", icon: DollarSign, change: "+12.4%", color: "text-emerald-600", bg: "bg-emerald-100" },
-  { title: "Total Liabilities", value: "$1.8B", icon: Activity, change: "-2.1%", color: "text-rose-600", bg: "bg-rose-100" },
+  { title: "Total Assets", value: "PKR 4.2B", icon: DollarSign, change: "+12.4%", color: "text-emerald-600", bg: "bg-emerald-100" },
+  { title: "Total Liabilities", value: "PKR 1.8B", icon: Activity, change: "-2.1%", color: "text-rose-600", bg: "bg-rose-100" },
   { title: "Active Accounts", value: "2,405", icon: Hash, change: "+14", color: "text-blue-600", bg: "bg-blue-100" },
   { title: "Unposted Entries", value: "142", icon: FileText, change: "-5", color: "text-amber-600", bg: "bg-amber-100" },
 ];
@@ -17,18 +17,18 @@ const coaData = [
     name: "Assets",
     type: "Asset",
     group: "Balance Sheet",
-    balance: "$4,200,000,000",
+    balance: "PKR 4,200,000,000",
     children: [
       {
         id: "110000",
         name: "Current Assets",
         type: "Asset",
         group: "Balance Sheet",
-        balance: "$1,500,000,000",
+        balance: "PKR 1,500,000,000",
         children: [
-          { id: "111000", name: "Cash and Cash Equivalents", type: "Asset", group: "Cash", balance: "$500,000,000" },
-          { id: "112000", name: "Accounts Receivable", type: "Asset", group: "Receivables", balance: "$800,000,000" },
-          { id: "113000", name: "Inventory", type: "Asset", group: "Inventory", balance: "$200,000,000" },
+          { id: "111000", name: "Cash and Cash Equivalents", type: "Asset", group: "Cash", balance: "PKR 500,000,000" },
+          { id: "112000", name: "Accounts Receivable", type: "Asset", group: "Receivables", balance: "PKR 800,000,000" },
+          { id: "113000", name: "Inventory", type: "Asset", group: "Inventory", balance: "PKR 200,000,000" },
         ],
       },
       {
@@ -36,10 +36,10 @@ const coaData = [
         name: "Non-Current Assets",
         type: "Asset",
         group: "Balance Sheet",
-        balance: "$2,700,000,000",
+        balance: "PKR 2,700,000,000",
         children: [
-          { id: "121000", name: "Property, Plant & Equipment", type: "Asset", group: "Fixed Assets", balance: "$2,000,000,000" },
-          { id: "122000", name: "Intangible Assets", type: "Asset", group: "Intangibles", balance: "$700,000,000" },
+          { id: "121000", name: "Property, Plant & Equipment", type: "Asset", group: "Fixed Assets", balance: "PKR 2,000,000,000" },
+          { id: "122000", name: "Intangible Assets", type: "Asset", group: "Intangibles", balance: "PKR 700,000,000" },
         ],
       }
     ]
@@ -49,17 +49,17 @@ const coaData = [
     name: "Liabilities",
     type: "Liability",
     group: "Balance Sheet",
-    balance: "$1,800,000,000",
+    balance: "PKR 1,800,000,000",
     children: [
       {
         id: "210000",
         name: "Current Liabilities",
         type: "Liability",
         group: "Balance Sheet",
-        balance: "$900,000,000",
+        balance: "PKR 900,000,000",
         children: [
-          { id: "211000", name: "Accounts Payable", type: "Liability", group: "Payables", balance: "$600,000,000" },
-          { id: "212000", name: "Short-Term Debt", type: "Liability", group: "Debt", balance: "$300,000,000" },
+          { id: "211000", name: "Accounts Payable", type: "Liability", group: "Payables", balance: "PKR 600,000,000" },
+          { id: "212000", name: "Short-Term Debt", type: "Liability", group: "Debt", balance: "PKR 300,000,000" },
         ],
       },
       {
@@ -67,10 +67,10 @@ const coaData = [
         name: "Long-Term Liabilities",
         type: "Liability",
         group: "Balance Sheet",
-        balance: "$900,000,000",
+        balance: "PKR 900,000,000",
         children: [
-          { id: "221000", name: "Long-Term Debt", type: "Liability", group: "Debt", balance: "$700,000,000" },
-          { id: "222000", name: "Deferred Tax Liabilities", type: "Liability", group: "Tax", balance: "$200,000,000" },
+          { id: "221000", name: "Long-Term Debt", type: "Liability", group: "Debt", balance: "PKR 700,000,000" },
+          { id: "222000", name: "Deferred Tax Liabilities", type: "Liability", group: "Tax", balance: "PKR 200,000,000" },
         ],
       }
     ]
@@ -80,10 +80,10 @@ const coaData = [
     name: "Equity",
     type: "Equity",
     group: "Balance Sheet",
-    balance: "$2,400,000,000",
+    balance: "PKR 2,400,000,000",
     children: [
-      { id: "310000", name: "Common Stock", type: "Equity", group: "Capital", balance: "$1,000,000,000" },
-      { id: "320000", name: "Retained Earnings", type: "Equity", group: "Reserves", balance: "$1,400,000,000" },
+      { id: "310000", name: "Common Stock", type: "Equity", group: "Capital", balance: "PKR 1,000,000,000" },
+      { id: "320000", name: "Retained Earnings", type: "Equity", group: "Reserves", balance: "PKR 1,400,000,000" },
     ]
   },
   {
@@ -91,10 +91,10 @@ const coaData = [
     name: "Revenue",
     type: "Revenue",
     group: "Income Statement",
-    balance: "$5,000,000,000",
+    balance: "PKR 5,000,000,000",
     children: [
-      { id: "410000", name: "Product Sales", type: "Revenue", group: "Operating", balance: "$4,500,000,000" },
-      { id: "420000", name: "Service Revenue", type: "Revenue", group: "Operating", balance: "$500,000,000" },
+      { id: "410000", name: "Product Sales", type: "Revenue", group: "Operating", balance: "PKR 4,500,000,000" },
+      { id: "420000", name: "Service Revenue", type: "Revenue", group: "Operating", balance: "PKR 500,000,000" },
     ]
   },
   {
@@ -102,10 +102,10 @@ const coaData = [
     name: "Expenses",
     type: "Expense",
     group: "Income Statement",
-    balance: "$3,200,000,000",
+    balance: "PKR 3,200,000,000",
     children: [
-      { id: "510000", name: "Cost of Goods Sold", type: "Expense", group: "COGS", balance: "$1,800,000,000" },
-      { id: "520000", name: "Operating Expenses", type: "Expense", group: "OPEX", balance: "$1,400,000,000" },
+      { id: "510000", name: "Cost of Goods Sold", type: "Expense", group: "COGS", balance: "PKR 1,800,000,000" },
+      { id: "520000", name: "Operating Expenses", type: "Expense", group: "OPEX", balance: "PKR 1,400,000,000" },
     ]
   }
 ];

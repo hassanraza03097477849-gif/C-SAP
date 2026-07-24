@@ -9,8 +9,8 @@ import { SidebarProvider } from "@/context/SidebarContext";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Reliance ERP",
-  description: "Enterprise Resource Planning for Reliance & Pure Petroleum",
+  title: "Pure Petroleum ERP",
+  description: "Enterprise Resource Planning for Pure Petroleum & Pure Petroleum",
 };
 
 export default function RootLayout({

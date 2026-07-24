@@ -7,21 +7,21 @@ export default function LcTrackingPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const mockData = [
-    { id: "LC-2026-001", bank: "Standard Chartered", applicant: "Reliance", beneficiary: "Saudi Aramco", value: "2,500,000", currency: "PKR", expiry: "2026-08-15", status: "Active" },
-    { id: "LC-2026-002", bank: "CitiBank NA", applicant: "Reliance", beneficiary: "ExxonMobil", value: "4,100,000", currency: "PKR", expiry: "2026-09-01", status: "Pending Amendment" },
-    { id: "LC-2026-003", bank: "HSBC", applicant: "Reliance", beneficiary: "BP PLC", value: "1,850,000", currency: "PKR", expiry: "2026-07-30", status: "Active" },
-    { id: "LC-2026-004", bank: "JPMorgan Chase", applicant: "Reliance", beneficiary: "Chevron", value: "3,200,000", currency: "PKR", expiry: "2026-10-12", status: "Draft" },
-    { id: "LC-2026-005", bank: "Deutsche Bank", applicant: "Reliance", beneficiary: "TotalEnergies", value: "5,600,000", currency: "PKR", expiry: "2026-11-20", status: "Active" },
-    { id: "LC-2026-006", bank: "BNP Paribas", applicant: "Reliance", beneficiary: "Shell", value: "2,900,000", currency: "PKR", expiry: "2026-08-05", status: "Expired" },
-    { id: "LC-2026-007", bank: "Barclays", applicant: "Reliance", beneficiary: "Sinopec", value: "6,400,000", currency: "PKR", expiry: "2026-12-15", status: "Active" },
-    { id: "LC-2026-008", bank: "Bank of America", applicant: "Reliance", beneficiary: "PetroChina", value: "1,200,000", currency: "PKR", expiry: "2026-07-28", status: "Active" },
-    { id: "LC-2026-009", bank: "Standard Chartered", applicant: "Reliance", beneficiary: "Gazprom", value: "4,500,000", currency: "PKR", expiry: "2026-09-10", status: "Pending Bank" },
-    { id: "LC-2026-010", bank: "CitiBank NA", applicant: "Reliance", beneficiary: "Equinor", value: "2,150,000", currency: "PKR", expiry: "2026-10-01", status: "Active" },
-    { id: "LC-2026-011", bank: "HSBC", applicant: "Reliance", beneficiary: "Eni", value: "3,800,000", currency: "PKR", expiry: "2026-08-25", status: "Draft" },
-    { id: "LC-2026-012", bank: "JPMorgan Chase", applicant: "Reliance", beneficiary: "Valero", value: "1,550,000", currency: "PKR", expiry: "2026-11-05", status: "Active" },
-    { id: "LC-2026-013", bank: "Deutsche Bank", applicant: "Reliance", beneficiary: "Marathon", value: "2,750,000", currency: "PKR", expiry: "2026-12-30", status: "Active" },
-    { id: "LC-2026-014", bank: "BNP Paribas", applicant: "Reliance", beneficiary: "Phillips 66", value: "4,200,000", currency: "PKR", expiry: "2026-09-18", status: "Pending Amendment" },
-    { id: "LC-2026-015", bank: "Barclays", applicant: "Reliance", beneficiary: "Pemex", value: "1,900,000", currency: "PKR", expiry: "2026-07-25", status: "Active" }
+    { id: "LC-2026-001", bank: "Standard Chartered", applicant: "Pure Petroleum", beneficiary: "Saudi Aramco", value: "2,500,000", currency: "PKR", expiry: "2026-08-15", status: "Active" },
+    { id: "LC-2026-002", bank: "CitiBank NA", applicant: "Pure Petroleum", beneficiary: "ExxonMobil", value: "4,100,000", currency: "PKR", expiry: "2026-09-01", status: "Pending Amendment" },
+    { id: "LC-2026-003", bank: "HSBC", applicant: "Pure Petroleum", beneficiary: "BP PLC", value: "1,850,000", currency: "PKR", expiry: "2026-07-30", status: "Active" },
+    { id: "LC-2026-004", bank: "JPMorgan Chase", applicant: "Pure Petroleum", beneficiary: "Chevron", value: "3,200,000", currency: "PKR", expiry: "2026-10-12", status: "Draft" },
+    { id: "LC-2026-005", bank: "Deutsche Bank", applicant: "Pure Petroleum", beneficiary: "TotalEnergies", value: "5,600,000", currency: "PKR", expiry: "2026-11-20", status: "Active" },
+    { id: "LC-2026-006", bank: "BNP Paribas", applicant: "Pure Petroleum", beneficiary: "Shell", value: "2,900,000", currency: "PKR", expiry: "2026-08-05", status: "Expired" },
+    { id: "LC-2026-007", bank: "Barclays", applicant: "Pure Petroleum", beneficiary: "Sinopec", value: "6,400,000", currency: "PKR", expiry: "2026-12-15", status: "Active" },
+    { id: "LC-2026-008", bank: "Bank of America", applicant: "Pure Petroleum", beneficiary: "PetroChina", value: "1,200,000", currency: "PKR", expiry: "2026-07-28", status: "Active" },
+    { id: "LC-2026-009", bank: "Standard Chartered", applicant: "Pure Petroleum", beneficiary: "Gazprom", value: "4,500,000", currency: "PKR", expiry: "2026-09-10", status: "Pending Bank" },
+    { id: "LC-2026-010", bank: "CitiBank NA", applicant: "Pure Petroleum", beneficiary: "Equinor", value: "2,150,000", currency: "PKR", expiry: "2026-10-01", status: "Active" },
+    { id: "LC-2026-011", bank: "HSBC", applicant: "Pure Petroleum", beneficiary: "Eni", value: "3,800,000", currency: "PKR", expiry: "2026-08-25", status: "Draft" },
+    { id: "LC-2026-012", bank: "JPMorgan Chase", applicant: "Pure Petroleum", beneficiary: "Valero", value: "1,550,000", currency: "PKR", expiry: "2026-11-05", status: "Active" },
+    { id: "LC-2026-013", bank: "Deutsche Bank", applicant: "Pure Petroleum", beneficiary: "Marathon", value: "2,750,000", currency: "PKR", expiry: "2026-12-30", status: "Active" },
+    { id: "LC-2026-014", bank: "BNP Paribas", applicant: "Pure Petroleum", beneficiary: "Phillips 66", value: "4,200,000", currency: "PKR", expiry: "2026-09-18", status: "Pending Amendment" },
+    { id: "LC-2026-015", bank: "Barclays", applicant: "Pure Petroleum", beneficiary: "Pemex", value: "1,900,000", currency: "PKR", expiry: "2026-07-25", status: "Active" }
   ];
 
   const getStatusColor = (status: string) => {
@@ -90,7 +90,7 @@ export default function LcTrackingPage() {
             <span className="text-sm font-semibold tracking-wide uppercase">Total Exposure (PKR)</span>
             <FileText className="w-5 h-5 text-blue-500" />
           </div>
-          <div className="text-3xl font-bold text-slate-800">$128.5M</div>
+          <div className="text-3xl font-bold text-slate-800">PKR 128.5M</div>
           <div className="text-xs font-medium text-blue-600 bg-blue-50 w-fit px-2 py-1 rounded-md">Across 8 currencies</div>
         </div>
 

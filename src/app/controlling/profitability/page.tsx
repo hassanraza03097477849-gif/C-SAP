@@ -77,7 +77,7 @@ export default function ProfitabilityPage() {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-sm font-medium text-slate-500 mb-1">Total Revenue</p>
-              <h3 className="text-2xl font-bold text-slate-800">$20,155,000</h3>
+              <h3 className="text-2xl font-bold text-slate-800">PKR 20,155,000</h3>
             </div>
             <div className="p-2 bg-emerald-100 text-emerald-600 rounded-lg">
               <DollarSign className="h-5 w-5" />
@@ -96,7 +96,7 @@ export default function ProfitabilityPage() {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-sm font-medium text-slate-500 mb-1">Total COGS</p>
-              <h3 className="text-2xl font-bold text-slate-800">$8,900,000</h3>
+              <h3 className="text-2xl font-bold text-slate-800">PKR 8,900,000</h3>
             </div>
             <div className="p-2 bg-orange-100 text-orange-600 rounded-lg">
               <BarChart3 className="h-5 w-5" />
@@ -115,7 +115,7 @@ export default function ProfitabilityPage() {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-sm font-medium text-slate-500 mb-1">Gross Margin</p>
-              <h3 className="text-2xl font-bold text-slate-800">$11,255,000</h3>
+              <h3 className="text-2xl font-bold text-slate-800">PKR 11,255,000</h3>
             </div>
             <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
               <Percent className="h-5 w-5" />
@@ -134,7 +134,7 @@ export default function ProfitabilityPage() {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-sm font-medium text-slate-500 mb-1">Net Contribution</p>
-              <h3 className="text-2xl font-bold text-slate-800">$8,970,000</h3>
+              <h3 className="text-2xl font-bold text-slate-800">PKR 8,970,000</h3>
             </div>
             <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
               <DollarSign className="h-5 w-5" />

@@ -14,13 +14,13 @@ import {
 } from 'lucide-react';
 
 const mockOrders = [
-  { id: '10005432', date: '2026-07-24', soldTo: 'Reliance Retail', material: 'M-1004 (Polypropylene)', netValue: 450000.00, currency: 'INR', status: 'Completed', block: 'None' },
+  { id: '10005432', date: '2026-07-24', soldTo: 'Pure Petroleum Retail', material: 'M-1004 (Polypropylene)', netValue: 450000.00, currency: 'INR', status: 'Completed', block: 'None' },
   { id: '10005433', date: '2026-07-24', soldTo: 'Tata Motors', material: 'M-2011 (ABS Plastic)', netValue: 850000.00, currency: 'INR', status: 'In Process', block: 'None' },
   { id: '10005434', date: '2026-07-23', soldTo: 'L&T Construction', material: 'M-3005 (PVC Pipes)', netValue: 1200000.00, currency: 'INR', status: 'On Hold', block: 'Credit Limit' },
   { id: '10005435', date: '2026-07-23', soldTo: 'Maruti Suzuki', material: 'M-1004 (Polypropylene)', netValue: 620000.00, currency: 'INR', status: 'Completed', block: 'None' },
   { id: '10005436', date: '2026-07-22', soldTo: 'Asian Paints', material: 'M-4022 (Solvents)', netValue: 340000.00, currency: 'INR', status: 'In Process', block: 'None' },
   { id: '10005437', date: '2026-07-22', soldTo: 'Pidilite Industries', material: 'M-4025 (Adhesives Base)', netValue: 780000.00, currency: 'INR', status: 'Completed', block: 'None' },
-  { id: '10005438', date: '2026-07-21', soldTo: 'Reliance Retail', material: 'M-2011 (ABS Plastic)', netValue: 920000.00, currency: 'INR', status: 'Completed', block: 'None' },
+  { id: '10005438', date: '2026-07-21', soldTo: 'Pure Petroleum Retail', material: 'M-2011 (ABS Plastic)', netValue: 920000.00, currency: 'INR', status: 'Completed', block: 'None' },
   { id: '10005439', date: '2026-07-21', soldTo: 'Godrej Consumer', material: 'M-1004 (Polypropylene)', netValue: 410000.00, currency: 'INR', status: 'In Process', block: 'None' },
   { id: '10005440', date: '2026-07-20', soldTo: 'Hindustan Unilever', material: 'M-5010 (Surfactants)', netValue: 1550000.00, currency: 'INR', status: 'On Hold', block: 'Quality Check' },
   { id: '10005441', date: '2026-07-20', soldTo: 'Apollo Tyres', material: 'M-6001 (Synthetic Rubber)', netValue: 2100000.00, currency: 'INR', status: 'Completed', block: 'None' },
@@ -28,7 +28,7 @@ const mockOrders = [
   { id: '10005443', date: '2026-07-19', soldTo: 'Tata Motors', material: 'M-3005 (PVC Pipes)', netValue: 320000.00, currency: 'INR', status: 'Completed', block: 'None' },
   { id: '10005444', date: '2026-07-18', soldTo: 'L&T Construction', material: 'M-1004 (Polypropylene)', netValue: 880000.00, currency: 'INR', status: 'Completed', block: 'None' },
   { id: '10005445', date: '2026-07-18', soldTo: 'Asian Paints', material: 'M-4022 (Solvents)', netValue: 450000.00, currency: 'INR', status: 'On Hold', block: 'Pricing Error' },
-  { id: '10005446', date: '2026-07-17', soldTo: 'Reliance Retail', material: 'M-5010 (Surfactants)', netValue: 1100000.00, currency: 'INR', status: 'Completed', block: 'None' },
+  { id: '10005446', date: '2026-07-17', soldTo: 'Pure Petroleum Retail', material: 'M-5010 (Surfactants)', netValue: 1100000.00, currency: 'INR', status: 'Completed', block: 'None' },
 ];
 
 export default function SalesOrdersPage() {

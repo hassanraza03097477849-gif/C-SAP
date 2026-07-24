@@ -331,7 +331,7 @@ export default function FinancialStatementsPage() {
             <DollarSign size={14} className="text-blue-500" />
           </div>
           <div className="flex items-end justify-between">
-            <span className="text-2xl font-semibold">$12.5M</span>
+            <span className="text-2xl font-semibold">PKR 12.5M</span>
             <span className="text-xs font-medium text-emerald-600 dark:text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 px-1.5 py-0.5 rounded">+8.2%</span>
           </div>
         </div>
@@ -342,7 +342,7 @@ export default function FinancialStatementsPage() {
             <Briefcase size={14} className="text-purple-500" />
           </div>
           <div className="flex items-end justify-between">
-            <span className="text-2xl font-semibold">$3.85M</span>
+            <span className="text-2xl font-semibold">PKR 3.85M</span>
             <span className="text-xs font-medium text-emerald-600 dark:text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 px-1.5 py-0.5 rounded">+11.4%</span>
           </div>
         </div>
@@ -364,7 +364,7 @@ export default function FinancialStatementsPage() {
             <TrendingUp size={14} className="text-emerald-500" />
           </div>
           <div className="flex items-end justify-between">
-            <span className="text-2xl font-semibold">$4.2M</span>
+            <span className="text-2xl font-semibold">PKR 4.2M</span>
             <span className="text-xs font-medium text-emerald-600 dark:text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 px-1.5 py-0.5 rounded">+5.0%</span>
           </div>
         </div>

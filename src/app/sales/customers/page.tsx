@@ -17,7 +17,7 @@ import {
 
 // Mock Data
 const MOCK_CUSTOMERS = [
-  { id: "100001", name: "Reliance Industries Ltd", salesOrg: "1000", distChannel: "10", division: "00", creditLimit: "₹500,000,000", blockStatus: "Active" },
+  { id: "100001", name: "Pure Petroleum Industries Ltd", salesOrg: "1000", distChannel: "10", division: "00", creditLimit: "₹500,000,000", blockStatus: "Active" },
   { id: "100002", name: "Tata Consultancy Services", salesOrg: "1000", distChannel: "10", division: "00", creditLimit: "₹250,000,000", blockStatus: "Active" },
   { id: "100003", name: "Larsen & Toubro", salesOrg: "2000", distChannel: "20", division: "01", creditLimit: "₹100,000,000", blockStatus: "Active" },
   { id: "100004", name: "Infosys Technologies", salesOrg: "1000", distChannel: "10", division: "00", creditLimit: "₹150,000,000", blockStatus: "Blocked" },

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Search, Filter, Download, ShieldAlert, CreditCard, Activity, UserCheck, AlertTriangle } from 'lucide-react';
 
 const mockCreditData = [
-  { id: "10001", customer: "Reliance Industries", cca: "IN01", limit: 5000000, exposure: 4200000, risk: "Low", blocked: false },
+  { id: "10001", customer: "Pure Petroleum Industries", cca: "IN01", limit: 5000000, exposure: 4200000, risk: "Low", blocked: false },
   { id: "10002", customer: "Tata Motors", cca: "IN01", limit: 3000000, exposure: 1500000, risk: "Low", blocked: false },
   { id: "10003", customer: "Adani Enterprises", cca: "IN01", limit: 8000000, exposure: 7500000, risk: "High", blocked: true },
   { id: "10004", customer: "Mahindra & Mahindra", cca: "IN01", limit: 2500000, exposure: 1200000, risk: "Low", blocked: false },

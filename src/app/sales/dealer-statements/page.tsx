@@ -20,9 +20,9 @@ export default function DealerStatementsPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const kpis = [
-    { title: "Total Outstanding", value: "$4,250,000", subtitle: "+12% from last month", icon: Download, colorClass: "text-emerald-600" },
-    { title: "Overdue Amount", value: "$850,000", subtitle: "20% of total outstanding", icon: Clock, colorClass: "text-rose-600" },
-    { title: "Cleared Today", value: "$125,000", subtitle: "8 documents cleared", icon: CheckCircle2, colorClass: "text-teal-600" },
+    { title: "Total Outstanding", value: "PKR 4,250,000", subtitle: "+12% from last month", icon: Download, colorClass: "text-emerald-600" },
+    { title: "Overdue Amount", value: "PKR 850,000", subtitle: "20% of total outstanding", icon: Clock, colorClass: "text-rose-600" },
+    { title: "Cleared Today", value: "PKR 125,000", subtitle: "8 documents cleared", icon: CheckCircle2, colorClass: "text-teal-600" },
     { title: "Open Documents", value: "342", subtitle: "Across 45 dealers", icon: Filter, colorClass: "text-blue-600" }
   ];
 

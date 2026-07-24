@@ -13,21 +13,21 @@ import {
 } from 'lucide-react';
 
 const valuationData = [
-  { id: 1, material: "RAW-1001", plant: "1000", valClass: "3000", priceControl: "V", stdPrice: "$0.00", map: "$12.50", totalStock: "1,500 PC", totalValue: "$18,750.00" },
-  { id: 2, material: "RAW-1002", plant: "1000", valClass: "3000", priceControl: "V", stdPrice: "$0.00", map: "$8.25", totalStock: "3,200 PC", totalValue: "$26,400.00" },
-  { id: 3, material: "RAW-1003", plant: "1100", valClass: "3000", priceControl: "V", stdPrice: "$0.00", map: "$15.75", totalStock: "850 PC", totalValue: "$13,387.50" },
-  { id: 4, material: "FIN-2001", plant: "1000", valClass: "7920", priceControl: "S", stdPrice: "$145.00", map: "$142.10", totalStock: "450 EA", totalValue: "$65,250.00" },
-  { id: 5, material: "FIN-2002", plant: "1000", valClass: "7920", priceControl: "S", stdPrice: "$210.50", map: "$215.00", totalStock: "120 EA", totalValue: "$25,260.00" },
-  { id: 6, material: "SFG-3001", plant: "1200", valClass: "7900", priceControl: "S", stdPrice: "$55.00", map: "$54.20", totalStock: "890 PC", totalValue: "$48,950.00" },
-  { id: 7, material: "SFG-3002", plant: "1200", valClass: "7900", priceControl: "S", stdPrice: "$42.50", map: "$43.10", totalStock: "1,100 PC", totalValue: "$46,750.00" },
-  { id: 8, material: "PKG-4001", plant: "1000", valClass: "3050", priceControl: "V", stdPrice: "$0.00", map: "$1.20", totalStock: "15,000 EA", totalValue: "$18,000.00" },
-  { id: 9, material: "PKG-4002", plant: "1100", valClass: "3050", priceControl: "V", stdPrice: "$0.00", map: "$0.85", totalStock: "22,000 EA", totalValue: "$18,700.00" },
-  { id: 10, material: "RAW-1004", plant: "1000", valClass: "3000", priceControl: "V", stdPrice: "$0.00", map: "$4.60", totalStock: "4,500 PC", totalValue: "$20,700.00" },
-  { id: 11, material: "RAW-1005", plant: "1200", valClass: "3000", priceControl: "V", stdPrice: "$0.00", map: "$18.90", totalStock: "620 PC", totalValue: "$11,718.00" },
-  { id: 12, material: "FIN-2003", plant: "1100", valClass: "7920", priceControl: "S", stdPrice: "$320.00", map: "$315.50", totalStock: "85 EA", totalValue: "$27,200.00" },
-  { id: 13, material: "FIN-2004", plant: "1200", valClass: "7920", priceControl: "S", stdPrice: "$85.50", map: "$88.00", totalStock: "340 EA", totalValue: "$29,070.00" },
-  { id: 14, material: "SFG-3003", plant: "1000", valClass: "7900", priceControl: "S", stdPrice: "$112.00", map: "$110.80", totalStock: "210 PC", totalValue: "$23,520.00" },
-  { id: 15, material: "RAW-1006", plant: "1100", valClass: "3000", priceControl: "V", stdPrice: "$0.00", map: "$22.40", totalStock: "400 PC", totalValue: "$8,960.00" },
+  { id: 1, material: "RAW-1001", plant: "1000", valClass: "3000", priceControl: "V", stdPrice: "PKR 0.00", map: "PKR 12.50", totalStock: "1,500 PC", totalValue: "PKR 18,750.00" },
+  { id: 2, material: "RAW-1002", plant: "1000", valClass: "3000", priceControl: "V", stdPrice: "PKR 0.00", map: "PKR 8.25", totalStock: "3,200 PC", totalValue: "PKR 26,400.00" },
+  { id: 3, material: "RAW-1003", plant: "1100", valClass: "3000", priceControl: "V", stdPrice: "PKR 0.00", map: "PKR 15.75", totalStock: "850 PC", totalValue: "PKR 13,387.50" },
+  { id: 4, material: "FIN-2001", plant: "1000", valClass: "7920", priceControl: "S", stdPrice: "PKR 145.00", map: "PKR 142.10", totalStock: "450 EA", totalValue: "PKR 65,250.00" },
+  { id: 5, material: "FIN-2002", plant: "1000", valClass: "7920", priceControl: "S", stdPrice: "PKR 210.50", map: "PKR 215.00", totalStock: "120 EA", totalValue: "PKR 25,260.00" },
+  { id: 6, material: "SFG-3001", plant: "1200", valClass: "7900", priceControl: "S", stdPrice: "PKR 55.00", map: "PKR 54.20", totalStock: "890 PC", totalValue: "PKR 48,950.00" },
+  { id: 7, material: "SFG-3002", plant: "1200", valClass: "7900", priceControl: "S", stdPrice: "PKR 42.50", map: "PKR 43.10", totalStock: "1,100 PC", totalValue: "PKR 46,750.00" },
+  { id: 8, material: "PKG-4001", plant: "1000", valClass: "3050", priceControl: "V", stdPrice: "PKR 0.00", map: "PKR 1.20", totalStock: "15,000 EA", totalValue: "PKR 18,000.00" },
+  { id: 9, material: "PKG-4002", plant: "1100", valClass: "3050", priceControl: "V", stdPrice: "PKR 0.00", map: "PKR 0.85", totalStock: "22,000 EA", totalValue: "PKR 18,700.00" },
+  { id: 10, material: "RAW-1004", plant: "1000", valClass: "3000", priceControl: "V", stdPrice: "PKR 0.00", map: "PKR 4.60", totalStock: "4,500 PC", totalValue: "PKR 20,700.00" },
+  { id: 11, material: "RAW-1005", plant: "1200", valClass: "3000", priceControl: "V", stdPrice: "PKR 0.00", map: "PKR 18.90", totalStock: "620 PC", totalValue: "PKR 11,718.00" },
+  { id: 12, material: "FIN-2003", plant: "1100", valClass: "7920", priceControl: "S", stdPrice: "PKR 320.00", map: "PKR 315.50", totalStock: "85 EA", totalValue: "PKR 27,200.00" },
+  { id: 13, material: "FIN-2004", plant: "1200", valClass: "7920", priceControl: "S", stdPrice: "PKR 85.50", map: "PKR 88.00", totalStock: "340 EA", totalValue: "PKR 29,070.00" },
+  { id: 14, material: "SFG-3003", plant: "1000", valClass: "7900", priceControl: "S", stdPrice: "PKR 112.00", map: "PKR 110.80", totalStock: "210 PC", totalValue: "PKR 23,520.00" },
+  { id: 15, material: "RAW-1006", plant: "1100", valClass: "3000", priceControl: "V", stdPrice: "PKR 0.00", map: "PKR 22.40", totalStock: "400 PC", totalValue: "PKR 8,960.00" },
 ];
 
 export default function MaterialsValuationPage() {
@@ -77,7 +77,7 @@ export default function MaterialsValuationPage() {
           <div className="flex justify-between items-start mb-2">
             <div>
               <p className="text-slate-500 text-xs font-medium uppercase tracking-wider mb-1">Total Valuation</p>
-              <h3 className="text-2xl font-bold text-slate-800">$402,615.50</h3>
+              <h3 className="text-2xl font-bold text-slate-800">PKR 402,615.50</h3>
             </div>
             <div className="p-2 bg-emerald-100/50 rounded-lg text-emerald-600">
               <DollarSign className="w-5 h-5" />

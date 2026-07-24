@@ -1,16 +1,16 @@
 import React from 'react';
 
 const assetsData = [
-  { id: '1000-001', desc: 'Heavy Duty Compressor', capDate: '2023-01-15', life: '10y', apc: '$1,200,000', accDep: '$360,000', nbv: '$840,000' },
-  { id: '1000-002', desc: 'Refinery Boiler', capDate: '2022-06-10', life: '15y', apc: '$2,500,000', accDep: '$666,667', nbv: '$1,833,333' },
-  { id: '1000-003', desc: 'Control System Server', capDate: '2025-02-20', life: '5y', apc: '$150,000', accDep: '$30,000', nbv: '$120,000' },
-  { id: '1000-004', desc: 'Storage Tank A', capDate: '2020-11-01', life: '20y', apc: '$850,000', accDep: '$212,500', nbv: '$637,500' },
-  { id: '1000-005', desc: 'Transport Fleet (5 trucks)', capDate: '2024-03-12', life: '7y', apc: '$750,000', accDep: '$214,285', nbv: '$535,715' },
-  { id: '1000-006', desc: 'Lab Equipment Set', capDate: '2021-09-05', life: '8y', apc: '$420,000', accDep: '$210,000', nbv: '$210,000' },
-  { id: '1000-007', desc: 'Pipeline Section X', capDate: '2019-04-18', life: '25y', apc: '$4,000,000', accDep: '$1,120,000', nbv: '$2,880,000' },
-  { id: '1000-008', desc: 'Cooling Tower', capDate: '2023-08-30', life: '15y', apc: '$1,800,000', accDep: '$240,000', nbv: '$1,560,000' },
-  { id: '1000-009', desc: 'Office Building A', capDate: '2015-01-01', life: '40y', apc: '$12,000,000', accDep: '$3,300,000', nbv: '$8,700,000' },
-  { id: '1000-010', desc: 'Security System', capDate: '2026-01-10', life: '5y', apc: '$250,000', accDep: '$25,000', nbv: '$225,000' },
+  { id: '1000-001', desc: 'Heavy Duty Compressor', capDate: '2023-01-15', life: '10y', apc: 'PKR 1,200,000', accDep: 'PKR 360,000', nbv: 'PKR 840,000' },
+  { id: '1000-002', desc: 'Refinery Boiler', capDate: '2022-06-10', life: '15y', apc: 'PKR 2,500,000', accDep: 'PKR 666,667', nbv: 'PKR 1,833,333' },
+  { id: '1000-003', desc: 'Control System Server', capDate: '2025-02-20', life: '5y', apc: 'PKR 150,000', accDep: 'PKR 30,000', nbv: 'PKR 120,000' },
+  { id: '1000-004', desc: 'Storage Tank A', capDate: '2020-11-01', life: '20y', apc: 'PKR 850,000', accDep: 'PKR 212,500', nbv: 'PKR 637,500' },
+  { id: '1000-005', desc: 'Transport Fleet (5 trucks)', capDate: '2024-03-12', life: '7y', apc: 'PKR 750,000', accDep: 'PKR 214,285', nbv: 'PKR 535,715' },
+  { id: '1000-006', desc: 'Lab Equipment Set', capDate: '2021-09-05', life: '8y', apc: 'PKR 420,000', accDep: 'PKR 210,000', nbv: 'PKR 210,000' },
+  { id: '1000-007', desc: 'Pipeline Section X', capDate: '2019-04-18', life: '25y', apc: 'PKR 4,000,000', accDep: 'PKR 1,120,000', nbv: 'PKR 2,880,000' },
+  { id: '1000-008', desc: 'Cooling Tower', capDate: '2023-08-30', life: '15y', apc: 'PKR 1,800,000', accDep: 'PKR 240,000', nbv: 'PKR 1,560,000' },
+  { id: '1000-009', desc: 'Office Building A', capDate: '2015-01-01', life: '40y', apc: 'PKR 12,000,000', accDep: 'PKR 3,300,000', nbv: 'PKR 8,700,000' },
+  { id: '1000-010', desc: 'Security System', capDate: '2026-01-10', life: '5y', apc: 'PKR 250,000', accDep: 'PKR 25,000', nbv: 'PKR 225,000' },
 ];
 
 export default function AssetAccounting() {
@@ -43,17 +43,17 @@ export default function AssetAccounting() {
           </div>
           <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4 flex flex-col">
             <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Total APC</div>
-            <div className="text-2xl font-semibold text-slate-800">$23.9M</div>
+            <div className="text-2xl font-semibold text-slate-800">PKR 23.9M</div>
             <div className="text-xs text-indigo-600 mt-2">Acquisition Value</div>
           </div>
           <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4 flex flex-col">
             <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Acc. Depreciation</div>
-            <div className="text-2xl font-semibold text-slate-800">$6.38M</div>
-            <div className="text-xs text-rose-600 mt-2">-$125K ytd</div>
+            <div className="text-2xl font-semibold text-slate-800">PKR 6.38M</div>
+            <div className="text-xs text-rose-600 mt-2">-PKR 125K ytd</div>
           </div>
           <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4 flex flex-col">
             <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Total NBV</div>
-            <div className="text-2xl font-semibold text-slate-800">$17.52M</div>
+            <div className="text-2xl font-semibold text-slate-800">PKR 17.52M</div>
             <div className="text-xs text-slate-500 mt-2">Net Book Value</div>
           </div>
         </div>

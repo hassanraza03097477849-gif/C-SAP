@@ -17,10 +17,10 @@ import {
 // Hardcoded Mock Data
 const kpiData = [
   { title: "Total Import Volume", value: "2.4M MT", icon: Package, trend: "+12.5%", positive: true },
-  { title: "Avg Landed Cost", value: "$485/MT", icon: DollarSign, trend: "-3.2%", positive: true },
+  { title: "Avg Landed Cost", value: "PKR 485/MT", icon: DollarSign, trend: "-3.2%", positive: true },
   { title: "Active Shipments", value: "34", icon: Ship, trend: "+4", positive: true },
   { title: "Avg Transit Time", value: "28 Days", icon: Clock, trend: "+2 Days", positive: false },
-  { title: "Total LC Value", value: "$145M", icon: FileClock, trend: "+18%", positive: true },
+  { title: "Total LC Value", value: "PKR 145M", icon: FileClock, trend: "+18%", positive: true },
   { title: "Customs Cleared", value: "92%", icon: Landmark, trend: "+5%", positive: true },
 ];
 

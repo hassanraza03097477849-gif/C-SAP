@@ -6,28 +6,28 @@ export default function ExpenseAllocationPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const kpis = [
-    { title: "Total Pool Assessed", value: "$12.4M", trend: "+2.1%" },
+    { title: "Total Pool Assessed", value: "PKR 12.4M", trend: "+2.1%" },
     { title: "Pending Cycles", value: "3", trend: "-1" },
     { title: "Total Segments", value: "145", trend: "+12" },
     { title: "Allocation Errors", value: "0", trend: "0" }
   ];
 
   const assessmentData = [
-    { id: 1, cycle: "IT_ALLOC_01", segment: "IT Support", senderCC: "CC-9010 (IT HQ)", receiverCC: "CC-1020 (Sales)", base: "Headcount", pool: "$1,200,000", allocated: "$450,000" },
-    { id: 2, cycle: "IT_ALLOC_01", segment: "IT Support", senderCC: "CC-9010 (IT HQ)", receiverCC: "CC-2050 (Marketing)", base: "Headcount", pool: "$1,200,000", allocated: "$350,000" },
-    { id: 3, cycle: "IT_ALLOC_01", segment: "IT Support", senderCC: "CC-9010 (IT HQ)", receiverCC: "CC-3010 (R&D)", base: "Headcount", pool: "$1,200,000", allocated: "$400,000" },
-    { id: 4, cycle: "HR_ALLOC_02", segment: "Recruiting", senderCC: "CC-8020 (HR)", receiverCC: "CC-1020 (Sales)", base: "Headcount", pool: "$850,000", allocated: "$400,000" },
-    { id: 5, cycle: "HR_ALLOC_02", segment: "Recruiting", senderCC: "CC-8020 (HR)", receiverCC: "CC-3010 (R&D)", base: "Headcount", pool: "$850,000", allocated: "$450,000" },
-    { id: 6, cycle: "FAC_ALLOC_01", segment: "Building Rent", senderCC: "CC-7050 (Facilities)", receiverCC: "CC-1020 (Sales)", base: "Square Ft", pool: "$3,500,000", allocated: "$1,500,000" },
-    { id: 7, cycle: "FAC_ALLOC_01", segment: "Building Rent", senderCC: "CC-7050 (Facilities)", receiverCC: "CC-2050 (Marketing)", base: "Square Ft", pool: "$3,500,000", allocated: "$1,000,000" },
-    { id: 8, cycle: "FAC_ALLOC_01", segment: "Building Rent", senderCC: "CC-7050 (Facilities)", receiverCC: "CC-3010 (R&D)", base: "Square Ft", pool: "$3,500,000", allocated: "$1,000,000" },
-    { id: 9, cycle: "MGMT_ALLOC_01", segment: "Exec Overhead", senderCC: "CC-9900 (Exec)", receiverCC: "CC-1020 (Sales)", base: "Revenue", pool: "$5,000,000", allocated: "$2,500,000" },
-    { id: 10, cycle: "MGMT_ALLOC_01", segment: "Exec Overhead", senderCC: "CC-9900 (Exec)", receiverCC: "CC-2050 (Marketing)", base: "Revenue", pool: "$5,000,000", allocated: "$1,500,000" },
-    { id: 11, cycle: "MGMT_ALLOC_01", segment: "Exec Overhead", senderCC: "CC-9900 (Exec)", receiverCC: "CC-3010 (R&D)", base: "Revenue", pool: "$5,000,000", allocated: "$1,000,000" },
-    { id: 12, cycle: "LEGAL_ALLOC_01", segment: "Compliance", senderCC: "CC-8500 (Legal)", receiverCC: "CC-1020 (Sales)", base: "Fixed %", pool: "$900,000", allocated: "$450,000" },
-    { id: 13, cycle: "LEGAL_ALLOC_01", segment: "Compliance", senderCC: "CC-8500 (Legal)", receiverCC: "CC-2050 (Marketing)", base: "Fixed %", pool: "$900,000", allocated: "$270,000" },
-    { id: 14, cycle: "LEGAL_ALLOC_01", segment: "Compliance", senderCC: "CC-8500 (Legal)", receiverCC: "CC-3010 (R&D)", base: "Fixed %", pool: "$900,000", allocated: "$180,000" },
-    { id: 15, cycle: "CAF_ALLOC_01", segment: "Cafeteria Sub", senderCC: "CC-7100 (Cafeteria)", receiverCC: "CC-1020 (Sales)", base: "Headcount", pool: "$450,000", allocated: "$225,000" }
+    { id: 1, cycle: "IT_ALLOC_01", segment: "IT Support", senderCC: "CC-9010 (IT HQ)", receiverCC: "CC-1020 (Sales)", base: "Headcount", pool: "PKR 1,200,000", allocated: "PKR 450,000" },
+    { id: 2, cycle: "IT_ALLOC_01", segment: "IT Support", senderCC: "CC-9010 (IT HQ)", receiverCC: "CC-2050 (Marketing)", base: "Headcount", pool: "PKR 1,200,000", allocated: "PKR 350,000" },
+    { id: 3, cycle: "IT_ALLOC_01", segment: "IT Support", senderCC: "CC-9010 (IT HQ)", receiverCC: "CC-3010 (R&D)", base: "Headcount", pool: "PKR 1,200,000", allocated: "PKR 400,000" },
+    { id: 4, cycle: "HR_ALLOC_02", segment: "Recruiting", senderCC: "CC-8020 (HR)", receiverCC: "CC-1020 (Sales)", base: "Headcount", pool: "PKR 850,000", allocated: "PKR 400,000" },
+    { id: 5, cycle: "HR_ALLOC_02", segment: "Recruiting", senderCC: "CC-8020 (HR)", receiverCC: "CC-3010 (R&D)", base: "Headcount", pool: "PKR 850,000", allocated: "PKR 450,000" },
+    { id: 6, cycle: "FAC_ALLOC_01", segment: "Building Rent", senderCC: "CC-7050 (Facilities)", receiverCC: "CC-1020 (Sales)", base: "Square Ft", pool: "PKR 3,500,000", allocated: "PKR 1,500,000" },
+    { id: 7, cycle: "FAC_ALLOC_01", segment: "Building Rent", senderCC: "CC-7050 (Facilities)", receiverCC: "CC-2050 (Marketing)", base: "Square Ft", pool: "PKR 3,500,000", allocated: "PKR 1,000,000" },
+    { id: 8, cycle: "FAC_ALLOC_01", segment: "Building Rent", senderCC: "CC-7050 (Facilities)", receiverCC: "CC-3010 (R&D)", base: "Square Ft", pool: "PKR 3,500,000", allocated: "PKR 1,000,000" },
+    { id: 9, cycle: "MGMT_ALLOC_01", segment: "Exec Overhead", senderCC: "CC-9900 (Exec)", receiverCC: "CC-1020 (Sales)", base: "Revenue", pool: "PKR 5,000,000", allocated: "PKR 2,500,000" },
+    { id: 10, cycle: "MGMT_ALLOC_01", segment: "Exec Overhead", senderCC: "CC-9900 (Exec)", receiverCC: "CC-2050 (Marketing)", base: "Revenue", pool: "PKR 5,000,000", allocated: "PKR 1,500,000" },
+    { id: 11, cycle: "MGMT_ALLOC_01", segment: "Exec Overhead", senderCC: "CC-9900 (Exec)", receiverCC: "CC-3010 (R&D)", base: "Revenue", pool: "PKR 5,000,000", allocated: "PKR 1,000,000" },
+    { id: 12, cycle: "LEGAL_ALLOC_01", segment: "Compliance", senderCC: "CC-8500 (Legal)", receiverCC: "CC-1020 (Sales)", base: "Fixed %", pool: "PKR 900,000", allocated: "PKR 450,000" },
+    { id: 13, cycle: "LEGAL_ALLOC_01", segment: "Compliance", senderCC: "CC-8500 (Legal)", receiverCC: "CC-2050 (Marketing)", base: "Fixed %", pool: "PKR 900,000", allocated: "PKR 270,000" },
+    { id: 14, cycle: "LEGAL_ALLOC_01", segment: "Compliance", senderCC: "CC-8500 (Legal)", receiverCC: "CC-3010 (R&D)", base: "Fixed %", pool: "PKR 900,000", allocated: "PKR 180,000" },
+    { id: 15, cycle: "CAF_ALLOC_01", segment: "Cafeteria Sub", senderCC: "CC-7100 (Cafeteria)", receiverCC: "CC-1020 (Sales)", base: "Headcount", pool: "PKR 450,000", allocated: "PKR 225,000" }
   ];
 
   return (

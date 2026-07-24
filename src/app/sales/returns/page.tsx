@@ -7,20 +7,20 @@ export default function SalesReturnsPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const mockData = [
-    { id: "RE-1004523", date: "2026-07-24", invRef: "INV-990123", customer: "Acme Corp", material: "Steel Coil 500mm", qty: 2, status: "Pending Inspection" },
+    { id: "RE-1004523", date: "2026-07-24", invRef: "INV-990123", customer: "Zarar Enterprises", material: "Steel Coil 500mm", qty: 2, status: "Pending Inspection" },
     { id: "RE-1004524", date: "2026-07-24", invRef: "INV-990111", customer: "Globex Inc", material: "Aluminum Sheets", qty: 15, status: "Approved" },
     { id: "RE-1004525", date: "2026-07-23", invRef: "INV-990098", customer: "Stark Ind", material: "Titanium Rods", qty: 5, status: "Rejected" },
     { id: "RE-1004526", date: "2026-07-23", invRef: "INV-989543", customer: "Wayne Ent", material: "Copper Wire 2mm", qty: 100, status: "Approved" },
-    { id: "RE-1004527", date: "2026-07-22", invRef: "INV-989201", customer: "Acme Corp", material: "Brass Fittings", qty: 50, status: "Pending Inspection" },
-    { id: "RE-1004528", date: "2026-07-21", invRef: "INV-989100", customer: "LexCorp", material: "Steel Coil 500mm", qty: 1, status: "Approved" },
-    { id: "RE-1004529", date: "2026-07-21", invRef: "INV-989088", customer: "Umbrella Corp", material: "PVC Pipes", qty: 200, status: "Approved" },
+    { id: "RE-1004527", date: "2026-07-22", invRef: "INV-989201", customer: "Zarar Enterprises", material: "Brass Fittings", qty: 50, status: "Pending Inspection" },
+    { id: "RE-1004528", date: "2026-07-21", invRef: "INV-989100", customer: "Quetta Haulers", material: "Steel Coil 500mm", qty: 1, status: "Approved" },
+    { id: "RE-1004529", date: "2026-07-21", invRef: "INV-989088", customer: "Faisalabad Petro", material: "PVC Pipes", qty: 200, status: "Approved" },
     { id: "RE-1004530", date: "2026-07-20", invRef: "INV-988902", customer: "Globex Inc", material: "Aluminum Sheets", qty: 8, status: "Pending Inspection" },
     { id: "RE-1004531", date: "2026-07-20", invRef: "INV-988880", customer: "Massive Dynamic", material: "Iron Ore Batch", qty: 1, status: "Rejected" },
     { id: "RE-1004532", date: "2026-07-19", invRef: "INV-988705", customer: "Cyberdyne", material: "Silicon Wafers", qty: 500, status: "Approved" },
     { id: "RE-1004533", date: "2026-07-18", invRef: "INV-988500", customer: "Weyland-Yutani", material: "Carbon Fiber Rolls", qty: 12, status: "Pending Inspection" },
     { id: "RE-1004534", date: "2026-07-18", invRef: "INV-988450", customer: "Stark Ind", material: "Titanium Rods", qty: 3, status: "Approved" },
-    { id: "RE-1004535", date: "2026-07-17", invRef: "INV-988220", customer: "Acme Corp", material: "Steel Coil 500mm", qty: 5, status: "Rejected" },
-    { id: "RE-1004536", date: "2026-07-16", invRef: "INV-988100", customer: "Oscorp", material: "Glass Panels", qty: 30, status: "Pending Inspection" },
+    { id: "RE-1004535", date: "2026-07-17", invRef: "INV-988220", customer: "Zarar Enterprises", material: "Steel Coil 500mm", qty: 5, status: "Rejected" },
+    { id: "RE-1004536", date: "2026-07-16", invRef: "INV-988100", customer: "Peshawar Transport", material: "Glass Panels", qty: 30, status: "Pending Inspection" },
     { id: "RE-1004537", date: "2026-07-15", invRef: "INV-987900", customer: "Wayne Ent", material: "Copper Wire 2mm", qty: 150, status: "Approved" },
     { id: "RE-1004538", date: "2026-07-15", invRef: "INV-987888", customer: "Globex Inc", material: "Aluminum Sheets", qty: 25, status: "Pending Inspection" },
   ];
@@ -92,7 +92,7 @@ export default function SalesReturnsPage() {
         <div className="border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(52,211,153,0.1)] bg-white/80 backdrop-blur-md hover:-translate-y-[2px] hover:shadow-lg transition-all duration-300 rounded-xl p-4">
           <p className="text-sm font-medium text-slate-500 mb-1">Value Returned</p>
           <div className="flex items-end gap-2">
-            <h3 className="text-2xl font-bold text-slate-800">$1.2M</h3>
+            <h3 className="text-2xl font-bold text-slate-800">PKR 1.2M</h3>
             <span className="text-xs font-medium text-red-500 mb-1 flex items-center">
               +5.2%
             </span>

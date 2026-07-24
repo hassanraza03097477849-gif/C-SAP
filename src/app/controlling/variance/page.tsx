@@ -87,7 +87,7 @@ export default function COVariancePage() {
             </div>
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-slate-800">$262,500.00</h3>
+            <h3 className="text-2xl font-bold text-slate-800">PKR 262,500.00</h3>
             <p className="text-xs text-slate-500 mt-1">Based on standard cost estimates</p>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function COVariancePage() {
             </div>
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-slate-800">$264,050.00</h3>
+            <h3 className="text-2xl font-bold text-slate-800">PKR 264,050.00</h3>
             <p className="text-xs text-slate-500 mt-1">Settled order costs</p>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default function COVariancePage() {
             </div>
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-red-600">-$1,550.00</h3>
+            <h3 className="text-2xl font-bold text-red-600">-PKR 1,550.00</h3>
             <p className="text-xs text-slate-500 mt-1">Unfavorable across all plants</p>
           </div>
         </div>

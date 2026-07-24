@@ -3,10 +3,10 @@ import { LucideWallet, LucideTrendingUp, LucideArrowDownRight, LucideActivity } 
 
 export default function COBudgetsPage() {
   const kpis = [
-    { title: "Total Planned Fixed", value: "$4.2M", icon: LucideWallet, color: "text-emerald-600" },
-    { title: "Total Planned Variable", value: "$1.8M", icon: LucideTrendingUp, color: "text-teal-600" },
-    { title: "Overall Total Plan", value: "$6.0M", icon: LucideActivity, color: "text-slate-600" },
-    { title: "Actual to Date", value: "$2.1M", icon: LucideArrowDownRight, color: "text-rose-600" },
+    { title: "Total Planned Fixed", value: "PKR 4.2M", icon: LucideWallet, color: "text-emerald-600" },
+    { title: "Total Planned Variable", value: "PKR 1.8M", icon: LucideTrendingUp, color: "text-teal-600" },
+    { title: "Overall Total Plan", value: "PKR 6.0M", icon: LucideActivity, color: "text-slate-600" },
+    { title: "Actual to Date", value: "PKR 2.1M", icon: LucideArrowDownRight, color: "text-rose-600" },
   ];
 
   const gridData = [
