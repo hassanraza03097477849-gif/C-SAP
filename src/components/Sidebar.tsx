@@ -29,7 +29,7 @@ const navigation = [
     icon: Wallet, 
     subLinks: [
       { name: "Overview", href: "/finance" },
-      { name: "Process Flow", href: "/finance/flow" },
+
       { name: "General Ledger", href: "/finance/general-ledger" },
       { name: "Chart of Accounts", href: "/finance/chart-of-accounts" },
       { name: "Receivables", href: "/finance/receivables" },

@@ -20,7 +20,17 @@ export function Header() {
   return (
     <header className="h-16 shrink-0 border-b border-slate-200 bg-white/80 backdrop-blur-md flex items-center justify-between px-6 shadow-sm relative z-40">
       
-      {/* Breadcrumb will be rendered in layout */}
+      <div className="flex items-center space-x-2 text-sm text-slate-600">
+        {breadcrumbs.map((crumb, idx) => (
+          <span key={idx} className="flex items-center">
+            {idx > 0 && <span className="mx-1">/</span>}
+            <Link href={'/' + breadcrumbs.slice(0, idx + 1).join('/')}
+                  className="hover:underline capitalize">
+              {crumb}
+            </Link>
+          </span>
+        ))}
+      </div>
 
       {/* Modern Interactive Actions */}
       <div className="flex items-center gap-4">
