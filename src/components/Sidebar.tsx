@@ -96,13 +96,21 @@ const navigation = [
       { name: "Landed Cost", href: "/imports/landed-cost" },
     ]
   },
-  { 
-    name: "OMC Operations", 
+  {
+    name: 'OMC Operations',
+    href: '/omc',
     icon: Fuel,
     subLinks: [
-      { name: "Overview", href: "/omc" },
-      { name: "Wet-Stock", href: "/omc/wet-stock" },
-      { name: "Settlements", href: "/omc/settlements" },
+      { name: 'Fuel Movement', href: '/omc/fuel-movement' },
+      { name: 'Tankers', href: '/omc/tankers' },
+      { name: 'Settlements', href: '/omc/settlements' },
+      { name: 'Commissions', href: '/omc/commissions' },
+      { name: 'Price Revisions', href: '/omc/price-revisions' },
+      { name: 'Sales Mgmt', href: '/omc/sales-mgmt' },
+      { name: 'Transport', href: '/omc/transport' },
+      { name: 'Quality', href: '/omc/quality' },
+      { name: 'POS Integration', href: '/omc/pos-integration' },
+      { name: 'Wet Stock', href: '/omc/wet-stock' },
     ]
   },
 ];
